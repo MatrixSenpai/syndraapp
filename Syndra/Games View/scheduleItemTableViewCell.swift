@@ -52,14 +52,14 @@ class scheduleItemTableViewCell: UITableViewCell {
     }
     
     func configure(game: Game) {
-        teamOne.text = game.blue.abbreviation
-        teamTwo.text = game.red.abbreviation
+        teamOne.text = game.blueSide.abbreviation
+        teamTwo.text = game.redSide.abbreviation
         
-        teamIcons.teamOne.image = game.blue.icon
-        teamIcons.teamTwo.image = game.red.icon
+        teamIcons.teamOne.image = game.blueSide.icon()
+        teamIcons.teamTwo.image = game.redSide.icon()
         
-        time.text = game.time
-        
+        //time.text = game.time
+ 
         layoutSubviews()
     }
     
@@ -86,7 +86,7 @@ class scheduleItemTableViewCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        //super.setSelected(selected, animated: animated)
     }
     
 }

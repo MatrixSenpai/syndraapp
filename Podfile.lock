@@ -1,4 +1,5 @@
 PODS:
+  - Bolts/Tasks (1.9.0)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -16,18 +17,25 @@ PODS:
   - MMDrawerController/Subclass (0.6.0):
     - MMDrawerController/Core
   - Neon (0.4.0)
+  - Parse (1.17.1):
+    - Parse/Core (= 1.17.1)
+  - Parse/Core (1.17.1):
+    - Bolts/Tasks (~> 1.9)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`, branch `wip/swift4`)
   - FontBlaster
   - MMDrawerController
   - Neon
+  - Parse
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Bolts
     - FontBlaster
     - MMDrawerController
     - Neon
+    - Parse
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -40,11 +48,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
+  Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
 
-PODFILE CHECKSUM: be55ad2636a448bb2d993cc82ec0ccee26b9deed
+PODFILE CHECKSUM: 71c217623d391f32152be53a6e0065f4252ad253
 
 COCOAPODS: 1.5.3

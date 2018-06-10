@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreData
 import MMDrawerController
 import FontBlaster
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var viewController: MMDrawerController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FontBlaster.blast()
+        FontBlaster.blast { (names) in
+            for n in names {
+                print(n)
+            }
+        }
+        
+        Parse.enableLocalDatastore()
+        Parse.initialize(with: ParseClientConfiguration(block: { (config) in
+            config.applicationId = "4ad2abb0-6608-4f2c-b036-b9902cf4fe35"
+            config.clientKey = "spbSi2C50BsiIC16KXZPBUx6XjeszbSK"
+            config.server = "https://parse.buddy.com/parse"
+        }))
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let leftController = menuTableViewController()
@@ -60,7 +74,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-

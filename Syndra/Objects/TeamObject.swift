@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import Parse
 
-class Team {
-    let name: String
-    let abbreviation: String
-    let icon: UIImage?
+class Team: PFObject, PFSubclassing {
+    static func parseClassName() -> String {
+        return "Team"
+    }
     
-    init(name n: String, usingAbbreviation a: String, andIcon i: String) {
-        name = n
-        abbreviation = a
-        icon = UIImage(named: i)
+    override var description: String {
+        return "\(self.name)(\(self.abbreviation)) - \(self.iconName).png"
+    }
+    
+    @NSManaged var name: String
+    @NSManaged var abbreviation: String
+    @NSManaged var iconName: String
+
+    func icon() -> UIImage? {
+        return UIImage(named: iconName)
     }
 }

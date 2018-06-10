@@ -17,10 +17,11 @@
 		66C9B0C220CB41D800A2B14C /* gameFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0C120CB41D800A2B14C /* gameFilterViewController.swift */; };
 		66C9B0C820CB436400A2B14C /* scheduleItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0C620CB436400A2B14C /* scheduleItemTableViewCell.swift */; };
 		66C9B0CB20CB463B00A2B14C /* teamOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0CA20CB463B00A2B14C /* teamOverlayView.swift */; };
-		66D7B42620CCE9A700F37B96 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42220CCE9A700F37B96 /* Font Awesome 5 Brands-Regular-400.otf */; };
-		66D7B42720CCE9A700F37B96 /* Font Awesome 5 Pro-Light-300.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42320CCE9A700F37B96 /* Font Awesome 5 Pro-Light-300.otf */; };
-		66D7B42820CCE9A700F37B96 /* Font Awesome 5 Pro-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42420CCE9A700F37B96 /* Font Awesome 5 Pro-Solid-900.otf */; };
-		66D7B42920CCE9A700F37B96 /* Font Awesome 5 Pro-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42520CCE9A700F37B96 /* Font Awesome 5 Pro-Regular-400.otf */; };
+		66D7B42620CCE9A700F37B96 /* FABrands.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42220CCE9A700F37B96 /* FABrands.otf */; };
+		66D7B42720CCE9A700F37B96 /* FALight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42320CCE9A700F37B96 /* FALight.otf */; };
+		66D7B42820CCE9A700F37B96 /* FASolid.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42420CCE9A700F37B96 /* FASolid.otf */; };
+		66D7B42920CCE9A700F37B96 /* FARegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42520CCE9A700F37B96 /* FARegular.otf */; };
+		66D7B42B20CCF1B100F37B96 /* MenuInterfacingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7B42A20CCF1B100F37B96 /* MenuInterfacingController.swift */; };
 		75807F5BF0872A5BA1653D6C /* Pods_Syndra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,10 +39,12 @@
 		66C9B0C120CB41D800A2B14C /* gameFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameFilterViewController.swift; sourceTree = "<group>"; };
 		66C9B0C620CB436400A2B14C /* scheduleItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleItemTableViewCell.swift; sourceTree = "<group>"; };
 		66C9B0CA20CB463B00A2B14C /* teamOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamOverlayView.swift; sourceTree = "<group>"; };
-		66D7B42220CCE9A700F37B96 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
-		66D7B42320CCE9A700F37B96 /* Font Awesome 5 Pro-Light-300.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Pro-Light-300.otf"; sourceTree = "<group>"; };
-		66D7B42420CCE9A700F37B96 /* Font Awesome 5 Pro-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Pro-Solid-900.otf"; sourceTree = "<group>"; };
-		66D7B42520CCE9A700F37B96 /* Font Awesome 5 Pro-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Pro-Regular-400.otf"; sourceTree = "<group>"; };
+		66D7B42220CCE9A700F37B96 /* FABrands.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FABrands.otf; sourceTree = "<group>"; };
+		66D7B42320CCE9A700F37B96 /* FALight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FALight.otf; sourceTree = "<group>"; };
+		66D7B42420CCE9A700F37B96 /* FASolid.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FASolid.otf; sourceTree = "<group>"; };
+		66D7B42520CCE9A700F37B96 /* FARegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FARegular.otf; sourceTree = "<group>"; };
+		66D7B42A20CCF1B100F37B96 /* MenuInterfacingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInterfacingController.swift; sourceTree = "<group>"; };
+		66D7B43320CCF63000F37B96 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6BE2F75C8B0A07B02B04CC7A /* Pods-Syndra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syndra.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Syndra/Pods-Syndra.debug.xcconfig"; sourceTree = "<group>"; };
 		AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Syndra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -61,6 +64,7 @@
 		3DB8F8FBCAA102876119075D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66D7B43320CCF63000F37B96 /* CoreData.framework */,
 				AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */,
 			);
 			name = Frameworks;
@@ -69,10 +73,10 @@
 		665BC1B920CC410C00948768 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				66D7B42220CCE9A700F37B96 /* Font Awesome 5 Brands-Regular-400.otf */,
-				66D7B42320CCE9A700F37B96 /* Font Awesome 5 Pro-Light-300.otf */,
-				66D7B42520CCE9A700F37B96 /* Font Awesome 5 Pro-Regular-400.otf */,
-				66D7B42420CCE9A700F37B96 /* Font Awesome 5 Pro-Solid-900.otf */,
+				66D7B42220CCE9A700F37B96 /* FABrands.otf */,
+				66D7B42320CCE9A700F37B96 /* FALight.otf */,
+				66D7B42520CCE9A700F37B96 /* FARegular.otf */,
+				66D7B42420CCE9A700F37B96 /* FASolid.otf */,
 				66C9B0B220CB3C6300A2B14C /* Assets.xcassets */,
 				66C9B0B420CB3C6300A2B14C /* LaunchScreen.storyboard */,
 				66C9B0B720CB3C6300A2B14C /* Info.plist */,
@@ -134,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				66C9B0BF20CB41CB00A2B14C /* menuTableViewController.swift */,
+				66D7B42A20CCF1B100F37B96 /* MenuInterfacingController.swift */,
 			);
 			path = "Menu View";
 			sourceTree = "<group>";
@@ -207,12 +212,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66D7B42720CCE9A700F37B96 /* Font Awesome 5 Pro-Light-300.otf in Resources */,
+				66D7B42720CCE9A700F37B96 /* FALight.otf in Resources */,
 				66C9B0B620CB3C6300A2B14C /* LaunchScreen.storyboard in Resources */,
-				66D7B42820CCE9A700F37B96 /* Font Awesome 5 Pro-Solid-900.otf in Resources */,
-				66D7B42620CCE9A700F37B96 /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
+				66D7B42820CCE9A700F37B96 /* FASolid.otf in Resources */,
+				66D7B42620CCE9A700F37B96 /* FABrands.otf in Resources */,
 				66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */,
-				66D7B42920CCE9A700F37B96 /* Font Awesome 5 Pro-Regular-400.otf in Resources */,
+				66D7B42920CCE9A700F37B96 /* FARegular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,17 +231,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Syndra/Pods-Syndra-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
 				"${BUILT_PRODUCTS_DIR}/MMDrawerController/MMDrawerController.framework",
 				"${BUILT_PRODUCTS_DIR}/Neon/Neon.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMDrawerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Neon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -276,6 +285,7 @@
 				66C9B0C020CB41CB00A2B14C /* menuTableViewController.swift in Sources */,
 				665BC1C020CC470900948768 /* GameObject.swift in Sources */,
 				665BC1BE20CC460400948768 /* TeamObject.swift in Sources */,
+				66D7B42B20CCF1B100F37B96 /* MenuInterfacingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
