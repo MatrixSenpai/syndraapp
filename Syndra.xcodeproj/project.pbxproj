@@ -7,21 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		665BC1BB20CC420C00948768 /* gamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BA20CC420C00948768 /* gamesViewController.swift */; };
+		665BC1BE20CC460400948768 /* TeamObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BD20CC460400948768 /* TeamObject.swift */; };
+		665BC1C020CC470900948768 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BF20CC470900948768 /* GameObject.swift */; };
 		66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */; };
-		66C9B0AE20CB3C6200A2B14C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0AD20CB3C6200A2B14C /* ViewController.swift */; };
-		66C9B0B120CB3C6200A2B14C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C9B0AF20CB3C6200A2B14C /* Main.storyboard */; };
 		66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C9B0B220CB3C6300A2B14C /* Assets.xcassets */; };
 		66C9B0B620CB3C6300A2B14C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C9B0B420CB3C6300A2B14C /* LaunchScreen.storyboard */; };
+		66C9B0C020CB41CB00A2B14C /* menuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0BF20CB41CB00A2B14C /* menuTableViewController.swift */; };
+		66C9B0C220CB41D800A2B14C /* gameFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0C120CB41D800A2B14C /* gameFilterViewController.swift */; };
+		66C9B0C820CB436400A2B14C /* scheduleItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0C620CB436400A2B14C /* scheduleItemTableViewCell.swift */; };
+		66C9B0CB20CB463B00A2B14C /* teamOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0CA20CB463B00A2B14C /* teamOverlayView.swift */; };
+		66D7B42620CCE9A700F37B96 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42220CCE9A700F37B96 /* Font Awesome 5 Brands-Regular-400.otf */; };
+		66D7B42720CCE9A700F37B96 /* Font Awesome 5 Pro-Light-300.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42320CCE9A700F37B96 /* Font Awesome 5 Pro-Light-300.otf */; };
+		66D7B42820CCE9A700F37B96 /* Font Awesome 5 Pro-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42420CCE9A700F37B96 /* Font Awesome 5 Pro-Solid-900.otf */; };
+		66D7B42920CCE9A700F37B96 /* Font Awesome 5 Pro-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42520CCE9A700F37B96 /* Font Awesome 5 Pro-Regular-400.otf */; };
+		75807F5BF0872A5BA1653D6C /* Pods_Syndra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		536F803088623AC84BB47E41 /* Pods-Syndra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syndra.release.xcconfig"; path = "Pods/Target Support Files/Pods-Syndra/Pods-Syndra.release.xcconfig"; sourceTree = "<group>"; };
+		665BC1BA20CC420C00948768 /* gamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gamesViewController.swift; sourceTree = "<group>"; };
+		665BC1BD20CC460400948768 /* TeamObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamObject.swift; sourceTree = "<group>"; };
+		665BC1BF20CC470900948768 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		66C9B0A820CB3C6200A2B14C /* Syndra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syndra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		66C9B0AD20CB3C6200A2B14C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		66C9B0B020CB3C6200A2B14C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66C9B0B220CB3C6300A2B14C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66C9B0B520CB3C6300A2B14C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66C9B0B720CB3C6300A2B14C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66C9B0BF20CB41CB00A2B14C /* menuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuTableViewController.swift; sourceTree = "<group>"; };
+		66C9B0C120CB41D800A2B14C /* gameFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameFilterViewController.swift; sourceTree = "<group>"; };
+		66C9B0C620CB436400A2B14C /* scheduleItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleItemTableViewCell.swift; sourceTree = "<group>"; };
+		66C9B0CA20CB463B00A2B14C /* teamOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamOverlayView.swift; sourceTree = "<group>"; };
+		66D7B42220CCE9A700F37B96 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
+		66D7B42320CCE9A700F37B96 /* Font Awesome 5 Pro-Light-300.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Pro-Light-300.otf"; sourceTree = "<group>"; };
+		66D7B42420CCE9A700F37B96 /* Font Awesome 5 Pro-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Pro-Solid-900.otf"; sourceTree = "<group>"; };
+		66D7B42520CCE9A700F37B96 /* Font Awesome 5 Pro-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Pro-Regular-400.otf"; sourceTree = "<group>"; };
+		6BE2F75C8B0A07B02B04CC7A /* Pods-Syndra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syndra.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Syndra/Pods-Syndra.debug.xcconfig"; sourceTree = "<group>"; };
+		AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Syndra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +51,51 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75807F5BF0872A5BA1653D6C /* Pods_Syndra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3DB8F8FBCAA102876119075D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		665BC1B920CC410C00948768 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				66D7B42220CCE9A700F37B96 /* Font Awesome 5 Brands-Regular-400.otf */,
+				66D7B42320CCE9A700F37B96 /* Font Awesome 5 Pro-Light-300.otf */,
+				66D7B42520CCE9A700F37B96 /* Font Awesome 5 Pro-Regular-400.otf */,
+				66D7B42420CCE9A700F37B96 /* Font Awesome 5 Pro-Solid-900.otf */,
+				66C9B0B220CB3C6300A2B14C /* Assets.xcassets */,
+				66C9B0B420CB3C6300A2B14C /* LaunchScreen.storyboard */,
+				66C9B0B720CB3C6300A2B14C /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		665BC1BC20CC45F400948768 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				665BC1BD20CC460400948768 /* TeamObject.swift */,
+				665BC1BF20CC470900948768 /* GameObject.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		66C9B09F20CB3C6200A2B14C = {
 			isa = PBXGroup;
 			children = (
 				66C9B0AA20CB3C6200A2B14C /* Syndra */,
 				66C9B0A920CB3C6200A2B14C /* Products */,
+				F048EB6B44F1BDE9F6FCB2DF /* Pods */,
+				3DB8F8FBCAA102876119075D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +111,40 @@
 			isa = PBXGroup;
 			children = (
 				66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */,
-				66C9B0AD20CB3C6200A2B14C /* ViewController.swift */,
-				66C9B0AF20CB3C6200A2B14C /* Main.storyboard */,
-				66C9B0B220CB3C6300A2B14C /* Assets.xcassets */,
-				66C9B0B420CB3C6300A2B14C /* LaunchScreen.storyboard */,
-				66C9B0B720CB3C6300A2B14C /* Info.plist */,
+				66C9B0C320CB41E500A2B14C /* Games View */,
+				66C9B0C420CB41ED00A2B14C /* Menu View */,
+				665BC1BC20CC45F400948768 /* Objects */,
+				665BC1B920CC410C00948768 /* Resources */,
 			);
 			path = Syndra;
+			sourceTree = "<group>";
+		};
+		66C9B0C320CB41E500A2B14C /* Games View */ = {
+			isa = PBXGroup;
+			children = (
+				665BC1BA20CC420C00948768 /* gamesViewController.swift */,
+				66C9B0C120CB41D800A2B14C /* gameFilterViewController.swift */,
+				66C9B0C620CB436400A2B14C /* scheduleItemTableViewCell.swift */,
+				66C9B0CA20CB463B00A2B14C /* teamOverlayView.swift */,
+			);
+			path = "Games View";
+			sourceTree = "<group>";
+		};
+		66C9B0C420CB41ED00A2B14C /* Menu View */ = {
+			isa = PBXGroup;
+			children = (
+				66C9B0BF20CB41CB00A2B14C /* menuTableViewController.swift */,
+			);
+			path = "Menu View";
+			sourceTree = "<group>";
+		};
+		F048EB6B44F1BDE9F6FCB2DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6BE2F75C8B0A07B02B04CC7A /* Pods-Syndra.debug.xcconfig */,
+				536F803088623AC84BB47E41 /* Pods-Syndra.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +154,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66C9B0BA20CB3C6300A2B14C /* Build configuration list for PBXNativeTarget "Syndra" */;
 			buildPhases = (
+				683506AC5B3D9F5A1871CE08 /* [CP] Check Pods Manifest.lock */,
 				66C9B0A420CB3C6200A2B14C /* Sources */,
 				66C9B0A520CB3C6200A2B14C /* Frameworks */,
 				66C9B0A620CB3C6200A2B14C /* Resources */,
+				0C9F2FE2BAB2867CCCE330EA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -122,35 +207,81 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66D7B42720CCE9A700F37B96 /* Font Awesome 5 Pro-Light-300.otf in Resources */,
 				66C9B0B620CB3C6300A2B14C /* LaunchScreen.storyboard in Resources */,
+				66D7B42820CCE9A700F37B96 /* Font Awesome 5 Pro-Solid-900.otf in Resources */,
+				66D7B42620CCE9A700F37B96 /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */,
-				66C9B0B120CB3C6200A2B14C /* Main.storyboard in Resources */,
+				66D7B42920CCE9A700F37B96 /* Font Awesome 5 Pro-Regular-400.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C9F2FE2BAB2867CCCE330EA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Syndra/Pods-Syndra-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
+				"${BUILT_PRODUCTS_DIR}/MMDrawerController/MMDrawerController.framework",
+				"${BUILT_PRODUCTS_DIR}/Neon/Neon.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMDrawerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Neon.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Syndra/Pods-Syndra-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		683506AC5B3D9F5A1871CE08 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Syndra-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		66C9B0A420CB3C6200A2B14C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66C9B0AE20CB3C6200A2B14C /* ViewController.swift in Sources */,
+				665BC1BB20CC420C00948768 /* gamesViewController.swift in Sources */,
+				66C9B0C820CB436400A2B14C /* scheduleItemTableViewCell.swift in Sources */,
+				66C9B0C220CB41D800A2B14C /* gameFilterViewController.swift in Sources */,
 				66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */,
+				66C9B0CB20CB463B00A2B14C /* teamOverlayView.swift in Sources */,
+				66C9B0C020CB41CB00A2B14C /* menuTableViewController.swift in Sources */,
+				665BC1C020CC470900948768 /* GameObject.swift in Sources */,
+				665BC1BE20CC460400948768 /* TeamObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		66C9B0AF20CB3C6200A2B14C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				66C9B0B020CB3C6200A2B14C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		66C9B0B420CB3C6300A2B14C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -278,11 +409,13 @@
 		};
 		66C9B0BB20CB3C6300A2B14C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BE2F75C8B0A07B02B04CC7A /* Pods-Syndra.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6S4L29QT59;
 				INFOPLIST_FILE = Syndra/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -290,17 +423,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.matrixstudios.Syndra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		66C9B0BC20CB3C6300A2B14C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 536F803088623AC84BB47E41 /* Pods-Syndra.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6S4L29QT59;
 				INFOPLIST_FILE = Syndra/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,7 +443,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.matrixstudios.Syndra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

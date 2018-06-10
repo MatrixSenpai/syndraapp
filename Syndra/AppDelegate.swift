@@ -7,15 +7,33 @@
 //
 
 import UIKit
+import MMDrawerController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var viewController: MMDrawerController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let leftController = menuTableViewController()
+        let leftNavController = UINavigationController(rootViewController: leftController)
+        
+        let centerController = gamesViewController()
+        let centerNavController = UINavigationController(rootViewController: centerController)
+        
+        let rightController = gameFilterViewController()
+        let rightNavController = UINavigationController(rootViewController: rightController)
+        
+        let viewController = MMDrawerController(center: centerNavController, leftDrawerViewController: leftNavController, rightDrawerViewController: rightNavController)
+        viewController?.openDrawerGestureModeMask = .all
+        viewController?.closeDrawerGestureModeMask = .all
+        
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
