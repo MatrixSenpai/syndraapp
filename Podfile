@@ -5,9 +5,22 @@ target 'Syndra' do
   inhibit_all_warnings!
 
   pod 'Neon'
+  pod 'SuperDelegate'
+  pod 'SwiftyJSON'
+  pod 'NVActivityIndicatorView'
   pod 'MMDrawerController'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
   pod 'FontBlaster'
   pod 'Parse'
+
+  post_install do |installer|
+    installer.pods_project.targets.each do |t|
+      if ['NVActivityIndicatorView', 'SwiftyJSON', 'SuperDelegate'].include? t.name
+        t.build_configurations.each do |config|
+          config.build_settings['SWIFT_VERSION'] = '3'
+        end
+      end
+    end
+  end
 
 end

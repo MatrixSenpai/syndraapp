@@ -12,7 +12,7 @@ import MMDrawerController
 class MenuInterfacingViewController: UIViewController {
     var leftButton: MMDrawerBarButtonItem {
         let b = MMDrawerBarButtonItem(title: "\u{f0c9}", style: .plain, target: self, action: #selector(self.openLeft))
-        b.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome5ProLight", size: 20)!], for: .normal)
+        b.setTitleTextAttributes(FALIGHT_ATTR, for: .normal)
         return b
     }
     
@@ -36,7 +36,7 @@ class MenuInterfacingViewController: UIViewController {
 class MenuInterfacingTableViewController: UITableViewController {
     var leftButton: MMDrawerBarButtonItem {
         let b = MMDrawerBarButtonItem(title: "\u{f0c9}", style: .plain, target: self, action: #selector(self.openLeft))
-        b.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "FontAwesome5ProLight", size: 20)!], for: .normal)
+        b.setTitleTextAttributes(FALIGHT_ATTR, for: .normal)
         return b
     }
     

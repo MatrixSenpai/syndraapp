@@ -7,20 +7,18 @@
 //
 
 import UIKit
-import Parse
+import SwiftyJSON
 
-class Team: PFObject, PFSubclassing {
-    static func parseClassName() -> String {
-        return "Team"
-    }
+class Team {
+    var name: String
+    var abbreviation: String
+    var iconName: String
     
-    override var description: String {
-        return "\(self.name)(\(self.abbreviation)) - \(self.iconName).png"
+    init() {
+        name = ""
+        abbreviation = ""
+        iconName = ""
     }
-    
-    @NSManaged var name: String
-    @NSManaged var abbreviation: String
-    @NSManaged var iconName: String
 
     func icon() -> UIImage? {
         return UIImage(named: iconName)

@@ -52,14 +52,14 @@ class scheduleItemTableViewCell: UITableViewCell {
     }
     
     func configure(game: Game) {
-        teamOne.text = game.blueSide.abbreviation
+        /*teamOne.text = game.blueSide.abbreviation
         teamTwo.text = game.redSide.abbreviation
         
         teamIcons.teamOne.image = game.blueSide.icon()
         teamIcons.teamTwo.image = game.redSide.icon()
         
         //time.text = game.time
- 
+        */
         layoutSubviews()
     }
     

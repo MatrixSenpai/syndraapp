@@ -1,0 +1,31 @@
+{
+  "season": 8,
+  "split": 1,
+  "games": {
+    "1": {
+      "1": {
+        "1": {
+          "blueSide": "Team Liquid",
+          "redSide": "100 Thieves"
+        },
+        "2": {
+          "blueSide": "Team Solo Mid",
+          "redSide": "Counter Logic Gaming"
+        },
+        "3": {
+          "blueSide": "Clutch Gaming",
+          "redSide": "Cloud9"
+        },
+        "4": {
+          "blueSide": "Echo Fox",
+          "redSide": "FlyQuest"
+        },
+        "5": {
+          "blueSide": "Golden Guardians",
+          "redSide": "OpTic Gaming"
+        },
+        "start": "2018-06-16T16:00:00-0600"
+      }
+    }
+  }
+}

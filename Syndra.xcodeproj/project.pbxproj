@@ -10,6 +10,10 @@
 		665BC1BB20CC420C00948768 /* gamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BA20CC420C00948768 /* gamesViewController.swift */; };
 		665BC1BE20CC460400948768 /* TeamObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BD20CC460400948768 /* TeamObject.swift */; };
 		665BC1C020CC470900948768 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BF20CC470900948768 /* GameObject.swift */; };
+		6680CFD520D61B2300682FE2 /* Games.json in Resources */ = {isa = PBXBuildFile; fileRef = 6680CFD420D61B2300682FE2 /* Games.json */; };
+		6686D95120D3ECEF0058C7B3 /* FeaturedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */; };
+		6699EDBB20D32D91001DED0E /* GamesCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */; };
+		6699EDBD20D337FB001DED0E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6699EDBC20D337FB001DED0E /* libsqlite3.tbd */; };
 		66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */; };
 		66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C9B0B220CB3C6300A2B14C /* Assets.xcassets */; };
 		66C9B0B620CB3C6300A2B14C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C9B0B420CB3C6300A2B14C /* LaunchScreen.storyboard */; };
@@ -30,6 +34,10 @@
 		665BC1BA20CC420C00948768 /* gamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gamesViewController.swift; sourceTree = "<group>"; };
 		665BC1BD20CC460400948768 /* TeamObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamObject.swift; sourceTree = "<group>"; };
 		665BC1BF20CC470900948768 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
+		6680CFD420D61B2300682FE2 /* Games.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Games.json; sourceTree = "<group>"; };
+		6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedGameView.swift; sourceTree = "<group>"; };
+		6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCommunicator.swift; sourceTree = "<group>"; };
+		6699EDBC20D337FB001DED0E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		66C9B0A820CB3C6200A2B14C /* Syndra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syndra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66C9B0B220CB3C6300A2B14C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6699EDBD20D337FB001DED0E /* libsqlite3.tbd in Frameworks */,
 				75807F5BF0872A5BA1653D6C /* Pods_Syndra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +73,7 @@
 		3DB8F8FBCAA102876119075D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6699EDBC20D337FB001DED0E /* libsqlite3.tbd */,
 				66D7B43320CCF63000F37B96 /* CoreData.framework */,
 				AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */,
 			);
@@ -73,6 +83,7 @@
 		665BC1B920CC410C00948768 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6680CFD420D61B2300682FE2 /* Games.json */,
 				66D7B42220CCE9A700F37B96 /* FABrands.otf */,
 				66D7B42320CCE9A700F37B96 /* FALight.otf */,
 				66D7B42520CCE9A700F37B96 /* FARegular.otf */,
@@ -115,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */,
+				6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */,
 				66C9B0C320CB41E500A2B14C /* Games View */,
 				66C9B0C420CB41ED00A2B14C /* Menu View */,
 				665BC1BC20CC45F400948768 /* Objects */,
@@ -130,6 +142,7 @@
 				66C9B0C120CB41D800A2B14C /* gameFilterViewController.swift */,
 				66C9B0C620CB436400A2B14C /* scheduleItemTableViewCell.swift */,
 				66C9B0CA20CB463B00A2B14C /* teamOverlayView.swift */,
+				6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */,
 			);
 			path = "Games View";
 			sourceTree = "<group>";
@@ -214,6 +227,7 @@
 			files = (
 				66D7B42720CCE9A700F37B96 /* FALight.otf in Resources */,
 				66C9B0B620CB3C6300A2B14C /* LaunchScreen.storyboard in Resources */,
+				6680CFD520D61B2300682FE2 /* Games.json in Resources */,
 				66D7B42820CCE9A700F37B96 /* FASolid.otf in Resources */,
 				66D7B42620CCE9A700F37B96 /* FABrands.otf in Resources */,
 				66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */,
@@ -235,8 +249,11 @@
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
 				"${BUILT_PRODUCTS_DIR}/MMDrawerController/MMDrawerController.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Neon/Neon.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/SuperDelegate/SuperDelegate.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -244,8 +261,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMDrawerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Neon.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SuperDelegate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -279,12 +299,14 @@
 			files = (
 				665BC1BB20CC420C00948768 /* gamesViewController.swift in Sources */,
 				66C9B0C820CB436400A2B14C /* scheduleItemTableViewCell.swift in Sources */,
+				6686D95120D3ECEF0058C7B3 /* FeaturedGameView.swift in Sources */,
 				66C9B0C220CB41D800A2B14C /* gameFilterViewController.swift in Sources */,
 				66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */,
 				66C9B0CB20CB463B00A2B14C /* teamOverlayView.swift in Sources */,
 				66C9B0C020CB41CB00A2B14C /* menuTableViewController.swift in Sources */,
 				665BC1C020CC470900948768 /* GameObject.swift in Sources */,
 				665BC1BE20CC460400948768 /* TeamObject.swift in Sources */,
+				6699EDBB20D32D91001DED0E /* GamesCommunicator.swift in Sources */,
 				66D7B42B20CCF1B100F37B96 /* MenuInterfacingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

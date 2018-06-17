@@ -9,13 +9,30 @@
 import UIKit
 import MMDrawerController
 import Parse
+import NVActivityIndicatorView
 
-class gamesViewController: MenuInterfacingTableViewController {
+class gamesViewController: MenuInterfacingTableViewController, GameListener {
     
-    var games: Array<Game>?
+    var games: Split!
+    var loadingView: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .pacman, color: .red, padding: 20)
+    
+    override init(style: UITableView.Style) {
+        super.init(style: style)
+        
+        GamesCommunicator.sharedInstance.listener = self
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(gamesViewController.handleRefresh), for: .valueChanged)
+        
+        GamesCommunicator.sharedInstance.listener = self
         
         tableView.register(scheduleItemTableViewCell.self, forCellReuseIdentifier: "teamCell")
     }
@@ -23,35 +40,24 @@ class gamesViewController: MenuInterfacingTableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let q = Game.query()
-        
-        q?.findObjectsInBackground(block: { (results, error) in
-            if error == nil {
-                guard let gameObjects = results as? Array<Game> else { return }
-                
-                print("Got back \(gameObjects.count) games")
-                
-                for g in gameObjects {
-                    do {
-                        try g.blueSide.fetch()
-                        try g.redSide.fetch()
-                    } catch let e {
-                        print("fetchTeams - " + e.localizedDescription)
-                    }
-                }
-                
-                self.games = gameObjects
-                self.tableView.reloadData()
-            } else {
-                print("findGames - " + error!.localizedDescription)
-            }
-        })
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if games == nil || games.count > 0 {
+            tableView.backgroundView = nil
+            tableView.separatorStyle = .singleLine
+            loadingView.stopAnimating()
+            
+            return 1
+        } else {
+            tableView.backgroundView = loadingView
+            loadingView.startAnimating()
+            tableView.separatorStyle = .none
+            
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -59,7 +65,8 @@ class gamesViewController: MenuInterfacingTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return games?.count ?? 0
+        guard games != nil else { return 0 }
+        return games.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -69,10 +76,23 @@ class gamesViewController: MenuInterfacingTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! scheduleItemTableViewCell
 
-        guard let g = games else { return cell }
+        guard games.count != 0 else { return cell }
         
-        cell.configure(game: g[indexPath.row])
+        cell.configure(game: games[0][0][indexPath.row])
         
         return cell
+    }
+    
+    @objc
+    func handleRefresh() {
+        tableView.reloadData()
+        
+        refreshControl?.endRefreshing()
+    }
+    
+    func getGames(games g: Split) {
+        self.games = g
+        
+        self.tableView.reloadData()
     }
 }
