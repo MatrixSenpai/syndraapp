@@ -12,6 +12,7 @@ target 'Syndra' do
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
   pod 'FontBlaster'
   pod 'Parse'
+  pod 'SwiftDate', '~> 4.0'
 
   post_install do |installer|
     installer.pods_project.targets.each do |t|

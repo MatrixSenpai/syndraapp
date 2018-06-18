@@ -1,31 +1,438 @@
 {
-  "season": 8,
-  "split": 1,
-  "games": {
-    "1": {
-      "1": {
+    "season": 8,
+    "split": 1,
+    "games": {
+        "0": {
+            "0": {
+                "0": {
+                    "blueSide": "TL",
+                    "redSide": "100"
+                },
+                "1": {
+                    "blueSide": "TSM",
+                    "redSide": "CLG"
+                },
+                "2": {
+                    "blueSide": "CG",
+                    "redSide": "C9"
+                },
+                "3": {
+                    "blueSide": "FOX",
+                    "redSide": "FQ"
+                },
+                "4": {
+                    "blueSide": "GGS",
+                    "redSide": "OTG"
+                },
+                "start": "2018-06-16T16:00:00-0600"
+            },
+            "1": {
+                "0": {
+                    "blueSide": "TSM",
+                    "redSide": "FQ"
+                },
+                "1": {
+                    "blueSide": "TL",
+                    "redSide": "GGS"
+                },
+                "2": {
+                    "blueSide": "CLG",
+                    "redSide": "100"
+                },
+                "3": {
+                    "blueSide": "CG",
+                    "redSide": "FOX"
+                },
+                "4": {
+                    "blueSide": "C9",
+                    "redSide": "OTG"
+                },
+                "start": "2018-06-17T14:00:00-0600"
+            }
+        },
         "1": {
-          "blueSide": "Team Liquid",
-          "redSide": "100 Thieves"
+            "0": {
+                "0": {
+                    "blueSide": "CLG",
+                    "redSide": "TL"
+                },
+                "1": {
+                    "blueSide": "TSM",
+                    "redSide": "CG"
+                },
+                "2": {
+                    "blueSide": "OTG",
+                    "redSide": "FOX"
+                },
+                "3": {
+                    "blueSide": "100",
+                    "redSide": "FQ"
+                },
+                "4": {
+                    "blueSide": "GGS",
+                    "redSide": "C9"
+                },
+                "start": "2018-06-23T16:00:00-0600"
+            },
+            "1": {
+                "0": {
+                    "blueSide": "TSM",
+                    "redSide": "FQ"
+                },
+                "1": {
+                    "blueSide": "TL",
+                    "redSide": "GGS"
+                },
+                "2": {
+                    "blueSide": "CLG",
+                    "redSide": "100"
+                },
+                "3": {
+                    "blueSide": "CG",
+                    "redSide": "FOX"
+                },
+                "4": {
+                    "blueSide": "C9",
+                    "redSide": "OTG"
+                },
+                "start": "2018-06-24T14:00:00-0600"
+            }
         },
         "2": {
-          "blueSide": "Team Solo Mid",
-          "redSide": "Counter Logic Gaming"
+            "0": {
+                "0": {
+                    "blueSide": "C9",
+                    "redSide": "TSM"
+                },
+                "1": {
+                    "blueSide": "TL",
+                    "redSide": "FOX"
+                },
+                "2": {
+                    "blueSide": "100",
+                    "redSide": "CG"
+                },
+                "3": {
+                    "blueSide": "FQ",
+                    "redSide": "GGS"
+                },
+                "4": {
+                    "blueSide": "OTG",
+                    "redSide": "CLG"
+                },
+                "start": "2018-06-30T16:00:00-0600"
+            },
+            "1": {
+                "0": {
+                    "blueSide": "GGS",
+                    "redSide": "TSM"
+                },
+                "1": {
+                    "blueSide": "CLG",
+                    "redSide": "FQ"
+                },
+                "2": {
+                    "blueSide": "CG",
+                    "redSide": "TL"
+                },
+                "3": {
+                    "blueSide": "FOX",
+                    "redSide": "C9"
+                },
+                "4": {
+                    "blueSide": "100",
+                    "redSide": "OTG"
+                },
+                "start": "2018-07-01T14:00:00-0600"
+            }
         },
         "3": {
-          "blueSide": "Clutch Gaming",
-          "redSide": "Cloud9"
+            "0": {
+                "0": {
+                    "blueSide": "FOX",
+                    "redSide": "CLG"
+                },
+                "1": {
+                    "blueSide": "100",
+                    "redSide": "TSM"
+                },
+                "2": {
+                    "blueSide": "CG",
+                    "redSide": "GGS"
+                },
+                "3": {
+                    "blueSide": "TL",
+                    "redSide": "OTG"
+                },
+                "4": {
+                    "blueSide": "C9",
+                    "redSide": "FQ"
+                },
+                "start": "2018-07-14T16:00:00-0600"
+            },
+            "1": {
+                "0": {
+                    "blueSide": "GGS",
+                    "redSide": "100"
+                },
+                "1": {
+                    "blueSide": "FQ",
+                    "redSide": "TL"
+                },
+                "2": {
+                    "blueSide": "TSM",
+                    "redSide": "FOX"
+                },
+                "3": {
+                    "blueSide": "CLG",
+                    "redSide": "C9"
+                },
+                "4": {
+                    "blueSide": "OTG",
+                    "redSide": "CG"
+                },
+                "start": "2018-07-15T14:00:00-0600"
+            }
         },
         "4": {
-          "blueSide": "Echo Fox",
-          "redSide": "FlyQuest"
+            "0": {
+                "0": {
+                    "blueSide": "FOX",
+                    "redSide": "100"
+                },
+                "1": {
+                    "blueSide": "C9",
+                    "redSide": "TL"
+                },
+                "2": {
+                    "blueSide": "TSM",
+                    "redSide": "OTG"
+                },
+                "3": {
+                    "blueSide": "GGS",
+                    "redSide": "CLG"
+                },
+                "4": {
+                    "blueSide": "FQ",
+                    "redSide": "CG"
+                },
+                "start": "2018-07-21T16:00:00-0600"
+            },
+            "1": {
+                "0": {
+                    "blueSide": "OTG",
+                    "redSide": "C9"
+                },
+                "1": {
+                    "blueSide": "FQ",
+                    "redSide": "100"
+                },
+                "2": {
+                    "blueSide": "TL",
+                    "redSide": "CLG"
+                },
+                "3": {
+                    "blueSide": "CG",
+                    "redSide": "TSM"
+                },
+                "4": {
+                    "blueSide": "GGS",
+                    "redSide": "FOX"
+                },
+                "start": "2018-07-22T14:00:00-0600"
+            }
         },
         "5": {
-          "blueSide": "Golden Guardians",
-          "redSide": "OpTic Gaming"
+            "0": {
+                "0": {
+                    "blueSide": "TSM",
+                    "redSide": "C9"
+                },
+                "1": {
+                    "blueSide": "CG",
+                    "redSide": "100"
+                },
+                "2": {
+                    "blueSide": "FOX",
+                    "redSide": "FQ"
+                },
+                "3": {
+                    "blueSide": "GGS",
+                    "redSide": "TL"
+                },
+                "4": {
+                    "blueSide": "CLG",
+                    "redSide": "OTG"
+                },
+                "start": "2018-07-28T16:00:00-0600"
+            },
+            "1": {
+                "0": {
+                    "blueSide": "FQ",
+                    "redSide": "TSM"
+                },
+                "1": {
+                    "blueSide": "100",
+                    "redSide": "CLG"
+                },
+                "2": {
+                    "blueSide": "TL",
+                    "redSide": "CG"
+                },
+                "3": {
+                    "blueSide": "C9",
+                    "redSide": "FOX"
+                },
+                "4": {
+                    "blueSide": "OTG",
+                    "redSide": "GGS"
+                },
+                "start": "2018-07-29T14:00:00-0600"
+            }
         },
-        "start": "2018-06-16T16:00:00-0600"
-      }
+        "6": {
+            "0": {
+                "0": {
+                    "blueSide": "TL",
+                    "redSide": "100"
+                },
+                "1": {
+                    "blueSide": "C9",
+                    "redSide": "CG"
+                },
+                "2": {
+                    "blueSide": "CLG",
+                    "redSide": "FOX"
+                },
+                "3": {
+                    "blueSide": "OTG",
+                    "redSide": "FQ"
+                },
+                "4": {
+                    "blueSide": "TSM",
+                    "redSide": "GGS"
+                },
+                "start": "2018-08-04T16:00:00-0600"
+            },
+            "1": {
+                "0": {
+                    "blueSide": "TL",
+                    "redSide": "FQ"
+                },
+                "1": {
+                    "blueSide": "C9",
+                    "redSide": "CLG"
+                },
+                "2": {
+                    "blueSide": "FOX",
+                    "redSide": "TSM"
+                },
+                "3": {
+                    "blueSide": "100",
+                    "redSide": "GGS"
+                },
+                "4": {
+                    "blueSide": "CG",
+                    "redSide": "OTG"
+                },
+                "start": "2018-08-05T14:00:00-0600"
+            }
+        },
+        "7": {
+            "0": {
+                "0": {
+                    "blueSide": "100",
+                    "redSide": "FOX"
+                },
+                "1": {
+                    "blueSide": "CLG",
+                    "redSide": "TSM"
+                },
+                "2": {
+                    "blueSide": "C9",
+                    "redSide": "GGS"
+                },
+                "3": {
+                    "blueSide": "OTG",
+                    "redSide": "TL"
+                },
+                "4": {
+                    "blueSide": "CG",
+                    "redSide": "FQ"
+                },
+                "start": "2018-08-11T16:00:00-0600"
+            },
+            "1": {
+                "0": {
+                    "blueSide": "FOX",
+                    "redSide": "OTG"
+                },
+                "1": {
+                    "blueSide": "GGS",
+                    "redSide": "CG"
+                },
+                "2": {
+                    "blueSide": "TSM",
+                    "redSide": "100"
+                },
+                "3": {
+                    "blueSide": "TL",
+                    "redSide": "C9"
+                },
+                "4": {
+                    "blueSide": "FQ",
+                    "redSide": "CLG"
+                },
+                "start": "2018-08-12T14:00:00-0600"
+            }
+        },
+        "8": {
+            "0": {
+                "0": {
+                    "blueSide": "FOX",
+                    "redSide": "TL"
+                },
+                "1": {
+                    "blueSide": "100",
+                    "redSide": "C9"
+                },
+                "2": {
+                    "blueSide": "CLG",
+                    "redSide": "CG"
+                },
+                "3": {
+                    "blueSide": "GGS",
+                    "redSide": "FQ"
+                },
+                "4": {
+                    "blueSide": "OTG",
+                    "redSide": "TSM"
+                },
+                "start": "2018-08-18T16:00:00-0600"
+            },
+            "1": {
+                "0": {
+                    "blueSide": "CLG",
+                    "redSide": "GGS"
+                },
+                "1": {
+                    "blueSide": "OTG",
+                    "redSide": "100"
+                },
+                "2": {
+                    "blueSide": "FOX",
+                    "redSide": "CG"
+                },
+                "3": {
+                    "blueSide": "FQ",
+                    "redSide": "C9"
+                },
+                "4": {
+                    "blueSide": "TSM",
+                    "redSide": "TL"
+                },
+                "start": "2018-08-19T14:00:00-0600"
+            }
+        }
     }
-  }
 }

@@ -17,34 +17,60 @@ class scheduleItemTableViewCell: UITableViewCell {
     var teamOneView: UIView
     var teamTwo: UILabel
     var teamTwoView: UIView
+    
+    var teamsView: UIView
+    
     var time: UILabel
+    var timeView: UIView
+    
+    var gameHeader: UILabel
+    var gameHeaderView: UIView
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        teamIcons = teamOverlayView(frame: CGRect())
+        teamsView = UIView()
         
         teamOne = UILabel()
         
         teamOneView = UIView()
         teamOneView.addSubview(teamOne)
+
+        teamsView.addSubview(teamOneView)
         
         teamTwo = UILabel()
         teamTwo.textAlignment = .right
         
         teamTwoView = UIView()
         teamTwoView.addSubview(teamTwo)
+
+        teamsView.addSubview(teamTwoView)
+        
+        teamIcons = teamOverlayView(frame: CGRect())
+        teamsView.addSubview(teamIcons)
+        
+        timeView = UIView()
+        timeView.backgroundColor = .flatNavyBlue
         
         time = UILabel()
-        time.textColor = .white
+        time.textColor = .flatWhite
+        time.textAlignment = .center
+        timeView.addSubview(time)
+        
+        gameHeaderView = UIView()
+        gameHeaderView.backgroundColor = .flatNavyBlueDark
+        
+        gameHeader = UILabel()
+        gameHeader.textAlignment = .center
+        gameHeader.textColor = .flatWhite
+        gameHeaderView.addSubview(gameHeader)
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        addSubview(teamOneView)
-        addSubview(teamTwoView)
-        addSubview(teamIcons)
-        addSubview(time)
-        
         teamOneView.backgroundColor = GradientColor(.leftToRight, frame: frame, colors: [.flatSkyBlue, .flatWhite])
         teamTwoView.backgroundColor = GradientColor(.leftToRight, frame: frame, colors: [.flatWhite, .flatRed])
+
+        addSubview(teamsView)
+        addSubview(timeView)
+        addSubview(gameHeaderView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,26 +78,38 @@ class scheduleItemTableViewCell: UITableViewCell {
     }
     
     func configure(game: Game) {
-        /*teamOne.text = game.blueSide.abbreviation
+        teamOne.text = game.blueSide.abbreviation
         teamTwo.text = game.redSide.abbreviation
         
         teamIcons.teamOne.image = game.blueSide.icon()
         teamIcons.teamTwo.image = game.redSide.icon()
         
-        //time.text = game.time
-        */
+        gameHeader.text = "Game \(game.gameOfDay + 1)"
+        
+        var gtime = game.time()
+        if game.gameOfDay != 1 { gtime += " (approx)"}
+        time.text = gtime
+
         layoutSubviews()
     }
     
     override func layoutSubviews() {
+        gameHeaderView.anchorAndFillEdge(.top, xPad: 0, yPad: 0, otherSize: 50)
+        gameHeader.fillSuperview()
+        
+        teamsView.alignAndFillWidth(align: .underCentered, relativeTo: gameHeaderView, padding: 0, height: 150)
+        
         teamOneView.anchorAndFillEdge(.left, xPad: 0, yPad: 0, otherSize: (width / 2) + 75)
         teamTwoView.anchorAndFillEdge(.right, xPad: 0, yPad: 0, otherSize: (width / 2) + 75)
         
+        let w = teamsView.width
+        let h = teamsView.height
+        
         let redSidePath = UIBezierPath()
-        redSidePath.move(to: CGPoint(x: width, y: height))
-        redSidePath.addLine(to: CGPoint(x: 0, y: height))
-        redSidePath.addLine(to: CGPoint(x: 150, y: 0))
-        redSidePath.addLine(to: CGPoint(x: width, y: 0))
+        redSidePath.move(to: CGPoint(x: 150, y: 0))
+        redSidePath.addLine(to: CGPoint(x: 0, y: h))
+        redSidePath.addLine(to: CGPoint(x: w, y: h))
+        redSidePath.addLine(to: CGPoint(x: w, y: 0))
         redSidePath.close()
         
         let redSideShape = CAShapeLayer()
@@ -83,6 +121,9 @@ class scheduleItemTableViewCell: UITableViewCell {
         teamIcons.anchorInCenter(width: 100, height: 100)
         teamOne.anchorToEdge(.left, padding: 10, width: 50, height: 21)
         teamTwo.anchorToEdge(.right, padding: 10, width: 50, height: 21)
+        
+        timeView.anchorAndFillEdge(.bottom, xPad: 0, yPad: 0, otherSize: 50)
+        time.fillSuperview()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

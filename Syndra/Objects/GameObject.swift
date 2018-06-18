@@ -8,22 +8,37 @@
 
 import UIKit
 import SwiftyJSON
+import SwiftDate
 
-class Game {
+struct Game {
     var gameOfDay: Int
-    var blueSide: String
-    var redSide : String
+    var blueSide: Team
+    var redSide : Team
+    var gameTime: DateInRegion
     
-    init(GoD g: Int, blue b: String, red r: String) {
+    init() {
+        gameOfDay = 0
+        blueSide = Team()
+        redSide = Team()
+        gameTime = DateInRegion()
+    }
+    
+    init(GoD g: Int, blue b: Team, red r: Team, andTime t: DateInRegion) {
         gameOfDay = g
         blueSide = b
         redSide = r
+        gameTime = t
+    }
+    
+    func time() -> String {
+        return gameTime.string(format: DateFormat.custom("MMMM dd, hh:mm a"))
     }
 }
 
 struct Day {
     let day: Int
     let games: Dictionary<Int, Game>
+    let dayStart: DateInRegion
     
     var count: Int {
         return games.count
@@ -32,17 +47,23 @@ struct Day {
     init() {
         day = 0
         games = [:]
+        dayStart = DateInRegion()
     }
     
-    init(day d: Int, games g: Dictionary<Int, Game>) {
+    init(day d: Int, games g: Dictionary<Int, Game>, startsAt s: DateInRegion) {
         day = d
         games = g
+        dayStart = s
     }
     
     subscript(_ i: Int) -> Game {
         get {
-            return games[i + 1]!
+            return games[i]!
         }
+    }
+    
+    func time() -> String {
+        return dayStart.string(format: DateFormat.custom("EEEE, MMMM dd"))
     }
 }
 
@@ -69,9 +90,25 @@ struct Week {
         days = d
     }
     
+    func dates() -> String {
+        let done = days[0]!
+        let dtwo = days[1]!
+        
+        var dos: String = done.dayStart.string(custom: "MMMM dd")
+        var dts: String = ""
+        
+        if done.dayStart.month != dtwo.dayStart.month {
+            dts = dtwo.dayStart.string(custom: "MMMM dd")
+        } else {
+            dts = dtwo.dayStart.string(custom: "dd")
+        }
+        
+        return "\(dos) - \(dts) (Saturday/Sunday)"
+    }
+    
     subscript(_ i: Int) -> Day {
         get {
-            return days[i + 1]!
+            return days[i]!
         }
     }
 }
@@ -110,18 +147,24 @@ struct Split {
                 
                 guard let games = vv.dictionary else { fatalError("Couldn't parse games for day W\(k):D\(kk)") }
                 
+                let st = games["start"]?.string
+                let start = DateInRegion(string: st!, format: DateFormat.iso8601Auto)!
+                
                 for (kkk, vvv) in games {
                     if kkk == "start" { continue }
                     guard let red = vvv["redSide"].string  else { fatalError("Couldn't parse redside for game W\(k):D\(kk):G\(kkk)") }
                     guard let blu = vvv["blueSide"].string else { fatalError("Couldn't parse bluside for game W\(k):D\(kk):G\(kkk)") }
                     
-                    let g = Game(GoD: Int(kkk)!, blue: blu, red: red)
+                    let time = start + (Int(kkk)! - 1).hours
+                    
+                    let r = NALCS.access.find(using: red)
+                    let b = NALCS.access.find(using: blu)
+                    let g = Game(GoD: Int(kkk)!, blue: b, red: r, andTime: time)
                     
                     inGames[Int(kkk)!] = g
-                    
                 }
                 
-                let d = Day(day: Int(kk)!, games: inGames)
+                let d = Day(day: Int(kk)!, games: inGames, startsAt: start)
                 days[Int(kk)!] = d
             }
             
@@ -129,9 +172,36 @@ struct Split {
         }
     }
     
-    subscript(_ i: Int) -> Week {
+    subscript(week w: Int, game g: Int) -> Game {
         get {
-            return weeks[i + 1]!
+            let week = weeks[w]!
+            var d: Day!
+            
+            if g >= 0 && g <= 4 {
+                d = week[0]
+                return d[g]
+            } else if g >= 5 && g <= 9 {
+                d = week[1]
+                return d[g-5]
+            } else {
+                fatalError("Got bad game value")
+            }
+        }
+    }
+    
+    subscript(week w: Int, day d: Bool) -> String {
+        get {
+            let week = weeks[w]!
+
+            return week[((d) ? 0 : 1)].time()
+        }
+    }
+    
+    subscript(week w: Int) -> String {
+        get {
+            let week = weeks[w]!
+            
+            return week.dates()
         }
     }
 }

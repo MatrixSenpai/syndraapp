@@ -11,88 +11,81 @@ import MMDrawerController
 import Parse
 import NVActivityIndicatorView
 
-class gamesViewController: MenuInterfacingTableViewController, GameListener {
+class gamesViewController: MenuInterfacingViewController, GameListener, UITableViewDelegate, UITableViewDataSource {
+    let headerView: FeaturedGameView = FeaturedGameView()
+    let tableView: UITableView = UITableView()
     
     var games: Split!
-    var loadingView: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .pacman, color: .red, padding: 20)
-    
-    override init(style: UITableView.Style) {
-        super.init(style: style)
-        
-        GamesCommunicator.sharedInstance.listener = self
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(gamesViewController.handleRefresh), for: .valueChanged)
-        
         GamesCommunicator.sharedInstance.listener = self
         
+        headerView.backgroundColor = .flatBlack
+        tableView.backgroundColor = .flatBlack
+
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
         tableView.register(scheduleItemTableViewCell.self, forCellReuseIdentifier: "teamCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "headerCell")
+        
+        view.addSubview(headerView)
+        view.addSubview(tableView)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
+        headerView.anchorToEdge(.top, padding: 0, width: view.width, height: ((UIDevice.modelName == "iPhone X") ? 140 : 100))
+        
+        tableView.alignAndFill(align: .underCentered, relativeTo: headerView, padding: 0, offset: 0)
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        if games == nil || games.count > 0 {
-            tableView.backgroundView = nil
-            tableView.separatorStyle = .singleLine
-            loadingView.stopAnimating()
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 9
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard games != nil else { return nil }
+        let weekString = "Week \(section + 1): " + games[week: section]
+        return weekString
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 12
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return ((indexPath.row != 0 && indexPath.row != 6) ? 250 : 25)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 || indexPath.row == 6 {
+            let day: Bool = (indexPath.row == 0)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath)
             
-            return 1
+            var dayString = ((day) ? "Day 1 - " : "Day 2 - ")
+            dayString += games[week: indexPath.section, day: day]
+            
+            cell.textLabel?.text = dayString
+            cell.textLabel?.textColor = .flatWhite
+            
+            cell.backgroundColor = ((day) ? .flatBlue : .flatRed)
+            
+            return cell
         } else {
-            tableView.backgroundView = loadingView
-            loadingView.startAnimating()
-            tableView.separatorStyle = .none
+            let index = ((indexPath.row <= 5) ? (indexPath.row - 1) : (indexPath.row - 7))
+            let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! scheduleItemTableViewCell
             
-            return 0
+            cell.configure(game: games[week: indexPath.section, game: index])
+            
+            return cell
         }
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Week \(section + 1)"
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard games != nil else { return 0 }
-        return games.count
-    }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! scheduleItemTableViewCell
-
-        guard games.count != 0 else { return cell }
-        
-        cell.configure(game: games[0][0][indexPath.row])
-        
-        return cell
-    }
-    
-    @objc
-    func handleRefresh() {
+    func getGames(games: Split) {
+        self.games = games
         tableView.reloadData()
-        
-        refreshControl?.endRefreshing()
-    }
-    
-    func getGames(games g: Split) {
-        self.games = g
-        
-        self.tableView.reloadData()
     }
 }
