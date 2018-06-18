@@ -15,29 +15,13 @@ class FeaturedGameView: UIView {
     let blueSide: blueSideView = blueSideView(frame: CGRect())
     let redSide: redSideView = redSideView(frame: CGRect())
     
-    let week: UIView = UIView()
-    let wl: UILabel = UILabel()
-    let dl: UILabel = UILabel()
+    let week: weekView = weekView(frame: CGRect())
 
     init() {
         super.init(frame: CGRect())
         addSubview(blueSide)
         addSubview(redSide)
-        
-        week.addSubview(wl)
-        wl.text = "Week 1"
-        wl.textAlignment = .center
-        wl.textColor = .flatWhite
-        wl.font = UIFont.systemFont(ofSize: 17)
-        
-        week.addSubview(dl)
-        dl.text = "Day 2"
-        dl.textAlignment = .center
-        dl.textColor = .flatWhite
-        dl.font = UIFont.systemFont(ofSize: 14)
-        
-        week.backgroundColor = .flatGray
-        //addSubview(week)
+        addSubview(week)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,16 +32,7 @@ class FeaturedGameView: UIView {
         blueSide.anchorAndFillEdge(.left, xPad: 0, yPad: 0, otherSize: 160)
         redSide.anchorAndFillEdge(.right, xPad: 0, yPad: 0, otherSize: 160)
         
-        week.anchorInCenter(width: 130, height: 140)
-        
-        
-        let wshape = CAShapeLayer()
-        wshape.frame = week.frame
-        wshape.path = wpath.cgPath
-        //week.layer.mask = wshape
-        
-        wl.anchorToEdge(.top, padding: 50, width: 70, height: 18)
-        dl.align(.underCentered, relativeTo: wl, padding: 3, width: 50, height: 18)
+        week.anchorInCenter(width: 150, height: 140)
     }
 }
 
@@ -147,8 +122,23 @@ class redSideView: UIView {
 class weekView: UIView {
     var path: UIBezierPath!
     
+    let week: UILabel = UILabel()
+    let day : UILabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        week.text = "Week 1"
+        week.textAlignment = .center
+        week.textColor = .flatWhite
+        week.font = UIFont.systemFont(ofSize: 17)
+        addSubview(week)
+        
+        day.text = "Day 2"
+        day.textAlignment = .center
+        day.textColor = .flatWhite
+        day.font = UIFont.systemFont(ofSize: 14)
+        addSubview(day)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -157,13 +147,18 @@ class weekView: UIView {
     
     override func draw(_ rect: CGRect) {
         path = UIBezierPath()
-        path.move(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: 130, y: 0))
-        path.addLine(to: CGPoint(x: 100, y: 140))
-        path.addLine(to: CGPoint(x: 30, y: 140))
+        path.move(to: CGPoint(x: 0, y: 30))
+        path.addLine(to: CGPoint(x: width, y: 30))
+        path.addLine(to: CGPoint(x: 105, y: height - 20))
+        path.addLine(to: CGPoint(x: 45, y: height - 20))
         path.close()
         
         UIColor.flatGray.setFill()
         path.fill()
+    }
+    
+    override func layoutSubviews() {
+        week.anchorToEdge(.top, padding: 50, width: 70, height: 18)
+        day.align(.underCentered, relativeTo: week, padding: 3, width: 50, height: 18)
     }
 }
