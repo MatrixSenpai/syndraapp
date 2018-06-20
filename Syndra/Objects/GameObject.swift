@@ -177,18 +177,29 @@ struct Split {
         
         //let today = DateInRegion()
         
-        let today = DateInRegion(components: [.month: 6, .day: 23, .year: 2018, .hour: 16, .minute: 00])!
+        let today = DateInRegion(string: "2018-06-23T16:00:00-0600", format: .iso8601Auto)!
 
-        let most: Game!
-        let week: Int!
+        let most: Game = Game()
+        let week: Int = 0
         
         for (_, w) in weeks {
             for (kk, d) in w.days {
-                if today.isBefore(date: d.dayStart, orEqual: false, granularity: .day) { continue }
+                // check if date is in past. Skip if true
+                if today.isAfter(date: d.dayStart, granularity: .day) { continue }
+                
+                if today.isEqual(to: d.dayStart) { return(d.games[0]!, kk, d.day) }
+                
+                if today.isBefore(date: d.dayStart, orEqual: true, granularity: .day) {
+                    for (kkk, g) in d.games {
+                        if today.isAfter(date: g.gameTime, granularity: .hour) { continue }
+                        
+                        if today.isEqual(to: g.gameTime) { return (g, kk, kkk) }
+                    }
+                }
             }
         }
 
-        return (Game(), 0, 0)
+        return (most, week, most.gameOfDay)
 //        fatalError("Game did not return")
     }
     
