@@ -172,6 +172,26 @@ struct Split {
         }
     }
     
+    func nextGame() -> (Game, Int, Int) {
+        // Return Int/Int will be week,day
+        
+        //let today = DateInRegion()
+        
+        let today = DateInRegion(components: [.month: 6, .day: 23, .year: 2018, .hour: 16, .minute: 00])!
+
+        let most: Game!
+        let week: Int!
+        
+        for (_, w) in weeks {
+            for (kk, d) in w.days {
+                if today.isBefore(date: d.dayStart, orEqual: false, granularity: .day) { continue }
+            }
+        }
+
+        return (Game(), 0, 0)
+//        fatalError("Game did not return")
+    }
+    
     subscript(week w: Int, game g: Int) -> Game {
         get {
             let week = weeks[w]!

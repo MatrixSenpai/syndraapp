@@ -1,2 +1,5 @@
 **/*.otf
 Pods/
+**/*.cer*
+**/*.mobileprovision
+**/*.p12

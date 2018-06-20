@@ -34,18 +34,24 @@ class FeaturedGameView: UIView {
         
         week.anchorInCenter(width: 150, height: 140)
     }
+    
+    func configure(game g: Game, week w: Int) {
+        blueSide.reportTeams(team: g.blueSide)
+        redSide.reportTeams(team: g.redSide)
+        
+        week.reportTime(week: w, day: g.gameOfDay)
+    }
 }
 
 class blueSideView: UIView {
     var path: UIBezierPath!
     
-    let icon: UIImageView = UIImageView(image: UIImage(named: "TSM"))
+    let icon: UIImageView = UIImageView()
     let team: UILabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        team.text = "TSM"
         team.font = UIFont.systemFont(ofSize: 13)
         team.textColor = .white
         
@@ -58,6 +64,13 @@ class blueSideView: UIView {
         
         icon.anchorInCorner(.bottomLeft, xPad: 5, yPad: 5, width: 70, height: 70)
         team.anchorInCorner(.bottomRight, xPad: 15, yPad: 5, width: 50, height: 30)
+    }
+    
+    func reportTeams(team t: Team) {
+        icon.image = t.icon()
+        team.text = t.abbreviation
+        
+        layoutSubviews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -80,13 +93,12 @@ class blueSideView: UIView {
 class redSideView: UIView {
     var path: UIBezierPath!
     
-    let icon: UIImageView = UIImageView(image: UIImage(named: "FQ"))
+    let icon: UIImageView = UIImageView()
     let team: UILabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        team.text = "FQ"
         team.font = UIFont.systemFont(ofSize: 13)
         team.textColor = .white
         team.textAlignment = .right
@@ -100,6 +112,13 @@ class redSideView: UIView {
         
         icon.anchorInCorner(.bottomRight, xPad: 5, yPad: 5, width: 70, height: 70)
         team.anchorInCorner(.bottomLeft, xPad: 15, yPad: 5, width: 50, height: 30)
+    }
+    
+    func reportTeams(team t: Team) {
+        icon.image = t.icon()
+        team.text = t.abbreviation
+        
+        layoutSubviews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -128,13 +147,11 @@ class weekView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        week.text = "Week 1"
         week.textAlignment = .center
         week.textColor = .flatWhite
         week.font = UIFont.systemFont(ofSize: 17)
         addSubview(week)
         
-        day.text = "Day 2"
         day.textAlignment = .center
         day.textColor = .flatWhite
         day.font = UIFont.systemFont(ofSize: 14)
@@ -143,6 +160,11 @@ class weekView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
+    }
+    
+    func reportTime(week w: Int, day d: Int) {
+        week.text = "Week \(w + 1)"
+        day.text = "Day \(d + 1)"
     }
     
     override func draw(_ rect: CGRect) {

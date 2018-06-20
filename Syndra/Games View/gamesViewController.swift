@@ -86,6 +86,13 @@ class gamesViewController: MenuInterfacingViewController, GameListener, UITableV
 
     func getGames(games: Split) {
         self.games = games
+        
+        let next = games.nextGame()
+        headerView.configure(game: next.0, week: next.1)
+        
+        let index = IndexPath(row: next.2, section: next.1)
+        tableView.scrollToRow(at: index, at: UITableView.ScrollPosition.top, animated: true)
+        
         tableView.reloadData()
     }
 }
