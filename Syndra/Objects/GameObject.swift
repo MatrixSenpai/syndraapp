@@ -55,21 +55,26 @@ struct Day {
         games = g
         dayStart = s
     }
+
+    func firstGame() -> Game {
+        return games[0]!
+    }
+    
+    func time() -> String {
+        return dayStart.string(format: DateFormat.custom("EEEE, MMMM dd"))
+    }
     
     subscript(_ i: Int) -> Game {
         get {
             return games[i]!
         }
     }
-    
-    func time() -> String {
-        return dayStart.string(format: DateFormat.custom("EEEE, MMMM dd"))
-    }
 }
 
 struct Week {
     let week: Int
     let days: Dictionary<Int, Day>
+    let weekStart: DateInRegion
     
     var count: Int {
         var c: Int = 0
@@ -83,18 +88,20 @@ struct Week {
     init() {
         week = 0
         days = [:]
+        weekStart = DateInRegion()
     }
     
     init(week w: Int, days d: Dictionary<Int, Day>) {
         week = w
         days = d
+        weekStart = d[0]!.dayStart
     }
     
     func dates() -> String {
         let done = days[0]!
         let dtwo = days[1]!
         
-        var dos: String = done.dayStart.string(custom: "MMMM dd")
+        let dos: String = done.dayStart.string(custom: "MMMM dd")
         var dts: String = ""
         
         if done.dayStart.month != dtwo.dayStart.month {
@@ -104,6 +111,10 @@ struct Week {
         }
         
         return "\(dos) - \(dts) (Saturday/Sunday)"
+    }
+    
+    func firstGame() -> Game {
+        return days[0]!.firstGame()
     }
     
     subscript(_ i: Int) -> Day {
@@ -179,28 +190,34 @@ struct Split {
         
         let today = DateInRegion(string: "2018-06-23T16:00:00-0600", format: .iso8601Auto)!
 
-        let most: Game = Game()
-        let week: Int = 0
+        // Sort the data
+        let wwww = weeks.sorted {
+            return $0.key < $1.key
+        }
         
-        for (_, w) in weeks {
-            for (kk, d) in w.days {
-                // check if date is in past. Skip if true
-                if today.isAfter(date: d.dayStart, granularity: .day) { continue }
+        for w in wwww {
+            if today.isEqual(to: w.value.weekStart) { return (w.value.firstGame(), w.key, 1) }
+            
+            // sort days
+            let dddd = w.value.days.sorted {
+                return $0.key < $1.key
+            }
+            
+            for d in dddd {
+                if today.isEqual(to: d.value.dayStart) { return (d.value.firstGame(), w.key, d.key) }
                 
-                if today.isEqual(to: d.dayStart) { return(d.games[0]!, kk, d.day) }
+                // sort games
+                let gggg = d.value.games.sorted { return $0.key < $1.key }
                 
-                if today.isBefore(date: d.dayStart, orEqual: true, granularity: .day) {
-                    for (kkk, g) in d.games {
-                        if today.isAfter(date: g.gameTime, granularity: .hour) { continue }
-                        
-                        if today.isEqual(to: g.gameTime) { return (g, kk, kkk) }
-                    }
+                for g in gggg {
+                    // since data is sorted, this should stop at the first object matching
+                    if today.isBefore(date: g.value.gameTime, orEqual: true, granularity: .hour) { return (g.value, w.key, d.key) }
                 }
             }
         }
 
-        return (most, week, most.gameOfDay)
-//        fatalError("Game did not return")
+//        return (most, week, most.gameOfDay)
+        fatalError("Game did not return")
     }
     
     subscript(week w: Int, game g: Int) -> Game {
