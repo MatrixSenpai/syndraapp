@@ -188,7 +188,7 @@ struct Split {
         
         //let today = DateInRegion()
         
-        let today = DateInRegion(string: "2018-06-23T16:00:00-0600", format: .iso8601Auto)!
+        let today = DateInRegion(string: "2018-06-23T18:30:00-0600", format: .iso8601Auto)!
 
         // Sort the data
         let wwww = weeks.sorted {
@@ -196,27 +196,31 @@ struct Split {
         }
         
         for w in wwww {
-            if today.isEqual(to: w.value.weekStart) { return (w.value.firstGame(), w.key, 1) }
+            let ww = w.key
+            let www = w.value
+            if today.isEqual(to: w.value.weekStart) { return (www.firstGame(), ww, 1) }
             
             // sort days
-            let dddd = w.value.days.sorted {
+            let dddd = www.days.sorted {
                 return $0.key < $1.key
             }
             
             for d in dddd {
-                if today.isEqual(to: d.value.dayStart) { return (d.value.firstGame(), w.key, d.key) }
+                let dd = d.key
+                let ddd = d.value
+                if today.isEqual(to: d.value.dayStart) { return (ddd.firstGame(), ww, dd) }
                 
                 // sort games
                 let gggg = d.value.games.sorted { return $0.key < $1.key }
                 
                 for g in gggg {
+                    let ggg = g.value
                     // since data is sorted, this should stop at the first object matching
-                    if today.isBefore(date: g.value.gameTime, orEqual: true, granularity: .hour) { return (g.value, w.key, d.key) }
+                    if today.isBefore(date: ggg.gameTime, orEqual: true, granularity: .hour) { return (ggg, ww, dd) }
                 }
             }
         }
 
-//        return (most, week, most.gameOfDay)
         fatalError("Game did not return")
     }
     

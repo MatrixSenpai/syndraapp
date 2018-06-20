@@ -35,11 +35,11 @@ class FeaturedGameView: UIView {
         week.anchorInCenter(width: 150, height: 140)
     }
     
-    func configure(game g: Game, week w: Int) {
+    func configure(game g: Game, week w: Int, day d: Int) {
         blueSide.reportTeams(team: g.blueSide)
         redSide.reportTeams(team: g.redSide)
         
-        week.reportTime(week: w, day: g.gameOfDay)
+        week.reportTime(week: w, day: d)
     }
 }
 

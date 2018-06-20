@@ -88,9 +88,11 @@ class gamesViewController: MenuInterfacingViewController, GameListener, UITableV
         self.games = games
         
         let next = games.nextGame()
-        headerView.configure(game: next.0, week: next.1)
+        headerView.configure(game: next.0, week: next.1, day: next.2)
         
-        let index = IndexPath(row: next.2, section: next.1)
+        let r = ((next.2 == 0) ? next.0.gameOfDay + 2 : next.0.gameOfDay + 7)
+        
+        let index = IndexPath(row: r, section: next.1)
         tableView.scrollToRow(at: index, at: UITableView.ScrollPosition.top, animated: true)
         
         tableView.reloadData()
