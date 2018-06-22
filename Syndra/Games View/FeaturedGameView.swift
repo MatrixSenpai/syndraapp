@@ -39,7 +39,7 @@ class FeaturedGameView: UIView {
         blueSide.reportTeams(team: g.blueSide)
         redSide.reportTeams(team: g.redSide)
         
-        week.reportTime(week: w, day: d)
+        week.reportTime(week: w, day: d, game: g.gameOfDay)
     }
 }
 
@@ -143,6 +143,7 @@ class weekView: UIView {
     
     let week: UILabel = UILabel()
     let day : UILabel = UILabel()
+    let game: UILabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -156,15 +157,21 @@ class weekView: UIView {
         day.textColor = .flatWhite
         day.font = UIFont.systemFont(ofSize: 14)
         addSubview(day)
+        
+        game.textAlignment = .center
+        game.textColor = .flatWhite
+        game.font = UIFont.systemFont(ofSize: 13)
+        addSubview(game)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
     
-    func reportTime(week w: Int, day d: Int) {
+    func reportTime(week w: Int, day d: Int, game g: Int) {
         week.text = "Week \(w + 1)"
         day.text = "Day \(d + 1)"
+        game.text = "Game \(g)"
     }
     
     override func draw(_ rect: CGRect) {
@@ -180,7 +187,8 @@ class weekView: UIView {
     }
     
     override func layoutSubviews() {
-        week.anchorToEdge(.top, padding: 50, width: 70, height: 18)
+        week.anchorToEdge(.top, padding: 40, width: 70, height: 18)
         day.align(.underCentered, relativeTo: week, padding: 3, width: 50, height: 18)
+        game.align(.underCentered, relativeTo: day, padding: 3, width: 50, height: 15)
     }
 }

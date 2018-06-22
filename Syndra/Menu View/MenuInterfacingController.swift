@@ -22,7 +22,7 @@ class MenuInterfacingViewController: UIViewController {
         navigationItem.leftBarButtonItem = leftButton
     }
     
-    @objc private func openLeft() {
+    @objc internal func openLeft() {
         if(mm_drawerController.openSide == .left) { mm_drawerController.closeDrawer(animated: true, completion: nil); return }
         mm_drawerController.open(.left, animated: true, completion: nil)
     }

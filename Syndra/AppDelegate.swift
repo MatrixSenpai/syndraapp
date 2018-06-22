@@ -57,6 +57,7 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
         MenuController = MMDrawerController(center: centerController, leftDrawerViewController: leftNavController, rightDrawerViewController: rightNavController)
         MenuController.openDrawerGestureModeMask = .all
         MenuController.closeDrawerGestureModeMask = .all
+        MenuController.maximumLeftDrawerWidth = 150.0
         
         GamesCommunicator.sharedInstance.loadGames()
         

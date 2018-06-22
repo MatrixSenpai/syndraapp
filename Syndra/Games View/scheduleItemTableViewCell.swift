@@ -30,6 +30,9 @@ class scheduleItemTableViewCell: UITableViewCell {
         teamsView = UIView()
         
         teamOne = UILabel()
+        teamOne.numberOfLines = 0
+        teamOne.lineBreakMode = .byWordWrapping
+        teamOne.textColor = UIColor.flatSkyBlue.darken(byPercentage: 0.5)
         
         teamOneView = UIView()
         teamOneView.addSubview(teamOne)
@@ -38,6 +41,9 @@ class scheduleItemTableViewCell: UITableViewCell {
         
         teamTwo = UILabel()
         teamTwo.textAlignment = .right
+        teamTwo.numberOfLines = 0
+        teamTwo.lineBreakMode = .byWordWrapping
+        teamTwo.textColor = UIColor.flatRed.darken(byPercentage: 0.5)
         
         teamTwoView = UIView()
         teamTwoView.addSubview(teamTwo)
@@ -78,8 +84,8 @@ class scheduleItemTableViewCell: UITableViewCell {
     }
     
     func configure(game: Game) {
-        teamOne.text = game.blueSide.abbreviation
-        teamTwo.text = game.redSide.abbreviation
+        teamOne.text = game.blueSide.name
+        teamTwo.text = game.redSide.name
         
         teamIcons.teamOne.image = game.blueSide.icon()
         teamIcons.teamTwo.image = game.redSide.icon()
@@ -119,8 +125,8 @@ class scheduleItemTableViewCell: UITableViewCell {
         teamTwoView.layer.mask = redSideShape
 
         teamIcons.anchorInCenter(width: 100, height: 100)
-        teamOne.anchorToEdge(.left, padding: 10, width: 50, height: 21)
-        teamTwo.anchorToEdge(.right, padding: 10, width: 50, height: 21)
+        teamOne.anchorToEdge(.left, padding: 10, width: 80, height: teamOneView.height)
+        teamTwo.anchorToEdge(.right, padding: 10, width: 80, height: teamTwoView.height)
         
         timeView.anchorAndFillEdge(.bottom, xPad: 0, yPad: 0, otherSize: 50)
         time.fillSuperview()

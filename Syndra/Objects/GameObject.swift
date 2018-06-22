@@ -110,7 +110,7 @@ struct Week {
             dts = dtwo.dayStart.string(custom: "dd")
         }
         
-        return "\(dos) - \(dts) (Saturday/Sunday)"
+        return "\(dos) - \(dts)"
     }
     
     func firstGame() -> Game {
