@@ -113,6 +113,15 @@ struct Week {
         return "\(dos) - \(dts)"
     }
     
+    func gamesCount() -> Int {
+        var r = 0
+        for (_, v) in days {
+            r += v.count
+        }
+        
+        return r
+    }
+    
     func firstGame() -> Game {
         return days[0]!.firstGame()
     }
@@ -126,6 +135,7 @@ struct Week {
 
 struct Split {
     let split: SplitType
+    let season: Int
     var weeks: Dictionary<Int, Week>
     
     var count: Int {
@@ -140,10 +150,12 @@ struct Split {
     init() {
         split = .spring
         weeks = [:]
+        season = 0
     }
     
     init(fromJSON j: JSON) {
         split = SplitType(rawValue: j["split"].int!)!
+        season = j["season"].int!
         self.weeks = [:]
         
         guard let games = j["games"].dictionary else { fatalError("Could not parse 'game' key") }
@@ -224,6 +236,10 @@ struct Split {
         fatalError("Game did not return")
     }
     
+    func games(for f: Int) -> Int {
+        return weeks[f]!.gamesCount()
+    }
+    
     subscript(week w: Int, game g: Int) -> Game {
         get {
             let week = weeks[w]!
@@ -264,5 +280,12 @@ enum SplitType: Int {
     
     func toString() -> String {
         return ((self == .spring) ? "Spring" : "Summer")
+    }
+    
+    static func from(string s: String) -> SplitType {
+        let s = s.lowercased()
+        let i = (s == "spring") ? 0 : 1
+        
+        return SplitType(rawValue: i)!
     }
 }

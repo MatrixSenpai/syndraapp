@@ -16,8 +16,6 @@ class scheduleItemSectionHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor(gradientStyle: .leftToRight, withFrame: frame, andColors: [.flatSkyBlue, .flatRed])
-        
         week.textColor = .flatWhite
         addSubview(week)
         
@@ -36,16 +34,9 @@ class scheduleItemSectionHeaderView: UIView {
     }
     
     override func layoutSubviews() {
+        backgroundColor = UIColor(gradientStyle: .leftToRight, withFrame: frame, andColors: [.flatSkyBlue, .flatRed])
+        
         week.anchorAndFillEdge(.left, xPad: 5, yPad: 0, otherSize: width * 0.4)
         dates.anchorAndFillEdge(.right, xPad: 5, yPad: 0, otherSize: width * 0.4)
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

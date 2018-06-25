@@ -78,13 +78,14 @@ class blueSideView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        guard let _ = UIGraphicsGetCurrentContext() else { print("Graphics context is invalid"); return }
         path = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: 0))
         path.addLine(to: CGPoint(x: 90, y: 0))
         path.addLine(to: CGPoint(x: width, y: height))
         path.addLine(to: CGPoint(x: 0, y: height))
         path.close()
-        
+
         UIColor.flatSkyBlueDark.setFill()
         path.fill()
     }
@@ -126,6 +127,7 @@ class redSideView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        guard let _ = UIGraphicsGetCurrentContext() else { print("Graphics context is invalid"); return }
         path = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: height))
         path.addLine(to: CGPoint(x: width, y: height))
@@ -175,6 +177,7 @@ class weekView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        guard let _ = UIGraphicsGetCurrentContext() else { print("Graphics context is invalid"); return }
         path = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: 30))
         path.addLine(to: CGPoint(x: width, y: 30))

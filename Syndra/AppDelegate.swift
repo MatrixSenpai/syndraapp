@@ -54,10 +54,12 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
         let rightController = gameFilterViewController()
         let rightNavController = UINavigationController(rootViewController: rightController)
         
+        leftController.gamesController = centerController
+        
         MenuController = MMDrawerController(center: centerController, leftDrawerViewController: leftNavController, rightDrawerViewController: rightNavController)
-        MenuController.openDrawerGestureModeMask = .all
+        MenuController.openDrawerGestureModeMask = .custom
         MenuController.closeDrawerGestureModeMask = .all
-        MenuController.maximumLeftDrawerWidth = 150.0
+        MenuController.maximumLeftDrawerWidth = 210
         
         GamesCommunicator.sharedInstance.loadData()
         

@@ -15,6 +15,7 @@ target 'Syndra' do
   pod 'SwiftDate', '~> 4.0'
   pod 'TableFlip'
   pod 'PMSuperButton'
+  pod 'SCLAlertView'
 
   post_install do |installer|
     installer.pods_project.targets.each do |t|
@@ -27,7 +28,7 @@ target 'Syndra' do
       end
 
       # Swift 4.0 support
-      if ['PMSuperButton'].include? t.name
+      if ['SCLAlertView', 'PMSuperButton'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '4.0'
         end

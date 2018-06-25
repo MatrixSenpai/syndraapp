@@ -14,8 +14,12 @@
 		6680CFD520D61B2300682FE2 /* s8s2.json in Resources */ = {isa = PBXBuildFile; fileRef = 6680CFD420D61B2300682FE2 /* s8s2.json */; };
 		6686D95120D3ECEF0058C7B3 /* FeaturedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */; };
 		66894FAD20E0C33F00AE5013 /* available.json in Resources */ = {isa = PBXBuildFile; fileRef = 66894FAC20E0C33F00AE5013 /* available.json */; };
+		66894FB020E0E8F000AE5013 /* menuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66894FAF20E0E8F000AE5013 /* menuTableViewCell.swift */; };
+		66894FB220E0FE8100AE5013 /* s8s1.json in Resources */ = {isa = PBXBuildFile; fileRef = 66894FB120E0FE8100AE5013 /* s8s1.json */; };
 		6699EDBB20D32D91001DED0E /* GamesCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */; };
 		6699EDBD20D337FB001DED0E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6699EDBC20D337FB001DED0E /* libsqlite3.tbd */; };
+		66C013B720E102310095B1EE /* pastSeasonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C013B620E102310095B1EE /* pastSeasonsViewController.swift */; };
+		66C013B920E102640095B1EE /* TimeBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C013B820E102640095B1EE /* TimeBrowser.swift */; };
 		66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */; };
 		66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C9B0B220CB3C6300A2B14C /* Assets.xcassets */; };
 		66C9B0B620CB3C6300A2B14C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C9B0B420CB3C6300A2B14C /* LaunchScreen.storyboard */; };
@@ -40,8 +44,13 @@
 		6680CFD420D61B2300682FE2 /* s8s2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = s8s2.json; sourceTree = "<group>"; };
 		6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedGameView.swift; sourceTree = "<group>"; };
 		66894FAC20E0C33F00AE5013 /* available.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = available.json; sourceTree = "<group>"; };
+		66894FAE20E0E29700AE5013 /* Syndra.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Syndra.entitlements; sourceTree = "<group>"; };
+		66894FAF20E0E8F000AE5013 /* menuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuTableViewCell.swift; sourceTree = "<group>"; };
+		66894FB120E0FE8100AE5013 /* s8s1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = s8s1.json; sourceTree = "<group>"; };
 		6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCommunicator.swift; sourceTree = "<group>"; };
 		6699EDBC20D337FB001DED0E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		66C013B620E102310095B1EE /* pastSeasonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pastSeasonsViewController.swift; sourceTree = "<group>"; };
+		66C013B820E102640095B1EE /* TimeBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBrowser.swift; sourceTree = "<group>"; };
 		66C9B0A820CB3C6200A2B14C /* Syndra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syndra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66C9B0B220CB3C6300A2B14C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,6 +119,7 @@
 		66894FAB20E0BB8E00AE5013 /* Seasons */ = {
 			isa = PBXGroup;
 			children = (
+				66894FB120E0FE8100AE5013 /* s8s1.json */,
 				6680CFD420D61B2300682FE2 /* s8s2.json */,
 				66894FAC20E0C33F00AE5013 /* available.json */,
 			);
@@ -137,6 +147,7 @@
 		66C9B0AA20CB3C6200A2B14C /* Syndra */ = {
 			isa = PBXGroup;
 			children = (
+				66894FAE20E0E29700AE5013 /* Syndra.entitlements */,
 				66894FAB20E0BB8E00AE5013 /* Seasons */,
 				66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */,
 				6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */,
@@ -152,10 +163,12 @@
 			isa = PBXGroup;
 			children = (
 				665BC1BA20CC420C00948768 /* gamesViewController.swift */,
+				66C013B620E102310095B1EE /* pastSeasonsViewController.swift */,
 				66C9B0C120CB41D800A2B14C /* gameFilterViewController.swift */,
 				66C9B0C620CB436400A2B14C /* scheduleItemTableViewCell.swift */,
 				66435F7020DA2C67008C6689 /* scheduleItemSectionHeaderView.swift */,
 				66C9B0CA20CB463B00A2B14C /* teamOverlayView.swift */,
+				66C013B820E102640095B1EE /* TimeBrowser.swift */,
 				6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */,
 			);
 			path = "Games View";
@@ -166,6 +179,7 @@
 			children = (
 				66C9B0BF20CB41CB00A2B14C /* menuTableViewController.swift */,
 				66D7B42A20CCF1B100F37B96 /* MenuInterfacingController.swift */,
+				66894FAF20E0E8F000AE5013 /* menuTableViewCell.swift */,
 			);
 			path = "Menu View";
 			sourceTree = "<group>";
@@ -213,6 +227,14 @@
 				TargetAttributes = {
 					66C9B0A720CB3C6200A2B14C = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -245,6 +267,7 @@
 				66D7B42820CCE9A700F37B96 /* FASolid.otf in Resources */,
 				66D7B42620CCE9A700F37B96 /* FABrands.otf in Resources */,
 				66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */,
+				66894FB220E0FE8100AE5013 /* s8s1.json in Resources */,
 				66D7B42920CCE9A700F37B96 /* FARegular.otf in Resources */,
 				66894FAD20E0C33F00AE5013 /* available.json in Resources */,
 			);
@@ -268,6 +291,7 @@
 				"${BUILT_PRODUCTS_DIR}/Neon/Neon.framework",
 				"${BUILT_PRODUCTS_DIR}/PMSuperButton/PMSuperButton.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SuperDelegate/SuperDelegate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -283,6 +307,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Neon.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMSuperButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SuperDelegate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -319,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				665BC1BB20CC420C00948768 /* gamesViewController.swift in Sources */,
+				66C013B720E102310095B1EE /* pastSeasonsViewController.swift in Sources */,
 				66C9B0C820CB436400A2B14C /* scheduleItemTableViewCell.swift in Sources */,
 				6686D95120D3ECEF0058C7B3 /* FeaturedGameView.swift in Sources */,
 				66C9B0C220CB41D800A2B14C /* gameFilterViewController.swift in Sources */,
@@ -329,6 +355,8 @@
 				665BC1C020CC470900948768 /* GameObject.swift in Sources */,
 				665BC1BE20CC460400948768 /* TeamObject.swift in Sources */,
 				6699EDBB20D32D91001DED0E /* GamesCommunicator.swift in Sources */,
+				66894FB020E0E8F000AE5013 /* menuTableViewCell.swift in Sources */,
+				66C013B920E102640095B1EE /* TimeBrowser.swift in Sources */,
 				66D7B42B20CCF1B100F37B96 /* MenuInterfacingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +494,7 @@
 			baseConfigurationReference = 6BE2F75C8B0A07B02B04CC7A /* Pods-Syndra.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Syndra/Syndra.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 6S4L29QT59;
@@ -488,6 +517,7 @@
 			baseConfigurationReference = 536F803088623AC84BB47E41 /* Pods-Syndra.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Syndra/Syndra.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 6S4L29QT59;

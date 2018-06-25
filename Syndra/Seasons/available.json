@@ -1,14 +1,20 @@
 {
+    "genFrom": "http://www.objgen.com/json/models/wmHu"
     "latest": {
         "season": 8,
         "split": 2,
         "file": "s8s2"
     },
-    "available": [
-        {
+    "available": {
+        "82": {
             "season": 8,
             "split": 2,
             "file": "s8s2"
+        },
+        "81": {
+            "season": 8,
+            "split": 1,
+            "file": "s8s1"
         }
-    ]
+    }
 }

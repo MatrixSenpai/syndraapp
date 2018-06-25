@@ -1,0 +1,458 @@
+{
+  "season": 8,
+  "split": 0,
+  "games": {
+    "0": {
+      "0": {
+        "0": {
+          "blueSide": "TL",
+          "redSide": "TSM"
+        },
+        "1": {
+          "blueSide": "100",
+          "redSide": "OTG"
+        },
+        "2": {
+          "blueSide": "CG",
+          "redSide": "GGS"
+        },
+        "3": {
+          "blueSide": "FOX",
+          "redSide": "FQ"
+        },
+        "4": {
+          "blueSide": "CLG",
+          "redSide": "C9"
+        },
+        "start": "2018-01-20T14:00:00.000-0600"
+      },
+      "1": {
+        "0": {
+          "blueSide": "OTG",
+          "redSide": "TL"
+        },
+        "1": {
+          "blueSide": "FQ",
+          "redSide": "TSM"
+        },
+        "2": {
+          "blueSide": "100",
+          "redSide": "CLG"
+        },
+        "3": {
+          "blueSide": "GGS",
+          "redSide": "C9"
+        },
+        "4": {
+          "blueSide": "FOX",
+          "redSide": "CG"
+        },
+        "start": "2018-01-21T14:00:00.000-0600"
+      }
+    },
+    "1": {
+      "0": {
+        "0": {
+          "blueSide": "CG",
+          "redSide": "CLG"
+        },
+        "1": {
+          "blueSide": "TSM",
+          "redSide": "OTG"
+        },
+        "2": {
+          "blueSide": "C9",
+          "redSide": "FOX"
+        },
+        "3": {
+          "blueSide": "100",
+          "redSide": "TL"
+        },
+        "4": {
+          "blueSide": "GGS",
+          "redSide": "FQ"
+        },
+        "start": "2018-01-27T16:00:00.000-0600"
+      },
+      "1": {
+        "0": {
+          "blueSide": "FOX",
+          "redSide": "TSM"
+        },
+        "1": {
+          "blueSide": "C9",
+          "redSide": "100"
+        },
+        "2": {
+          "blueSide": "OTG",
+          "redSide": "FQ"
+        },
+        "3": {
+          "blueSide": "GGS",
+          "redSide": "CLG"
+        },
+        "4": {
+          "blueSide": "TL",
+          "redSide": "CG"
+        },
+        "start": "2018-01-28T14:00:00.000-0600"
+      }
+    },
+    "2": {
+      "0": {
+        "0": {
+          "blueSide": "CLG",
+          "redSide": "FOX"
+        },
+        "1": {
+          "blueSide": "C9",
+          "redSide": "OTG"
+        },
+        "2": {
+          "blueSide": "CG",
+          "redSide": "100"
+        },
+        "3": {
+          "blueSide": "FQ",
+          "redSide": "TL"
+        },
+        "4": {
+          "blueSide": "TSM",
+          "redSide": "GGS"
+        },
+        "start": "2018-02-03T16:00:00.000-0600"
+      },
+      "1": {
+        "0": {
+          "blueSide": "FOX",
+          "redSide": "OTG"
+        },
+        "1": {
+          "blueSide": "100",
+          "redSide": "TSM"
+        },
+        "2": {
+          "blueSide": "GGS",
+          "redSide": "TL"
+        },
+        "3": {
+          "blueSide": "CG",
+          "redSide": "C9"
+        },
+        "4": {
+          "blueSide": "CLG",
+          "redSide": "FQ"
+        },
+        "start": "2018-02-04T14:00:00.000-0600"
+      }
+    },
+    "3": {
+      "0": {
+        "0": {
+          "blueSide": "TSM",
+          "redSide": "CG"
+        },
+        "1": {
+          "blueSide": "TL",
+          "redSide": "C9"
+        },
+        "2": {
+          "blueSide": "OTG",
+          "redSide": "CLG"
+        },
+        "3": {
+          "blueSide": "100",
+          "redSide": "FQ"
+        },
+        "4": {
+          "blueSide": "FOX",
+          "redSide": "GGS"
+        },
+        "start": "2018-02-10T16:00:00.000-0600"
+      },
+      "1": {
+        "0": {
+          "blueSide": "C9",
+          "redSide": "FQ"
+        },
+        "1": {
+          "blueSide": "100",
+          "redSide": "GGS"
+        },
+        "2": {
+          "blueSide": "TSM",
+          "redSide": "CLG"
+        },
+        "3": {
+          "blueSide": "TL",
+          "redSide": "FOX"
+        },
+        "4": {
+          "blueSide": "OTG",
+          "redSide": "CG"
+        },
+        "start": "2018-02-11T14:00:00.000-0600"
+      }
+    },
+    "4": {
+      "0": {
+        "0": {
+          "blueSide": "CLT",
+          "redSide": "TL"
+        },
+        "1": {
+          "blueSide": "FOX",
+          "redSide": "100"
+        },
+        "2": {
+          "blueSide": "C9",
+          "redSide": "TSM"
+        },
+        "3": {
+          "blueSide": "CG",
+          "redSide": "FQ"
+        },
+        "4": {
+          "blueSide": "OTG",
+          "redSide": "GGS"
+        },
+        "start": "2018-02-17T16:00:00.000-0600"
+      },
+      "1": {
+        "0": {
+          "blueSide": "CG",
+          "redSide": "TSM"
+        },
+        "1": {
+          "blueSide": "GGS",
+          "redSide": "TL"
+        },
+        "2": {
+          "blueSide": "FOX",
+          "redSide": "C9"
+        },
+        "3": {
+          "blueSide": "100",
+          "redSide": "CLG"
+        },
+        "4": {
+          "blueSide": "FQ",
+          "redSide": "OTG"
+        },
+        "start": "2018-02-18T14:00:00.000-0600"
+      }
+    },
+    "5": {
+      "0": {
+        "0": {
+          "blueSide": "100",
+          "redSide": "C9"
+        },
+        "1": {
+          "blueSide": "CLG",
+          "redSide": "CG"
+        },
+        "2": {
+          "blueSide": "TSM",
+          "redSide": "FOX"
+        },
+        "3": {
+          "blueSide": "GGS",
+          "redSide": "OTG"
+        },
+        "4": {
+          "blueSide": "TL",
+          "redSide": "FQ"
+        },
+        "start": "2018-02-24T16:00:00.000-0600"
+      },
+      "1": {
+        "0": {
+          "blueSide": "OTG",
+          "redSide": "TSM"
+        },
+        "1": {
+          "blueSide": "FQ",
+          "redSide": "100"
+        },
+        "2": {
+          "blueSide": "FOX",
+          "redSide": "TL"
+        },
+        "3": {
+          "blueSide": "CLG",
+          "redSide": "GGS"
+        },
+        "4": {
+          "blueSide": "C9",
+          "redSide": "CG"
+        },
+        "start": "2018-02-25T14:00:00.000-0600"
+      }
+    },
+    "6": {
+      "0": {
+        "0": {
+          "blueSide": "TL",
+          "redSide": "100"
+        },
+        "1": {
+          "blueSide": "TSM",
+          "redSide": "FQ"
+        },
+        "2": {
+          "blueSide": "CLG",
+          "redSide": "C9"
+        },
+        "3": {
+          "blueSide": "GGS",
+          "redSide": "FOX"
+        },
+        "4": {
+          "blueSide": "CG",
+          "redSide": "OTG"
+        },
+        "start": "2018-03-03T16:00:00.000-0600"
+      },
+      "1": {
+        "0": {
+          "blueSide": "CLG",
+          "redSide": "TL"
+        },
+        "1": {
+          "blueSide": "OTG",
+          "redSide": "FOX"
+        },
+        "2": {
+          "blueSide": "100",
+          "redSide": "TSM"
+        },
+        "3": {
+          "blueSide": "C9",
+          "redSide": "GGS"
+        },
+        "4": {
+          "blueSide": "FQ",
+          "redSide": "CG"
+        },
+        "start": "2018-03-04T14:00:00.000-0600"
+      }
+    },
+    "7": {
+      "0": {
+        "0": {
+          "blueSide": "CG",
+          "redSide": "FOX"
+        },
+        "1": {
+          "blueSide": "FQ",
+          "redSide": "CLG"
+        },
+        "2": {
+          "blueSide": "OTG",
+          "redSide": "C9"
+        },
+        "3": {
+          "blueSide": "TSM",
+          "redSide": "TL"
+        },
+        "4": {
+          "blueSide": "100",
+          "redSide": "GGS"
+        },
+        "start": "2018-03-10T16:00:00.000-0600"
+      },
+      "1": {
+        "0": {
+          "blueSide": "FOX",
+          "redSide": "CLG"
+        },
+        "1": {
+          "blueSide": "FQ",
+          "redSide": "GGS"
+        },
+        "2": {
+          "blueSide": "CG",
+          "redSide": "TL"
+        },
+        "3": {
+          "blueSide": "C9",
+          "redSide": "TSM"
+        },
+        "4": {
+          "blueSide": "OTG",
+          "redSide": "100"
+        },
+        "start": "2018-03-11T14:00:00.000-0600"
+      }
+    },
+    "8": {
+      "0": {
+        "0": {
+          "blueSide": "100",
+          "redSide": "CG"
+        },
+        "1": {
+          "blueSide": "FQ",
+          "redSide": "FOX"
+        },
+        "2": {
+          "blueSide": "TL",
+          "redSide": "C9"
+        },
+        "3": {
+          "blueSide": "GGS",
+          "redSide": "TSM"
+        },
+        "4": {
+          "blueSide": "CLG",
+          "redSide": "OTG"
+        },
+        "start": "2018-03-17T16:00:00.000-0600"
+      },
+      "1": {
+        "0": {
+          "blueSide": "C9",
+          "redSide": "FQ"
+        },
+        "1": {
+          "blueSide": "GGS",
+          "redSide": "CG"
+        },
+        "2": {
+          "blueSide": "CLG",
+          "redSide": "TSM"
+        },
+        "3": {
+          "blueSide": "100",
+          "redSide": "FOX"
+        },
+        "4": {
+          "blueSide": "TL",
+          "redSide": "OTG"
+        },
+        "5": {
+          "blueSide": "100",
+          "redSide": "FOX"
+        },
+        "6": {
+          "blueSide": "TL",
+          "redSide": "C9"
+        },
+        "7": {
+          "blueSide": "TSM",
+          "redSide": "CG"
+        },
+        "8": {
+          "blueSide": "TL",
+          "redSide": "TSM"
+        },
+        "9": {
+          "blueSide": "C9",
+          "redSide": "CG"
+        },
+        "start": "2018-03-18T14:00:00.000-0600"
+      }
+    }
+  }
+}

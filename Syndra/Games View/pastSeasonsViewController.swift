@@ -1,5 +1,5 @@
 //
-//  gamesViewController.swift
+//  pastSeasonsViewController.swift
 //  Syndra
 //
 //  Created by Mason Phillips on 6/9/18.
@@ -14,14 +14,12 @@ import TableFlip
 import PMSuperButton
 import Neon
 
-class gamesViewController: MenuInterfacingViewController, GameListener, TimeListener, UITableViewDelegate, UITableViewDataSource {
-    let headerView: FeaturedGameView = FeaturedGameView()
+class pastSeasonsViewController: MenuInterfacingViewController, GameListener, TimeListener, UITableViewDelegate, UITableViewDataSource {
     var tableView: UITableView = UITableView()
     let scrollView: TimeBrowser = TimeBrowser()
     
     let left : UIButton = UIButton()
     let right: UIButton = UIButton()
-    let ngame: UIButton = UIButton()
     
     var games: Split!
     var nextGame: (Game, Int, Int)!
@@ -32,7 +30,7 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
         
         scrollView.parent = self
         
-        headerView.backgroundColor = .flatBlack
+        view.backgroundColor = .flatBlack
         tableView.backgroundColor = .flatBlack
         
         left.backgroundColor = .flatSkyBlueDark
@@ -46,34 +44,25 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
         right.titleLabel?.font = FASOLID_UIFONT
         right.addTarget(self, action: #selector(gamesViewController.openRight), for: .touchUpInside)
         
-        ngame.backgroundColor = .flatRedDark
-        ngame.setTitle("\u{f017}", for: .normal)
-        ngame.titleLabel?.font = FASOLID_UIFONT
-        ngame.addTarget(self, action: #selector(gamesViewController.showNextGame), for: .touchUpInside)
-
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(scheduleItemTableViewCell.self, forCellReuseIdentifier: "teamCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "headerCell")
         
-        view.addSubview(headerView)
         view.addSubview(tableView)
         view.addSubview(scrollView)
         
         view.addSubview(left)
         view.addSubview(right)
-        view.addSubview(ngame)
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        headerView.anchorToEdge(.top, padding: 0, width: view.width, height: ((UIDevice.modelName == "iPhone X") ? 140 : 100))
+        tableView.anchorAndFillEdge(.top, xPad: 0, yPad: 40, otherSize: (view.height - 130))
         
         scrollView.anchorToEdge(.bottom, padding: 0, width: view.width, height: 90)
-        
-        tableView.alignBetweenVertical(align: .underCentered, primaryView: headerView, secondaryView: scrollView, padding: 0, width: view.width)
         
         left.anchorInCorner(.bottomLeft, xPad: 0, yPad: 120, width: 50, height: 50)
         let leftMask = CAShapeLayer()
@@ -84,11 +73,6 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
         let rightMask = CAShapeLayer()
         rightMask.path = UIBezierPath(roundedRect: right.bounds, byRoundingCorners: [.topLeft, .bottomLeft], cornerRadii: CGSize(width: 10, height: 10)).cgPath
         right.layer.mask = rightMask
-        
-        ngame.align(.aboveCentered, relativeTo: right, padding: 10, width: 50, height: 50)
-        let nMask = CAShapeLayer()
-        nMask.path = UIBezierPath(roundedRect: right.bounds, byRoundingCorners: [.topLeft, .bottomLeft], cornerRadii: CGSize(width: 10, height: 10)).cgPath
-        ngame.layer.mask = nMask
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -149,21 +133,6 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
         self.games = games
         
         tableView.reloadData()
-        
-        nextGame = games.nextGame()
-        showNextGame()
-    }
-    
-    @objc
-    func showNextGame() {
-        guard let next = nextGame else { return }
-        
-        headerView.configure(game: next.0, week: next.1, day: next.2)
-        
-        let r = ((next.2 == 0) ? next.0.gameOfDay + 1 : next.0.gameOfDay + 7)
-        
-        let index = IndexPath(row: r, section: next.1)
-        scrollTo(row: index, at: UITableView.ScrollPosition.top, animated: true)
     }
     
     func scrollTo(row: IndexPath, at: UITableView.ScrollPosition, animated: Bool) {
