@@ -113,6 +113,7 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard games != nil else { return 0 }
         return games.games(for: section) + 2
     }
     

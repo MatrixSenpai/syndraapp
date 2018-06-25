@@ -29,7 +29,7 @@ class GamesCommunicator {
             guard let ss = Available(with: json["available"]) else { fatalError("Couldn't parse available data")}
             seasons = ss
         } catch let e {
-            print(e.localizedDescription)
+            print("GamesCommunicator::loadData() \(e.localizedDescription)")
         }
     }
     
@@ -58,6 +58,7 @@ class GamesCommunicator {
     }
     
     func availableSeasons() -> Array<Int> {
+        guard seasons != nil else { return [0] }
         return seasons.seasons()
     }
     

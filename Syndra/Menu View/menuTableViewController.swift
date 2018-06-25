@@ -120,10 +120,11 @@ class menuTableViewController: UITableViewController {
                 break
                 
             case 4:
-                if mm_drawerController.centerViewController != settingsController {
-                    mm_drawerController.centerViewController = settingsController
-                }
-                mm_drawerController.closeDrawer(animated: true, completion: nil)
+                SCLAlertView().showInfo("Hey there!", subTitle: "Looks like this menu option isn't ready yet :(")
+//                if mm_drawerController.centerViewController != settingsController {
+//                    mm_drawerController.centerViewController = settingsController
+//                }
+//                mm_drawerController.closeDrawer(animated: true, completion: nil)
             default:
                 SCLAlertView().showError("Oops!", subTitle: "This should never happen. Report it to the developer and tell him he's shit")
                 break
