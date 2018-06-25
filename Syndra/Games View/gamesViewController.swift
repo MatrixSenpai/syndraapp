@@ -10,10 +10,14 @@ import UIKit
 import MMDrawerController
 import Parse
 import NVActivityIndicatorView
+import TableFlip
+import PMSuperButton
+import Neon
 
 class gamesViewController: MenuInterfacingViewController, GameListener, UITableViewDelegate, UITableViewDataSource {
     let headerView: FeaturedGameView = FeaturedGameView()
     let tableView: UITableView = UITableView()
+    let scrollView: TimeBrowser = TimeBrowser()
     
     let left : UIButton = UIButton()
     let right: UIButton = UIButton()
@@ -21,10 +25,12 @@ class gamesViewController: MenuInterfacingViewController, GameListener, UITableV
     
     var games: Split!
     var nextGame: (Game, Int, Int)!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GamesCommunicator.sharedInstance.listener = self
+        
+        scrollView.parent = self
         
         headerView.backgroundColor = .flatBlack
         tableView.backgroundColor = .flatBlack
@@ -52,6 +58,7 @@ class gamesViewController: MenuInterfacingViewController, GameListener, UITableV
         
         view.addSubview(headerView)
         view.addSubview(tableView)
+        view.addSubview(scrollView)
         
         view.addSubview(left)
         view.addSubview(right)
@@ -63,14 +70,16 @@ class gamesViewController: MenuInterfacingViewController, GameListener, UITableV
         
         headerView.anchorToEdge(.top, padding: 0, width: view.width, height: ((UIDevice.modelName == "iPhone X") ? 140 : 100))
         
-        tableView.alignAndFill(align: .underCentered, relativeTo: headerView, padding: 0, offset: 0)
+        scrollView.anchorToEdge(.bottom, padding: 0, width: view.width, height: 90)
         
-        left.anchorInCorner(.bottomLeft, xPad: 0, yPad: 80, width: 50, height: 50)
+        tableView.alignBetweenVertical(align: .underCentered, primaryView: headerView, secondaryView: scrollView, padding: 0, width: view.width)
+        
+        left.anchorInCorner(.bottomLeft, xPad: 0, yPad: 120, width: 50, height: 50)
         let leftMask = CAShapeLayer()
         leftMask.path = UIBezierPath(roundedRect: left.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 10, height: 10)).cgPath
         left.layer.mask = leftMask
         
-        right.anchorInCorner(.bottomRight, xPad: 0, yPad: 80, width: 50, height: 50)
+        right.anchorInCorner(.bottomRight, xPad: 0, yPad: 120, width: 50, height: 50)
         let rightMask = CAShapeLayer()
         rightMask.path = UIBezierPath(roundedRect: right.bounds, byRoundingCorners: [.topLeft, .bottomLeft], cornerRadii: CGSize(width: 10, height: 10)).cgPath
         right.layer.mask = rightMask
@@ -110,6 +119,7 @@ class gamesViewController: MenuInterfacingViewController, GameListener, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard games != nil else { return UITableViewCell() }
         if indexPath.row == 0 || indexPath.row == 6 {
             let day: Bool = (indexPath.row == 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath)
@@ -152,5 +162,61 @@ class gamesViewController: MenuInterfacingViewController, GameListener, UITableV
         
         let index = IndexPath(row: r, section: next.1)
         tableView.scrollToRow(at: index, at: UITableView.ScrollPosition.top, animated: true)
+    }
+}
+
+class TimeBrowser: UIView {
+    var parent: gamesViewController?
+    
+    let one  : PMSuperButton = PMSuperButton()
+    let two  : PMSuperButton = PMSuperButton()
+    let three: PMSuperButton = PMSuperButton()
+    let four : PMSuperButton = PMSuperButton()
+    let five : PMSuperButton = PMSuperButton()
+    let six  : PMSuperButton = PMSuperButton()
+    let seven: PMSuperButton = PMSuperButton()
+    let eight: PMSuperButton = PMSuperButton()
+    let nine : PMSuperButton = PMSuperButton()
+    
+    var buttons: [Frameable] {
+        return [one, two, three, four, five, six, seven, eight, nine]
+    }
+    
+    init() {
+        super.init(frame: CGRect())
+        
+        var i: Int = 0
+        for b in buttons {
+            guard let p = b as? PMSuperButton else { fatalError("Could not cast button back to its original type???") }
+            
+            p.setTitle("\(i + 1)", for: .normal)
+            p.tag = i
+            p.layer.cornerRadius = 10
+            p.clipsToBounds = true
+            p.backgroundColor = .flatForestGreen
+            p.titleLabel?.textColor = .flatWhite
+            p.addTarget(self, action: #selector(TimeBrowser.goTo(sender:)), for: .touchUpInside)
+            
+            addSubview(p)
+            
+            i += 1
+        }
+    }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+    
+    override func layoutSubviews() {
+        backgroundColor = UIColor(gradientStyle: .leftToRight, withFrame: frame, andColors: [.flatSkyBlue, .flatRedDark])
+        
+        groupAgainstEdge(group: .horizontal, views: buttons, againstEdge: .top, padding: 5, width: 35, height: 40)
+    }
+    
+    @objc
+    func goTo(sender: PMSuperButton) {
+        let index = IndexPath(row: 0, section: sender.tag)
+        parent?.tableView.scrollToRow(at: index, at: .top, animated: true)
     }
 }

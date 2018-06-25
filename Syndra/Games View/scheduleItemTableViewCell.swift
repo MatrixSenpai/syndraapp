@@ -93,7 +93,7 @@ class scheduleItemTableViewCell: UITableViewCell {
         gameHeader.text = "Game \(game.gameOfDay + 1)"
         
         var gtime = game.time()
-        if game.gameOfDay != 1 { gtime += " (approx)"}
+        if game.gameOfDay != 0 { gtime += " (approx)"}
         time.text = gtime
 
         layoutSubviews()

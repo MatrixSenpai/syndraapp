@@ -15,11 +15,36 @@ class GamesCommunicator {
     
     var games: Split!
     
-    func loadGames() {
-        guard let path = Bundle.main.path(forResource: "Games", ofType: "json") else { fatalError("Games.json path could not be loaded") }
+    func loadData() {
+        guard let path = Bundle.main.path(forResource: "available", ofType: "json") else { fatalError("Looks like we can't find the data file for seasons") }
         
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path))
+            let json = try JSON(data: data)
+            
+            guard let latest = json["latest"]["file"].string else { fatalError("Couldn't parse filename") }
+            getGamesFor(fileName: latest)
+        } catch let e {
+            print(e.localizedDescription)
+        }
+    }
+    
+    private func getGamesFor(fileName f: String) {
+        guard let path = Bundle.main.path(forResource: f, ofType: "json") else { fatalError("Requested path could not be loaded") }
+        loadGames(using: URL(fileURLWithPath: path))
+    }
+    
+    func getGamesFor(season: Int, split: Int) {
+        guard let path = Bundle.main.path(forResource: "s\(season)s\(split)", ofType: "json") else { fatalError("Requested path could not be loaded") }
+        
+        loadGames(using: URL(fileURLWithPath: path))
+    }
+    
+    private func loadGames(using path: URL) {
+        
+        
+        do {
+            let data = try Data(contentsOf: path)
             let json = try JSON(data: data)
             
             let split: Split = Split(fromJSON: json)

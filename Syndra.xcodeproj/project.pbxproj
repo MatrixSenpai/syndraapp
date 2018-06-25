@@ -11,8 +11,9 @@
 		665BC1BB20CC420C00948768 /* gamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BA20CC420C00948768 /* gamesViewController.swift */; };
 		665BC1BE20CC460400948768 /* TeamObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BD20CC460400948768 /* TeamObject.swift */; };
 		665BC1C020CC470900948768 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BF20CC470900948768 /* GameObject.swift */; };
-		6680CFD520D61B2300682FE2 /* Games.json in Resources */ = {isa = PBXBuildFile; fileRef = 6680CFD420D61B2300682FE2 /* Games.json */; };
+		6680CFD520D61B2300682FE2 /* s8s2.json in Resources */ = {isa = PBXBuildFile; fileRef = 6680CFD420D61B2300682FE2 /* s8s2.json */; };
 		6686D95120D3ECEF0058C7B3 /* FeaturedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */; };
+		66894FAD20E0C33F00AE5013 /* available.json in Resources */ = {isa = PBXBuildFile; fileRef = 66894FAC20E0C33F00AE5013 /* available.json */; };
 		6699EDBB20D32D91001DED0E /* GamesCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */; };
 		6699EDBD20D337FB001DED0E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6699EDBC20D337FB001DED0E /* libsqlite3.tbd */; };
 		66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */; };
@@ -36,8 +37,9 @@
 		665BC1BA20CC420C00948768 /* gamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gamesViewController.swift; sourceTree = "<group>"; };
 		665BC1BD20CC460400948768 /* TeamObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamObject.swift; sourceTree = "<group>"; };
 		665BC1BF20CC470900948768 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
-		6680CFD420D61B2300682FE2 /* Games.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Games.json; sourceTree = "<group>"; };
+		6680CFD420D61B2300682FE2 /* s8s2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = s8s2.json; sourceTree = "<group>"; };
 		6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedGameView.swift; sourceTree = "<group>"; };
+		66894FAC20E0C33F00AE5013 /* available.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = available.json; sourceTree = "<group>"; };
 		6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCommunicator.swift; sourceTree = "<group>"; };
 		6699EDBC20D337FB001DED0E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		66C9B0A820CB3C6200A2B14C /* Syndra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syndra.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +87,6 @@
 		665BC1B920CC410C00948768 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6680CFD420D61B2300682FE2 /* Games.json */,
 				66D7B42220CCE9A700F37B96 /* FABrands.otf */,
 				66D7B42320CCE9A700F37B96 /* FALight.otf */,
 				66D7B42520CCE9A700F37B96 /* FARegular.otf */,
@@ -104,6 +105,15 @@
 				665BC1BF20CC470900948768 /* GameObject.swift */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		66894FAB20E0BB8E00AE5013 /* Seasons */ = {
+			isa = PBXGroup;
+			children = (
+				6680CFD420D61B2300682FE2 /* s8s2.json */,
+				66894FAC20E0C33F00AE5013 /* available.json */,
+			);
+			path = Seasons;
 			sourceTree = "<group>";
 		};
 		66C9B09F20CB3C6200A2B14C = {
@@ -127,6 +137,7 @@
 		66C9B0AA20CB3C6200A2B14C /* Syndra */ = {
 			isa = PBXGroup;
 			children = (
+				66894FAB20E0BB8E00AE5013 /* Seasons */,
 				66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */,
 				6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */,
 				66C9B0C320CB41E500A2B14C /* Games View */,
@@ -230,11 +241,12 @@
 			files = (
 				66D7B42720CCE9A700F37B96 /* FALight.otf in Resources */,
 				66C9B0B620CB3C6300A2B14C /* LaunchScreen.storyboard in Resources */,
-				6680CFD520D61B2300682FE2 /* Games.json in Resources */,
+				6680CFD520D61B2300682FE2 /* s8s2.json in Resources */,
 				66D7B42820CCE9A700F37B96 /* FASolid.otf in Resources */,
 				66D7B42620CCE9A700F37B96 /* FABrands.otf in Resources */,
 				66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */,
 				66D7B42920CCE9A700F37B96 /* FARegular.otf in Resources */,
+				66894FAD20E0C33F00AE5013 /* available.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,10 +266,12 @@
 				"${BUILT_PRODUCTS_DIR}/MMDrawerController/MMDrawerController.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Neon/Neon.framework",
+				"${BUILT_PRODUCTS_DIR}/PMSuperButton/PMSuperButton.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/SuperDelegate/SuperDelegate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TableFlip/TableFlip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -267,10 +281,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMDrawerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Neon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMSuperButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SuperDelegate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TableFlip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

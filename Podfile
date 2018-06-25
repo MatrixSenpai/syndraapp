@@ -13,12 +13,23 @@ target 'Syndra' do
   pod 'FontBlaster'
   pod 'Parse'
   pod 'SwiftDate', '~> 4.0'
+  pod 'TableFlip'
+  pod 'PMSuperButton'
 
   post_install do |installer|
     installer.pods_project.targets.each do |t|
-      if ['NVActivityIndicatorView', 'SwiftyJSON', 'SuperDelegate'].include? t.name
+
+      # Swift 3 Support
+      if ['NVActivityIndicatorView', 'SwiftyJSON', 'SuperDelegate', 'TableFlip'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '3'
+        end
+      end
+
+      # Swift 4.0 support
+      if ['PMSuperButton'].include? t.name
+        t.build_configurations.each do |config|
+          config.build_settings['SWIFT_VERSION'] = '4.0'
         end
       end
     end

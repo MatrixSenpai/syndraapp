@@ -59,7 +59,7 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
         MenuController.closeDrawerGestureModeMask = .all
         MenuController.maximumLeftDrawerWidth = 150.0
         
-        GamesCommunicator.sharedInstance.loadGames()
+        GamesCommunicator.sharedInstance.loadData()
         
         window.rootViewController = MenuController
         window.makeKeyAndVisible()

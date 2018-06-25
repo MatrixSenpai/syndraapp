@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import Neon
 
 class gameFilterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .white
+        let later = UILabel()
+        later.textAlignment = .left
+        later.text = "This isn't ready yet :("
+        view.addSubview(later)
+        later.anchorInCenter(width: 300, height: 42)
+        
         // Do any additional setup after loading the view.
     }
     
