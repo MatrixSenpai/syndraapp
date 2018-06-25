@@ -186,9 +186,9 @@ struct Split {
     func nextGame() -> (Game, Int, Int) {
         // Return Int/Int will be week,day
         
-        //let today = DateInRegion()
+        let today = DateInRegion()
         
-        let today = DateInRegion(string: "2018-06-23T18:30:00-0600", format: .iso8601Auto)!
+        //let today = DateInRegion(string: "2018-06-23T18:30:00-0600", format: .iso8601Auto)!
 
         // Sort the data
         let wwww = weeks.sorted {

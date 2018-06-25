@@ -171,7 +171,7 @@ class weekView: UIView {
     func reportTime(week w: Int, day d: Int, game g: Int) {
         week.text = "Week \(w + 1)"
         day.text = "Day \(d + 1)"
-        game.text = "Game \(g)"
+        game.text = "Game \(g + 1)"
     }
     
     override func draw(_ rect: CGRect) {
