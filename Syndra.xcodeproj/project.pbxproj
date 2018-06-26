@@ -18,6 +18,7 @@
 		66894FB220E0FE8100AE5013 /* s8s1.json in Resources */ = {isa = PBXBuildFile; fileRef = 66894FB120E0FE8100AE5013 /* s8s1.json */; };
 		6699EDBB20D32D91001DED0E /* GamesCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */; };
 		6699EDBD20D337FB001DED0E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6699EDBC20D337FB001DED0E /* libsqlite3.tbd */; };
+		66B7E57F20E2BDB300678767 /* menuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7E57E20E2BDB300678767 /* menuHeaderView.swift */; };
 		66C013B720E102310095B1EE /* pastSeasonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C013B620E102310095B1EE /* pastSeasonsViewController.swift */; };
 		66C013B920E102640095B1EE /* TimeBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C013B820E102640095B1EE /* TimeBrowser.swift */; };
 		66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */; };
@@ -49,6 +50,7 @@
 		66894FB120E0FE8100AE5013 /* s8s1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = s8s1.json; sourceTree = "<group>"; };
 		6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCommunicator.swift; sourceTree = "<group>"; };
 		6699EDBC20D337FB001DED0E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		66B7E57E20E2BDB300678767 /* menuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuHeaderView.swift; sourceTree = "<group>"; };
 		66C013B620E102310095B1EE /* pastSeasonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pastSeasonsViewController.swift; sourceTree = "<group>"; };
 		66C013B820E102640095B1EE /* TimeBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBrowser.swift; sourceTree = "<group>"; };
 		66C9B0A820CB3C6200A2B14C /* Syndra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syndra.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +182,7 @@
 				66C9B0BF20CB41CB00A2B14C /* menuTableViewController.swift */,
 				66D7B42A20CCF1B100F37B96 /* MenuInterfacingController.swift */,
 				66894FAF20E0E8F000AE5013 /* menuTableViewCell.swift */,
+				66B7E57E20E2BDB300678767 /* menuHeaderView.swift */,
 			);
 			path = "Menu View";
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TableFlip/TableFlip.framework",
+				"${BUILT_PRODUCTS_DIR}/Toucan/Toucan.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -312,6 +316,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TableFlip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toucan.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -351,6 +356,7 @@
 				66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */,
 				66C9B0CB20CB463B00A2B14C /* teamOverlayView.swift in Sources */,
 				66C9B0C020CB41CB00A2B14C /* menuTableViewController.swift in Sources */,
+				66B7E57F20E2BDB300678767 /* menuHeaderView.swift in Sources */,
 				66435F7120DA2C67008C6689 /* scheduleItemSectionHeaderView.swift in Sources */,
 				665BC1C020CC470900948768 /* GameObject.swift in Sources */,
 				665BC1BE20CC460400948768 /* TeamObject.swift in Sources */,

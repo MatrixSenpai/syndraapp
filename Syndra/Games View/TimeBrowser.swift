@@ -46,6 +46,9 @@ class TimeBrowser: UIView {
             
             i += 1
         }
+
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(TimeBrowser.handleScroll(recognizer:)))
+        addGestureRecognizer(pan)
     }
     
     @available(*, unavailable)
@@ -63,6 +66,23 @@ class TimeBrowser: UIView {
     func goTo(sender: PMSuperButton) {
         let index = IndexPath(row: 0, section: sender.tag)
         parent?.tableView.scrollToRow(at: index, at: .top, animated: true)
+    }
+    
+    @objc
+    func handleScroll(recognizer: UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: self)
+
+        for b in buttons {
+            guard let b = b as? PMSuperButton else { fatalError("Could not cast back to original type??") }
+            
+            if b.point(inside: translation, with: nil) {
+                let t = b.tag
+                
+                let i = IndexPath(row: 0, section: t)
+                
+                self.parent?.scrollTo(row: i, at: .top, animated: false)
+            }
+        }
     }
 }
 

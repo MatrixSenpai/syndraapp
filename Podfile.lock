@@ -30,6 +30,7 @@ PODS:
   - SwiftDate (4.5.1)
   - SwiftyJSON (4.1.0)
   - TableFlip (1.2)
+  - Toucan (1.0.0)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`, branch `wip/swift4`)
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - SwiftDate (~> 4.0)
   - SwiftyJSON
   - TableFlip
+  - Toucan
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -59,6 +61,7 @@ SPEC REPOS:
     - SwiftDate
     - SwiftyJSON
     - TableFlip
+    - Toucan
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -84,7 +87,8 @@ SPEC CHECKSUMS:
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   TableFlip: 2ae22773412b295a7cbc54d95b44085bb28092f6
+  Toucan: 61867fb10948c02e9804280a95eb183e98eac97a
 
-PODFILE CHECKSUM: d9e2b530b1edd9bdced647f14482f34954a7d3b8
+PODFILE CHECKSUM: afcf649c154b0f829f4ba7effdf941107d18e530
 
 COCOAPODS: 1.5.3

@@ -8,6 +8,7 @@
 
 import UIKit
 import SCLAlertView
+import TableFlip
 
 class menuTableViewController: UITableViewController {
     
@@ -24,16 +25,13 @@ class menuTableViewController: UITableViewController {
     var standingsController: MenuInterfacingViewController!
     var settingsController : UINavigationController!
     
+    var headerView: menuHeaderView {
+        return menuHeaderView(frame: CGRect(x: 0, y: 0, width: view.width, height: 200))
+    }
+    
     var seasons: Array<Int> = []
     var currentSeason: Int = 0
     var splits: Array<SplitType> = []
-    
-    var leftButton: UIBarButtonItem {
-        let leftButton = UIBarButtonItem(title: "\u{f060}", style: .plain, target: self, action: #selector(menuTableViewController.returnUpLevel))
-        leftButton.setTitleTextAttributes(FASOLID_ATTR, for: .normal)
-        
-        return leftButton
-    }
     
     var location: Level = .Top
 
@@ -46,8 +44,18 @@ class menuTableViewController: UITableViewController {
 
         seasons = GamesCommunicator.sharedInstance.availableSeasons()
         
+        tableView.backgroundColor = .flatBlack
+        tableView.isScrollEnabled = false
+        tableView.tableHeaderView = headerView
+        
         tableView.separatorStyle = .none
         tableView.register(menuTableViewCell.self, forCellReuseIdentifier: "menuCell")
+        
+        clearsSelectionOnViewWillAppear = false
+        
+        let i = IndexPath(row: 0, section: 0)
+        let c = tableView.cellForRow(at: i)
+        c?.setSelected(true, animated: false)
     }
 
     // MARK: - Table view data source
@@ -59,8 +67,8 @@ class menuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch location {
         case .Top: return topLevel.count
-        case .Seasons: return seasons.count
-        case .Splits: return splits.count
+        case .Seasons: return seasons.count + 1
+        case .Splits: return splits.count + 1
         }
     }
 
@@ -72,12 +80,23 @@ class menuTableViewController: UITableViewController {
         
         switch location {
         case .Seasons:
-            icon = "\u{f073}"
-            text = "Season \(seasons[indexPath.row])"
+            if indexPath.row == 0 {
+                icon = "\u{f060}"
+                text = "Back"
+            } else {
+                icon = "\u{f073}"
+                text = "Season \(seasons[indexPath.row - 1])"
+            }
             break
         case .Splits:
-            icon = "\u{f253}"
-            text = "\(splits[indexPath.row].toString()) 201\(currentSeason)"
+            if indexPath.row == 0 {
+                icon = "\u{f060}"
+                text = "Back"
+            } else {
+                icon = "\u{f253}"
+                text = "\(splits[indexPath.row - 1].toString()) 201\(currentSeason)"
+            }
+            break
         case .Top: fallthrough
         default:
             icon = topLevel[indexPath.row].0
@@ -98,10 +117,13 @@ class menuTableViewController: UITableViewController {
             case 0:
                 if mm_drawerController.centerViewController != gamesController {
                     mm_drawerController.centerViewController = gamesController
-                    
                 }
                 GamesCommunicator.sharedInstance.listener = gamesController
                 GamesCommunicator.sharedInstance.getGamesFor(season: 8, split: 1)
+                
+                let c = tableView.cellForRow(at: indexPath)
+                c?.setSelected(true, animated: true)
+                
                 mm_drawerController.closeDrawer(animated: true, completion: nil)
                 
             case 1:
@@ -109,10 +131,9 @@ class menuTableViewController: UITableViewController {
                 break
                 
             case 2:
-                navigationItem.leftBarButtonItem = leftButton
-                
                 location = .Seasons
-                tableView.reloadData()
+                seasons = GamesCommunicator.sharedInstance.availableSeasons()
+                reload(with: nil)
                 break
                 
             case 3:
@@ -131,7 +152,11 @@ class menuTableViewController: UITableViewController {
             }
             break
         case .Seasons:
-            navigationItem.leftBarButtonItem = leftButton
+            if indexPath.row == 0 {
+                location = .Top
+                reload(with: nil)
+                return
+            }
             
             let cell = tableView.cellForRow(at: indexPath) as! menuTableViewCell
             let t = cell.descLabel.text
@@ -141,10 +166,16 @@ class menuTableViewController: UITableViewController {
             splits = GamesCommunicator.sharedInstance.splitsFor(season: si!)
             currentSeason = si!
             location = .Splits
-            tableView.reloadData()
+            reload(with: nil)
             
             break
         case .Splits:
+            if indexPath.row == 0 {
+                location = .Seasons
+                reload(with: nil)
+                return
+            }
+            
             let cell = tableView.cellForRow(at: indexPath) as! menuTableViewCell
             let t = cell.descLabel.text
             let s = String(t!.split(separator: " ").first!)
@@ -152,15 +183,21 @@ class menuTableViewController: UITableViewController {
 
             GamesCommunicator.sharedInstance.listener = pastGamesController
             GamesCommunicator.sharedInstance.getGamesFor(season: currentSeason, split: si.rawValue)
-            location = .Top
             
             mm_drawerController.centerViewController = pastGamesController
-            mm_drawerController.closeDrawer(animated: true) { (_) in
-                self.tableView.reloadData()
-            }
+            mm_drawerController.closeDrawer(animated: true, completion: nil)
             
             break
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85
+    }
+    
+    func reload(with a: TableViewAnimation.Cell?) {
+        tableView.reloadData()
+        tableView.animate(animation: a ?? TableViewAnimation.Cell.left(duration: 0.7))
     }
     
     @objc
@@ -169,11 +206,11 @@ class menuTableViewController: UITableViewController {
         case .Splits:
             location = .Seasons
             currentSeason = 0
-            tableView.reloadData()
+            reload(with: .right(duration: 0.7))
         case .Seasons:
             location = .Top
             currentSeason = 0
-            tableView.reloadData()
+            reload(with: .right(duration: 0.7))
             
             navigationItem.leftBarButtonItem = nil
         case .Top: fallthrough

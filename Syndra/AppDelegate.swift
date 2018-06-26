@@ -47,7 +47,6 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
         setup(mainWindow: window)
         
         let leftController = menuTableViewController()
-        let leftNavController = UINavigationController(rootViewController: leftController)
         
         let centerController = gamesViewController()
         
@@ -56,10 +55,10 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
         
         leftController.gamesController = centerController
         
-        MenuController = MMDrawerController(center: centerController, leftDrawerViewController: leftNavController, rightDrawerViewController: rightNavController)
+        MenuController = MMDrawerController(center: centerController, leftDrawerViewController: leftController, rightDrawerViewController: rightNavController)
         MenuController.openDrawerGestureModeMask = .custom
         MenuController.closeDrawerGestureModeMask = .all
-        MenuController.maximumLeftDrawerWidth = 210
+        MenuController.maximumLeftDrawerWidth = 220
         
         GamesCommunicator.sharedInstance.loadData()
         

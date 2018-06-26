@@ -16,12 +16,13 @@ target 'Syndra' do
   pod 'TableFlip'
   pod 'PMSuperButton'
   pod 'SCLAlertView'
+  pod 'Toucan'
 
   post_install do |installer|
     installer.pods_project.targets.each do |t|
 
       # Swift 3 Support
-      if ['NVActivityIndicatorView', 'SwiftyJSON', 'SuperDelegate', 'TableFlip'].include? t.name
+      if ['Toucan', 'NVActivityIndicatorView', 'SwiftyJSON', 'SuperDelegate', 'TableFlip'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '3'
         end
