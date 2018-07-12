@@ -19,11 +19,8 @@ class menuTableViewController: UITableViewController {
         ("\u{f478}", "Player Statistics"),
         ("\u{f085}", "Settings")
     ]
-    
-    var gamesController    : gamesViewController!
-    var pastGamesController: pastSeasonsViewController!
-    var standingsController: MenuInterfacingViewController!
-    var settingsController : UINavigationController!
+
+    //let interface: UIWindowManager = UIWindowManager.sharedInstance
     
     var headerView: menuHeaderView {
         return menuHeaderView(frame: CGRect(x: 0, y: 0, width: view.width, height: 200))
@@ -38,10 +35,6 @@ class menuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if standingsController == nil { standingsController = MenuInterfacingViewController() }
-        if pastGamesController == nil { pastGamesController = pastSeasonsViewController() }
-        if settingsController  == nil { settingsController  = UINavigationController(rootViewController: MenuInterfacingViewController()) }
-
         seasons = GamesCommunicator.sharedInstance.availableSeasons()
         
         tableView.backgroundColor = .flatBlack
@@ -115,11 +108,7 @@ class menuTableViewController: UITableViewController {
         case .Top:
             switch indexPath.row {
             case 0:
-                if mm_drawerController.centerViewController != gamesController {
-                    mm_drawerController.centerViewController = gamesController
-                }
-                GamesCommunicator.sharedInstance.listener = gamesController
-                GamesCommunicator.sharedInstance.getGamesFor(season: 8, split: 1)
+                //interface.switchToView(.games)
                 
                 let c = tableView.cellForRow(at: indexPath)
                 c?.setSelected(true, animated: true)
@@ -142,10 +131,6 @@ class menuTableViewController: UITableViewController {
                 
             case 4:
                 SCLAlertView().showInfo("Hey there!", subTitle: "Looks like this menu option isn't ready yet :(")
-//                if mm_drawerController.centerViewController != settingsController {
-//                    mm_drawerController.centerViewController = settingsController
-//                }
-//                mm_drawerController.closeDrawer(animated: true, completion: nil)
             default:
                 SCLAlertView().showError("Oops!", subTitle: "This should never happen. Report it to the developer and tell him he's shit")
                 break
@@ -170,6 +155,7 @@ class menuTableViewController: UITableViewController {
             
             break
         case .Splits:
+            /*
             if indexPath.row == 0 {
                 location = .Seasons
                 reload(with: nil)
@@ -181,12 +167,8 @@ class menuTableViewController: UITableViewController {
             let s = String(t!.split(separator: " ").first!)
             let si = SplitType.from(string: s)
 
-            GamesCommunicator.sharedInstance.listener = pastGamesController
-            GamesCommunicator.sharedInstance.getGamesFor(season: currentSeason, split: si.rawValue)
-            
-            mm_drawerController.centerViewController = pastGamesController
-            mm_drawerController.closeDrawer(animated: true, completion: nil)
-            
+            */
+            SCLAlertView().showInfo("Hey there!", subTitle: "Looks like this menu option isn't ready yet :(")
             break
         }
     }

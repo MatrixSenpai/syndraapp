@@ -17,6 +17,7 @@ target 'Syndra' do
   pod 'PMSuperButton'
   pod 'SCLAlertView'
   pod 'Toucan'
+  pod 'RxFlow'
 
   post_install do |installer|
     installer.pods_project.targets.each do |t|
@@ -29,7 +30,7 @@ target 'Syndra' do
       end
 
       # Swift 4.0 support
-      if ['SCLAlertView', 'PMSuperButton'].include? t.name
+      if ['RxFlow', 'RxCocoa', 'SCLAlertView', 'PMSuperButton'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '4.0'
         end

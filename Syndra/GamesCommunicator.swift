@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import RxFlow
 
 class GamesCommunicator {
     public static let sharedInstance: GamesCommunicator = GamesCommunicator()
@@ -64,6 +65,10 @@ class GamesCommunicator {
     
     func splitsFor(season: Int) -> Array<SplitType> {
         return seasons.splits(for: season)
+    }
+    
+    func nextGame() -> (Game, Int, Int) {
+        return self.games.nextGame()
     }
 }
 

@@ -28,7 +28,6 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GamesCommunicator.sharedInstance.listener = self
         
         scrollView.parent = self
         
@@ -64,6 +63,11 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
         view.addSubview(left)
         view.addSubview(right)
         view.addSubview(ngame)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        GamesCommunicator.sharedInstance.listener = self
+        GamesCommunicator.sharedInstance.getGamesFor(season: 8, split: 1)
     }
     
     override func viewWillLayoutSubviews() {
@@ -168,6 +172,7 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
     }
     
     func scrollTo(row: IndexPath, at: UITableView.ScrollPosition, animated: Bool) {
+        guard games != nil else { return }
         tableView.scrollToRow(at: row, at: at, animated: animated)
     }
 }
