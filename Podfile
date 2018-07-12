@@ -17,20 +17,22 @@ target 'Syndra' do
   pod 'PMSuperButton'
   pod 'SCLAlertView'
   pod 'Toucan'
-  pod 'RxFlow'
+  pod 'AppVersionMonitor'
+  pod 'SwiftyUserDefaults'
+  pod 'GCDKit', :git => 'https://github.com/JohnEstropia/GCDKit', :branch => 'swift3_develop'
 
   post_install do |installer|
     installer.pods_project.targets.each do |t|
 
       # Swift 3 Support
-      if ['Toucan', 'NVActivityIndicatorView', 'SwiftyJSON', 'SuperDelegate', 'TableFlip'].include? t.name
+      if ['Toucan', 'NVActivityIndicatorView', 'SwiftyJSON', 'SuperDelegate', 'TableFlip', 'GCDKit'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '3'
         end
       end
 
       # Swift 4.0 support
-      if ['RxFlow', 'RxCocoa', 'SCLAlertView', 'PMSuperButton'].include? t.name
+      if ['SCLAlertView', 'PMSuperButton'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '4.0'
         end

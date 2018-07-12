@@ -14,6 +14,10 @@ class todayGameViewController: UIViewController {
 
 //    let game: Game
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     let todayGame: NextGame
     
     let todayLabel: UILabel

@@ -10,6 +10,10 @@ import UIKit
 import MMDrawerController
 
 class MenuInterfacingViewController: UIViewController {
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     var leftButton: MMDrawerBarButtonItem {
         let b = MMDrawerBarButtonItem(title: "\u{f0c9}", style: .plain, target: self, action: #selector(self.openLeft))
         b.setTitleTextAttributes(FALIGHT_ATTR, for: .normal)

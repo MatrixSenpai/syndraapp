@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import CoreData
-import MMDrawerController
 import FontBlaster
 import Parse
 import SuperDelegate
 import SwiftDate
+import AppVersionMonitor
 
 // Global Font Awesome declarations
 let FALIGHT_UIFONT  : UIFont = UIFont(name: "FontAwesome5ProLight", size: 20)!
@@ -37,14 +36,23 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
             config.server = "https://parse.buddy.com/parse"
         }))
         
+        PFSeason.registerSubclass()
+        PFSplit.registerSubclass()
+        
         FontBlaster.blast()
+        AppVersionMonitor.sharedMonitor.startup()
+        GamesCommunicator.sharedInstance.initialSetup()
         
         Date.setDefaultRegion(Region(tz: TimeZoneName.americaChicago, cal: CalendarName.gregorian, loc: LocaleName.englishUnitedStates))
     }
     
     func loadInterface(launchItem: LaunchItem) {
         setup(mainWindow: window)
-
+        
+        PFAnalytics.trackAppOpened(launchOptions: launchItem.launchOptions)
+        
+        print(AppVersionMonitor.sharedMonitor.state)
+        
         WindowManager.sharedInstance.move(to: .today)
         
         window.rootViewController = WindowManager.sharedInstance.root

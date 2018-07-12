@@ -8,7 +8,9 @@
 
 import Foundation
 import SwiftyJSON
-import RxFlow
+import SwiftyUserDefaults
+import Parse
+import GCDKit
 
 class GamesCommunicator {
     public static let sharedInstance: GamesCommunicator = GamesCommunicator()
@@ -16,6 +18,80 @@ class GamesCommunicator {
     
     var games: Split!
     var seasons: Available!
+    
+    func initialSetup() {
+        PFConfig.getInBackground { (config, error) in
+            guard error == nil else { print(error!.localizedDescription); return }
+            
+            guard let season = config?["season"] as? Int else {
+                print("Could not get or cast season"); return
+            }
+            
+            guard let split = config?["split"] as? Int else {
+                print("Could not get or cast split"); return
+            }
+            
+            print("Got Season \(season), Split \(split)")
+            
+            if season != Defaults[.currentSeason] {
+                Defaults[.currentSeason] = season
+            }
+            
+            if split != Defaults[.currentSplit] {
+                Defaults[.currentSplit] = split
+            }
+            
+            GCDBlock.async(.main, closure: {
+                self.beginGameFetch()
+            })
+        }
+    }
+    
+    private func beginGameFetch() {
+        let q = PFSeason.query()
+        
+        q?.whereKey("year", equalTo: Defaults[.currentSeason])
+        
+        q?.findObjectsInBackground(block: { (results, error) in
+            guard error == nil else { print(error!.localizedDescription); return }
+            
+            guard let season = results?.first as? PFSeason else { print("Could not cast to season in GC::beginGameFetch"); return }
+            print(season.start.string())
+            
+            GCDBlock.async(.main, closure: {
+                self.fetchSeasons(season)
+            })
+        })
+
+    }
+    
+    private func fetchSeasons(_ s: PFSeason) {
+        switch Defaults[.currentSplit] {
+        case 1:
+            break
+        case 2:
+            s.summer.fetchIfNeededInBackground { (split, error) in
+                guard error == nil else { print("Could not fetch split in GC::fetchSeasons"); return }
+                
+                guard let s = split as? PFSplit else { print("Could not cast split in GC::fetchSeasons"); return }
+                print(s.start.string())
+                
+                GCDBlock.async(.main, closure: {
+                    self.fetchWeeks(s)
+                })
+            }
+        default:
+            print("Fuck the dev. GC::fetchSeasons")
+        }
+    }
+    
+    private func fetchWeeks(_ w: PFSplit) {
+        
+    }
+    
+    private func isDataAvailable() -> Bool {
+        return Defaults[.dataLoaded]
+    }
     
     func loadData() {
         guard let path = Bundle.main.path(forResource: "available", ofType: "json") else { fatalError("Looks like we can't find the data file for seasons") }
