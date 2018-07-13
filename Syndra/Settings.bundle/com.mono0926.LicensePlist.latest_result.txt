@@ -20,6 +20,10 @@ name: GCDKit, nameSpecified:
 body: The MIT License (MIT…
 version: 2.0.0
 
+name: MiniLayout, nameSpecified: 
+body: The MIT License (MIT…
+version: 1.2.1
+
 name: MMDrawerController, nameSpecified: 
 body: Copyright (c) 2013 M…
 version: 0.6.0
@@ -42,9 +46,17 @@ name: PMSuperButton, nameSpecified:
 body: The MIT License (MIT…
 version: 2.1.2
 
+name: RetroProgress, nameSpecified: 
+body: Licensed under the *…
+version: 1.0.0
+
 name: SCLAlertView, nameSpecified: 
 body: Copyright (c) 2013-2…
 version: 0.8
+
+name: StepProgressView, nameSpecified: 
+body: The MIT License (MIT…
+version: 1.4.1
 
 name: SuperDelegate, nameSpecified: 
 body: 

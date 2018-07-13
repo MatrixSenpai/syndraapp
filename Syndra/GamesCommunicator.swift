@@ -15,16 +15,17 @@ import GCDKit
 class GamesCommunicator {
     public static let sharedInstance: GamesCommunicator = GamesCommunicator()
     var listener: GameListener?
+    var progress: UpdateListener?
     
     var games: Split!
     var seasons: Available!
     
     func initialSetup() {
-        
+        if isDataAvailable() { progress?.didFinish(); return }
         GCDBlock.async(.background) {
             do {
                 let config = try PFConfig.getConfig()
-                
+
                 guard let season = config["season"] as? Int else { print("GC::initialSetup could not cast season to Int"); return }
                 guard let split  = config["split"]  as? Int else { print("CG::initialSetup could not cast split to Int");  return }
                 
@@ -48,34 +49,43 @@ class GamesCommunicator {
                 
                 let weeks = try wq.findObjects()
                 print(weeks.first!.start.string())
+
+                print("Got \(weeks.count) weeks")
                 
+                for w in weeks {
+                    let dq = w.days.query()
+                    
+                    let days = try dq.findObjects()
+                    print(days.first!.start.string())
+                    
+                    print("Got \(days.count) days for week \(w.week)")
+                    
+                    for d in days {
+                        let gq = d.games.query()
+                        
+                        let games = try gq.findObjects()
+                        print(games.last!.gameTime.string())
+                        
+                        print("Got \(games.count) games for day \(d.day)")
+                    }
+                }
+                
+                try currentSplit.pin(withName: "currentSplit")
+                
+                Defaults[.dataLoaded] = true
+                
+                let gg = currentSplit.nextGameAfterNow()
+                print(gg.gameTime.string())
+                
+                GCDBlock.async(.main, closure: {
+                    self.progress?.didFinish()
+                })
             } catch let e {
                 print("Error in GC::initialSetup (dispatch block) \(e.localizedDescription)")
             }
         }
     }
-    
-    private func fetchSeasons(_ s: PFSeason) {
-        
-        let split: PFSplit = ((Defaults[.currentSplit] == 1) ? s.spring : s.summer)
 
-        split.fetchIfNeededInBackground { (split, error) in
-            guard error == nil else { print("Could not fetch split in GC::fetchSeasons"); return }
-            
-            guard let s = split as? PFSplit else { print("Could not cast split in GC::fetchSeasons"); return }
-            print(s.start.string())
-            
-            GCDBlock.async(.main, closure: {
-                self.fetchWeeks(s)
-            })
-        }
-
-    }
-    
-    private func fetchWeeks(_ w: PFSplit) {
-        
-    }
-    
     private func isDataAvailable() -> Bool {
         return Defaults[.dataLoaded]
     }
@@ -137,6 +147,10 @@ class GamesCommunicator {
 
 protocol GameListener {
     func getGames(games: Split)
+}
+
+protocol UpdateListener {
+    func didFinish()
 }
 
 struct Available {

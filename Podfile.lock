@@ -6,6 +6,7 @@ PODS:
     - ChameleonFramework/Default
   - FontBlaster (4.0.3)
   - GCDKit (2.0.0)
+  - MiniLayout (1.2.1)
   - MMDrawerController (0.6.0):
     - MMDrawerController/Core (= 0.6.0)
     - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
@@ -27,7 +28,10 @@ PODS:
   - Parse/Core (1.17.1):
     - Bolts/Tasks (~> 1.9)
   - PMSuperButton (2.1.2)
+  - RetroProgress (1.0.0)
   - SCLAlertView (0.8)
+  - StepProgressView (1.4.1):
+    - MiniLayout
   - SuperDelegate (0.9.0)
   - SwiftDate (4.5.1)
   - SwiftyJSON (4.1.0)
@@ -45,7 +49,9 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - Parse
   - PMSuperButton
+  - RetroProgress
   - SCLAlertView
+  - StepProgressView
   - SuperDelegate
   - SwiftDate (~> 4.0)
   - SwiftyJSON
@@ -58,12 +64,15 @@ SPEC REPOS:
     - AppVersionMonitor
     - Bolts
     - FontBlaster
+    - MiniLayout
     - MMDrawerController
     - Neon
     - NVActivityIndicatorView
     - Parse
     - PMSuperButton
+    - RetroProgress
     - SCLAlertView
+    - StepProgressView
     - SuperDelegate
     - SwiftDate
     - SwiftyJSON
@@ -93,12 +102,15 @@ SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
   GCDKit: 9a9216a4b4fa00e01ed829208e3811cc347a8f74
+  MiniLayout: 9ee6ff0d73c1c2af09251e062e9b45d012e446fb
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
   NVActivityIndicatorView: 963f62bf9f993fcf23218e55958e5b1761b9504c
   Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
   PMSuperButton: 968f45a9a157499fcdd195ee54613a4cce980bdb
+  RetroProgress: 3f48b9f17bf650e7503bb8f8f8f8ba00b0900fa3
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  StepProgressView: 9cc82fc7987b1812b08ad5aa606b5646a47cc7d7
   SuperDelegate: b70c7afddf8525217d0e074b850b8ea3cc6f8abd
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
@@ -106,6 +118,6 @@ SPEC CHECKSUMS:
   TableFlip: 2ae22773412b295a7cbc54d95b44085bb28092f6
   Toucan: 61867fb10948c02e9804280a95eb183e98eac97a
 
-PODFILE CHECKSUM: ccccb5e0f6045f4397ac8d6cbbd03bc3f3579418
+PODFILE CHECKSUM: eb6686070146571a14846f7e8b17ac7d75905b36
 
 COCOAPODS: 1.5.3

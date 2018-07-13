@@ -20,6 +20,8 @@ target 'Syndra' do
   pod 'AppVersionMonitor'
   pod 'SwiftyUserDefaults'
   pod 'GCDKit', :git => 'https://github.com/JohnEstropia/GCDKit', :branch => 'swift3_develop'
+  pod 'StepProgressView'
+  pod 'RetroProgress'
 
   post_install do |installer|
     installer.pods_project.targets.each do |t|
@@ -32,7 +34,7 @@ target 'Syndra' do
       end
 
       # Swift 4.0 support
-      if ['SCLAlertView', 'PMSuperButton'].include? t.name
+      if ['RetroProgress', 'StepProgressView', 'SCLAlertView', 'PMSuperButton'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '4.0'
         end

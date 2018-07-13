@@ -7,12 +7,38 @@
 //
 
 import UIKit
+import Neon
+import NVActivityIndicatorView
 
-class AppLoadingViewController: UIViewController {
+class AppLoadingViewController: UIViewController, UpdateListener {
 
+    var bg: UIImageView {
+        return UIImageView(image: UIImage(named: "loading-back"))
+    }
+    
+    let loader: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRect(), type: .lineScalePulseOut, color: .flatRed, padding: 20)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        loader.startAnimating()
+        view.addSubview(bg)
+        view.addSubview(loader)
+        
+        GamesCommunicator.sharedInstance.progress = self
+        GamesCommunicator.sharedInstance.initialSetup()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        bg.fillSuperview()
+        loader.anchorInCenter(width: 200, height: 200)
+    }
+
+    func didFinish() {
+        (UIApplication.shared.delegate as! AppDelegate).showActual()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import SwiftDate
 
 class PFSeason: PFObject, PFSubclassing {
     static func parseClassName() -> String {
@@ -34,6 +35,28 @@ class PFSplit: PFObject, PFSubclassing {
     public func type() -> SplitType {
         return SplitType(rawValue: self.split - 1)!
     }
+    
+    func nextGameAfterNow() -> PFGame {
+        let today = DateInRegion()
+
+        return PFGame()
+    }
+    
+    func nextGameAfter(week: Int?, Day: Int?, Game: Int?) {
+        
+    }
+    
+    subscript(_ week: Int) -> PFWeek {
+        return PFWeek()
+    }
+    
+    subscript(_ week: Int, _ day: Int) -> PFDay {
+        return PFDay()
+    }
+    
+    subscript(_ week: Int, _ day: Int, _ game: Int) -> PFGame {
+        return PFGame()
+    }
 }
 
 class PFWeek: PFObject, PFSubclassing {
@@ -43,7 +66,7 @@ class PFWeek: PFObject, PFSubclassing {
     
     @NSManaged var week: Int
     @NSManaged var split: PFSplit
-    @NSManaged var days: PFRelation<PFObject>
+    @NSManaged var days: PFRelation<PFDay>
     @NSManaged var start: Date
 }
 
@@ -54,7 +77,7 @@ class PFDay: PFObject, PFSubclassing {
     
     @NSManaged var day: Int
     @NSManaged var week: PFWeek
-    @NSManaged var games: PFRelation<PFObject>
+    @NSManaged var games: PFRelation<PFGame>
     @NSManaged var start: Date
 }
 

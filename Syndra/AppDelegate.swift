@@ -12,6 +12,7 @@ import Parse
 import SuperDelegate
 import SwiftDate
 import AppVersionMonitor
+import SwiftyUserDefaults
 
 // Global Font Awesome declarations
 let FALIGHT_UIFONT  : UIFont = UIFont(name: "FontAwesome5ProLight", size: 20)!
@@ -29,19 +30,21 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
     let window: UIWindow = UIWindow()
     
     func setupApplication() {
-        Parse.enableLocalDatastore()
         Parse.initialize(with: ParseClientConfiguration(block: { (config) in
             config.applicationId = "4ad2abb0-6608-4f2c-b036-b9902cf4fe35"
             config.clientKey = "spbSi2C50BsiIC16KXZPBUx6XjeszbSK"
             config.server = "https://parse.buddy.com/parse"
+            config.isLocalDatastoreEnabled = true
         }))
         
         PFSeason.registerSubclass()
         PFSplit.registerSubclass()
+        PFWeek.registerSubclass()
+        PFDay.registerSubclass()
+        PFGame.registerSubclass()
         
         FontBlaster.blast()
         AppVersionMonitor.sharedMonitor.startup()
-        GamesCommunicator.sharedInstance.initialSetup()
         
         Date.setDefaultRegion(Region(tz: TimeZoneName.americaChicago, cal: CalendarName.gregorian, loc: LocaleName.englishUnitedStates))
     }
@@ -51,8 +54,21 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
         
         PFAnalytics.trackAppOpened(launchOptions: launchItem.launchOptions)
         
+        switch AppVersionMonitor.sharedMonitor.state {
+        case .installed: fallthrough
+        case .upgraded(previousVersion: _): fallthrough
+        case .downgraded(previousVersion: _):
+            Defaults[.dataLoaded] = false
+            break
+        case .notChanged:
+            Defaults[.dataLoaded] = false
+            break
+        }
+        
         print(AppVersionMonitor.sharedMonitor.state)
         
+        let controller = AppLoadingViewController()
+        window.rootViewController = controller
         window.makeKeyAndVisible()
     }
     
