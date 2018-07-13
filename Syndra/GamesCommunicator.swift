@@ -74,8 +74,8 @@ class GamesCommunicator {
                 
                 Defaults[.dataLoaded] = true
                 
-                let gg = currentSplit.nextGameAfterNow()
-                print(gg.gameTime.string())
+//                let gg = currentSplit.nextGameAfterNow()
+//                print(gg.gameTime.string())
                 
                 GCDBlock.async(.main, closure: {
                     self.progress?.didFinish()
