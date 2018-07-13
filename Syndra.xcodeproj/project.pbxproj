@@ -25,6 +25,7 @@
 		66894FAD20E0C33F00AE5013 /* available.json in Resources */ = {isa = PBXBuildFile; fileRef = 66894FAC20E0C33F00AE5013 /* available.json */; };
 		66894FB020E0E8F000AE5013 /* menuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66894FAF20E0E8F000AE5013 /* menuTableViewCell.swift */; };
 		66894FB220E0FE8100AE5013 /* s8s1.json in Resources */ = {isa = PBXBuildFile; fileRef = 66894FB120E0FE8100AE5013 /* s8s1.json */; };
+		6697609320F854B800F7CAA4 /* AppLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6697609220F854B800F7CAA4 /* AppLoadingViewController.swift */; };
 		6699EDBB20D32D91001DED0E /* GamesCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */; };
 		6699EDBD20D337FB001DED0E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6699EDBC20D337FB001DED0E /* libsqlite3.tbd */; };
 		66B7E57F20E2BDB300678767 /* menuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7E57E20E2BDB300678767 /* menuHeaderView.swift */; };
@@ -66,6 +67,7 @@
 		66894FAE20E0E29700AE5013 /* Syndra.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Syndra.entitlements; sourceTree = "<group>"; };
 		66894FAF20E0E8F000AE5013 /* menuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuTableViewCell.swift; sourceTree = "<group>"; };
 		66894FB120E0FE8100AE5013 /* s8s1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = s8s1.json; sourceTree = "<group>"; };
+		6697609220F854B800F7CAA4 /* AppLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoadingViewController.swift; sourceTree = "<group>"; };
 		6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCommunicator.swift; sourceTree = "<group>"; };
 		6699EDBC20D337FB001DED0E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		66B7E57E20E2BDB300678767 /* menuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuHeaderView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				66894FAE20E0E29700AE5013 /* Syndra.entitlements */,
 				66894FAB20E0BB8E00AE5013 /* Seasons */,
 				66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */,
+				6697609220F854B800F7CAA4 /* AppLoadingViewController.swift */,
 				6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */,
 				665E546420F1277100B96510 /* UIWindowManager.swift */,
 				665E546820F12B8700B96510 /* Today Game */,
@@ -408,6 +411,7 @@
 				665BC1BB20CC420C00948768 /* gamesViewController.swift in Sources */,
 				66C013B720E102310095B1EE /* pastSeasonsViewController.swift in Sources */,
 				66C9B0C820CB436400A2B14C /* scheduleItemTableViewCell.swift in Sources */,
+				6697609320F854B800F7CAA4 /* AppLoadingViewController.swift in Sources */,
 				6686D95120D3ECEF0058C7B3 /* FeaturedGameView.swift in Sources */,
 				66C9B0C220CB41D800A2B14C /* gameFilterViewController.swift in Sources */,
 				66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */,

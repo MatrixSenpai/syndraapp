@@ -53,9 +53,12 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
         
         print(AppVersionMonitor.sharedMonitor.state)
         
+        window.makeKeyAndVisible()
+    }
+    
+    func showActual() {
         WindowManager.sharedInstance.move(to: .today)
         
         window.rootViewController = WindowManager.sharedInstance.root
-        window.makeKeyAndVisible()
     }
 }

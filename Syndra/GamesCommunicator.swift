@@ -20,69 +20,56 @@ class GamesCommunicator {
     var seasons: Available!
     
     func initialSetup() {
-        PFConfig.getInBackground { (config, error) in
-            guard error == nil else { print(error!.localizedDescription); return }
-            
-            guard let season = config?["season"] as? Int else {
-                print("Could not get or cast season"); return
+        
+        GCDBlock.async(.background) {
+            do {
+                let config = try PFConfig.getConfig()
+                
+                guard let season = config["season"] as? Int else { print("GC::initialSetup could not cast season to Int"); return }
+                guard let split  = config["split"]  as? Int else { print("CG::initialSetup could not cast split to Int");  return }
+                
+                print("Returned Season \(season), Split \(split)")
+                
+                if season != Defaults[.currentSeason] { Defaults[.currentSeason] = season }
+                if split  != Defaults[.currentSplit]  { Defaults[.currentSplit]  = split  }
+                
+                assert((split == 1 || split == 2), "GC::initialSetup assertion failure, split (\(split) does not match expected 1 or 2")
+                
+                let q = PFSeason.query()!
+                q.whereKey("year", equalTo: season)
+                
+                guard let currentSeason = try q.getFirstObject() as? PFSeason else { print("GC::initialSetup could not cast season to type"); return }
+                
+                let currentSplit: PFSplit = ((split == 1) ? currentSeason.spring : currentSeason.summer)
+                
+                try currentSplit.fetchIfNeeded()
+                
+                let wq = currentSplit.weeks.query()
+                
+                let weeks = try wq.findObjects()
+                print(weeks.first!.start.string())
+                
+            } catch let e {
+                print("Error in GC::initialSetup (dispatch block) \(e.localizedDescription)")
             }
-            
-            guard let split = config?["split"] as? Int else {
-                print("Could not get or cast split"); return
-            }
-            
-            print("Got Season \(season), Split \(split)")
-            
-            if season != Defaults[.currentSeason] {
-                Defaults[.currentSeason] = season
-            }
-            
-            if split != Defaults[.currentSplit] {
-                Defaults[.currentSplit] = split
-            }
-            
-            GCDBlock.async(.main, closure: {
-                self.beginGameFetch()
-            })
         }
-    }
-    
-    private func beginGameFetch() {
-        let q = PFSeason.query()
-        
-        q?.whereKey("year", equalTo: Defaults[.currentSeason])
-        
-        q?.findObjectsInBackground(block: { (results, error) in
-            guard error == nil else { print(error!.localizedDescription); return }
-            
-            guard let season = results?.first as? PFSeason else { print("Could not cast to season in GC::beginGameFetch"); return }
-            print(season.start.string())
-            
-            GCDBlock.async(.main, closure: {
-                self.fetchSeasons(season)
-            })
-        })
-
     }
     
     private func fetchSeasons(_ s: PFSeason) {
-        switch Defaults[.currentSplit] {
-        case 1:
-            break
-        case 2:
-            s.summer.fetchIfNeededInBackground { (split, error) in
-                guard error == nil else { print("Could not fetch split in GC::fetchSeasons"); return }
-                
-                guard let s = split as? PFSplit else { print("Could not cast split in GC::fetchSeasons"); return }
-                print(s.start.string())
-                
-                GCDBlock.async(.main, closure: {
-                    self.fetchWeeks(s)
-                })
-            }
-        default:
-            print("Fuck the dev. GC::fetchSeasons")
+        
+        let split: PFSplit = ((Defaults[.currentSplit] == 1) ? s.spring : s.summer)
+
+        split.fetchIfNeededInBackground { (split, error) in
+            guard error == nil else { print("Could not fetch split in GC::fetchSeasons"); return }
+            
+            guard let s = split as? PFSplit else { print("Could not cast split in GC::fetchSeasons"); return }
+            print(s.start.string())
+            
+            GCDBlock.async(.main, closure: {
+                self.fetchWeeks(s)
+            })
         }
+
     }
     
     private func fetchWeeks(_ w: PFSplit) {
