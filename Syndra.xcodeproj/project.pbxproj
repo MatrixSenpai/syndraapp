@@ -20,6 +20,7 @@
 		66800D6C20F75CAE00919239 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800D6B20F75CAE00919239 /* DefaultsKeys.swift */; };
 		66800D7120F762A600919239 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 66800D7020F762A600919239 /* Settings.bundle */; };
 		66800D8F20F778DA00919239 /* PFObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800D8E20F778DA00919239 /* PFObjects.swift */; };
+		6680BD6220F9AE71004D9F4D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6680BD6120F9AE71004D9F4D /* Protocols.swift */; };
 		6680CFD520D61B2300682FE2 /* s8s2.json in Resources */ = {isa = PBXBuildFile; fileRef = 6680CFD420D61B2300682FE2 /* s8s2.json */; };
 		6686D95120D3ECEF0058C7B3 /* FeaturedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */; };
 		66894FAD20E0C33F00AE5013 /* available.json in Resources */ = {isa = PBXBuildFile; fileRef = 66894FAC20E0C33F00AE5013 /* available.json */; };
@@ -29,7 +30,6 @@
 		6699EDBB20D32D91001DED0E /* GamesCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */; };
 		6699EDBD20D337FB001DED0E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6699EDBC20D337FB001DED0E /* libsqlite3.tbd */; };
 		66B7E57F20E2BDB300678767 /* menuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7E57E20E2BDB300678767 /* menuHeaderView.swift */; };
-		66C013B720E102310095B1EE /* pastSeasonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C013B620E102310095B1EE /* pastSeasonsViewController.swift */; };
 		66C013B920E102640095B1EE /* TimeBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C013B820E102640095B1EE /* TimeBrowser.swift */; };
 		66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */; };
 		66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C9B0B220CB3C6300A2B14C /* Assets.xcassets */; };
@@ -61,6 +61,7 @@
 		66800D6B20F75CAE00919239 /* DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
 		66800D7020F762A600919239 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		66800D8E20F778DA00919239 /* PFObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFObjects.swift; sourceTree = "<group>"; };
+		6680BD6120F9AE71004D9F4D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		6680CFD420D61B2300682FE2 /* s8s2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = s8s2.json; sourceTree = "<group>"; };
 		6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedGameView.swift; sourceTree = "<group>"; };
 		66894FAC20E0C33F00AE5013 /* available.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = available.json; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCommunicator.swift; sourceTree = "<group>"; };
 		6699EDBC20D337FB001DED0E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		66B7E57E20E2BDB300678767 /* menuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuHeaderView.swift; sourceTree = "<group>"; };
-		66C013B620E102310095B1EE /* pastSeasonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pastSeasonsViewController.swift; sourceTree = "<group>"; };
 		66C013B820E102640095B1EE /* TimeBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBrowser.swift; sourceTree = "<group>"; };
 		66C9B0A820CB3C6200A2B14C /* Syndra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syndra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +141,7 @@
 				66800D6720F7552B00919239 /* WeekObject.swift */,
 				665E546920F12BA900B96510 /* UIDeviceExtension.swift */,
 				66800D6B20F75CAE00919239 /* DefaultsKeys.swift */,
+				6680BD6120F9AE71004D9F4D /* Protocols.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -151,6 +152,16 @@
 				665E546620F12B8000B96510 /* todayGameViewController.swift */,
 			);
 			path = "Today Game";
+			sourceTree = "<group>";
+		};
+		6680BD6420F9B10B004D9F4D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				665E546820F12B8700B96510 /* Today Game */,
+				66C9B0C320CB41E500A2B14C /* Games View */,
+				66C9B0C420CB41ED00A2B14C /* Menu View */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		66894FAB20E0BB8E00AE5013 /* Seasons */ = {
@@ -190,9 +201,7 @@
 				6697609220F854B800F7CAA4 /* AppLoadingViewController.swift */,
 				6699EDBA20D32D91001DED0E /* GamesCommunicator.swift */,
 				665E546420F1277100B96510 /* UIWindowManager.swift */,
-				665E546820F12B8700B96510 /* Today Game */,
-				66C9B0C320CB41E500A2B14C /* Games View */,
-				66C9B0C420CB41ED00A2B14C /* Menu View */,
+				6680BD6420F9B10B004D9F4D /* Views */,
 				665BC1BC20CC45F400948768 /* Objects */,
 				665BC1B920CC410C00948768 /* Resources */,
 			);
@@ -203,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				665BC1BA20CC420C00948768 /* gamesViewController.swift */,
-				66C013B620E102310095B1EE /* pastSeasonsViewController.swift */,
 				66C9B0C120CB41D800A2B14C /* gameFilterViewController.swift */,
 				66C9B0C620CB436400A2B14C /* scheduleItemTableViewCell.swift */,
 				66435F7020DA2C67008C6689 /* scheduleItemSectionHeaderView.swift */,
@@ -415,7 +423,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				665BC1BB20CC420C00948768 /* gamesViewController.swift in Sources */,
-				66C013B720E102310095B1EE /* pastSeasonsViewController.swift in Sources */,
 				66C9B0C820CB436400A2B14C /* scheduleItemTableViewCell.swift in Sources */,
 				6697609320F854B800F7CAA4 /* AppLoadingViewController.swift in Sources */,
 				6686D95120D3ECEF0058C7B3 /* FeaturedGameView.swift in Sources */,
@@ -423,6 +430,7 @@
 				66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */,
 				66C9B0CB20CB463B00A2B14C /* teamOverlayView.swift in Sources */,
 				66800D6620F7551200919239 /* DayObject.swift in Sources */,
+				6680BD6220F9AE71004D9F4D /* Protocols.swift in Sources */,
 				66C9B0C020CB41CB00A2B14C /* menuTableViewController.swift in Sources */,
 				66800D6A20F7554E00919239 /* SplitObject.swift in Sources */,
 				66800D8F20F778DA00919239 /* PFObjects.swift in Sources */,

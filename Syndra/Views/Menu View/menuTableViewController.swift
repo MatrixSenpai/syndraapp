@@ -35,7 +35,7 @@ class menuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        seasons = GamesCommunicator.sharedInstance.availableSeasons()
+//        seasons = GamesCommunicator.sharedInstance
         
         tableView.backgroundColor = .flatBlack
         tableView.isScrollEnabled = false
@@ -121,7 +121,6 @@ class menuTableViewController: UITableViewController {
                 
             case 2:
                 location = .Seasons
-                seasons = GamesCommunicator.sharedInstance.availableSeasons()
                 reload(with: nil)
                 break
                 
@@ -137,23 +136,25 @@ class menuTableViewController: UITableViewController {
             }
             break
         case .Seasons:
-            if indexPath.row == 0 {
-                location = .Top
-                reload(with: nil)
-                return
-            }
-            
-            let cell = tableView.cellForRow(at: indexPath) as! menuTableViewCell
-            let t = cell.descLabel.text
-            let s = String(t!.split(separator: " ").last!)
-            let si = Int(s)
-            
-            splits = GamesCommunicator.sharedInstance.splitsFor(season: si!)
-            currentSeason = si!
-            location = .Splits
-            reload(with: nil)
-            
+            SCLAlertView().showError("Oops!", subTitle: "This should never happen. Report it to the developer and tell him he's shit")
             break
+//
+//            if indexPath.row == 0 {
+//                location = .Top
+//                reload(with: nil)
+//                return
+//            }
+//            
+//            let cell = tableView.cellForRow(at: indexPath) as! menuTableViewCell
+//            let t = cell.descLabel.text
+//            let s = String(t!.split(separator: " ").last!)
+//            let si = Int(s)
+//            
+//            splits = GamesCommunicator.sharedInstance.splitsFor(season: si!)
+//            currentSeason = si!
+//            location = .Splits
+//            reload(with: nil)
+//            
         case .Splits:
             /*
             if indexPath.row == 0 {

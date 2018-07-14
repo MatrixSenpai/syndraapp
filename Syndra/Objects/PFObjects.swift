@@ -35,17 +35,7 @@ class PFSplit: PFObject, PFSubclassing {
     public func type() -> SplitType {
         return SplitType(rawValue: self.split - 1)!
     }
-    
-    func nextGameAfterNow() -> PFGame {
-        let today = DateInRegion()
-
-        return PFGame()
-    }
-    
-    func nextGameAfter(week: Int?, Day: Int?, Game: Int?) {
         
-    }
-    
     subscript(_ week: Int) -> PFWeek {
         return PFWeek()
     }

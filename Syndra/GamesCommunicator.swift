@@ -11,14 +11,15 @@ import SwiftyJSON
 import SwiftyUserDefaults
 import Parse
 import GCDKit
+import SwiftDate
 
 class GamesCommunicator {
     public static let sharedInstance: GamesCommunicator = GamesCommunicator()
+
     var listener: GameListener?
     var progress: UpdateListener?
     
-    var games: Split!
-    var seasons: Available!
+    
     
     func initialSetup() {
         if isDataAvailable() { progress?.didFinish(); return }
@@ -48,7 +49,6 @@ class GamesCommunicator {
                 let wq = currentSplit.weeks.query()
                 
                 let weeks = try wq.findObjects()
-                print(weeks.first!.start.string())
 
                 print("Got \(weeks.count) weeks")
                 
@@ -56,7 +56,6 @@ class GamesCommunicator {
                     let dq = w.days.query()
                     
                     let days = try dq.findObjects()
-                    print(days.first!.start.string())
                     
                     print("Got \(days.count) days for week \(w.week)")
                     
@@ -64,142 +63,47 @@ class GamesCommunicator {
                         let gq = d.games.query()
                         
                         let games = try gq.findObjects()
-                        print(games.last!.gameTime.string())
+                        
+                        _ = try games.map { try $0.pin() }
+                        
+                        try d.pin()
                         
                         print("Got \(games.count) games for day \(d.day)")
                     }
+                    
+                    try w.pin()
                 }
                 
                 try currentSplit.pin(withName: "currentSplit")
                 
                 Defaults[.dataLoaded] = true
                 
-//                let gg = currentSplit.nextGameAfterNow()
-//                print(gg.gameTime.string())
-                
                 GCDBlock.async(.main, closure: {
-                    self.progress?.didFinish()
+                    self.nextGame()
+                    //self.progress?.didFinish()
                 })
             } catch let e {
                 print("Error in GC::initialSetup (dispatch block) \(e.localizedDescription)")
             }
         }
     }
+    
+    public func nextGame() {
+        let today = DateInRegion()
+        let gq = PFGame.query()!
+        
+        gq.whereKey("gameTime", greaterThanOrEqualTo: today.absoluteDate)
+        
+        gq.getFirstObjectInBackground { (g, e) in
+            guard e == nil else { print(e!.localizedDescription); return}
+            guard let game = g as? PFGame else { print("GC::nextGame could not cast game to type"); return }
+            
+            self.listener?.nextGame(is: game)
+        }
+    }
 
     private func isDataAvailable() -> Bool {
         return Defaults[.dataLoaded]
     }
-    
-    func loadData() {
-        guard let path = Bundle.main.path(forResource: "available", ofType: "json") else { fatalError("Looks like we can't find the data file for seasons") }
-        
-        do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: path))
-            let json = try JSON(data: data)
-            
-            guard let latest = json["latest"]["file"].string else { fatalError("Couldn't parse filename") }
-            getGamesFor(fileName: latest)
-            
-            guard let ss = Available(with: json["available"]) else { fatalError("Couldn't parse available data")}
-            seasons = ss
-        } catch let e {
-            print("GamesCommunicator::loadData() \(e.localizedDescription)")
-        }
-    }
-    
-    private func getGamesFor(fileName f: String) {
-        guard let path = Bundle.main.path(forResource: f, ofType: "json") else { fatalError("Requested path could not be loaded") }
-        loadGames(using: URL(fileURLWithPath: path))
-    }
-    
-    func getGamesFor(season: Int, split: Int) {
-        guard let path = Bundle.main.path(forResource: "s\(season)s\(split + 1)", ofType: "json") else { fatalError("Requested path could not be loaded") }
-        
-        loadGames(using: URL(fileURLWithPath: path))
-    }
-    
-    private func loadGames(using path: URL) {
-        do {
-            let data = try Data(contentsOf: path)
-            let json = try JSON(data: data)
-            
-            let split: Split = Split(fromJSON: json)
-            
-            listener?.getGames(games: split)
-        } catch let e {
-            print("GamesCommunicator::loadGames() failed with \(e.localizedDescription)")
-        }
-    }
-    
-    func availableSeasons() -> Array<Int> {
-        guard seasons != nil else { return [0] }
-        return seasons.seasons()
-    }
-    
-    func splitsFor(season: Int) -> Array<SplitType> {
-        return seasons.splits(for: season)
-    }
-    
-    func nextGame() -> (Game, Int, Int) {
-        return self.games.nextGame()
-    }
 }
 
-protocol GameListener {
-    func getGames(games: Split)
-}
-
-protocol UpdateListener {
-    func didFinish()
-}
-
-struct Available {
-    let data: Array<SS>
-    
-    init?(with j: JSON) {
-        guard let j = j.dictionary else { return nil }
-        
-        var d: [SS] = []
-        
-        for (_, v) in j {
-            let s = v["season"].int!
-            let t = v["split"].int!
-            
-            let u = SS(season: s, split: t)
-            d.append(u)
-        }
-        
-        data = d
-    }
-    
-    func seasons() -> Array<Int> {
-        var r: Array<Int> = []
-        for d in data {
-            if !r.contains(d.season) { r.append(d.season) }
-        }
-        
-        return r
-    }
-    
-    func splits(for s: Int) -> Array<SplitType> {
-        var r: Array<SplitType> = []
-        
-        for d in data {
-            if d.season == s {
-                r.append(d.split)
-            }
-        }
-        
-        return r
-    }
-}
-
-struct SS {
-    let season: Int
-    let split: SplitType
-    
-    init(season se: Int, split sp: Int) {
-        season = se
-        split = SplitType(rawValue: sp - 1)!
-    }
-}

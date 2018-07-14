@@ -45,7 +45,6 @@ class WindowManager {
         case .games:
             root.pushViewController(menu, animated: true)
             
-            comms.getGamesFor(season: 8, split: 1)
             break
         }
     }
