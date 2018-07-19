@@ -89,6 +89,11 @@ class PFGame: PFObject, PFSubclassing {
 }
 
 class PFTeam: PFObject, PFSubclassing {
+    
+    @NSManaged var name: String
+    @NSManaged var abbreviation: String
+    @NSManaged var icon: PFFile
+    
     static func parseClassName() -> String {
         return "Team"
     }

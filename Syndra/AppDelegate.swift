@@ -30,10 +30,14 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
     let window: UIWindow = UIWindow()
     
     func setupApplication() {
+        #if DEBUG
+            Parse.setLogLevel(.debug)
+            print("Debug level set")
+        #endif
         Parse.initialize(with: ParseClientConfiguration(block: { (config) in
-            config.applicationId = "4ad2abb0-6608-4f2c-b036-b9902cf4fe35"
-            config.clientKey = "spbSi2C50BsiIC16KXZPBUx6XjeszbSK"
-            config.server = "https://parse.buddy.com/parse"
+            config.applicationId = "io.matrixstudios.syndraapp"
+            config.clientKey = "io.matrixstudios.syndraapp-CLIENTKEY0xFF"
+            config.server = "http://matrixstudios.io:1337/parse"
             config.isLocalDatastoreEnabled = true
         }))
         
@@ -45,8 +49,6 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
         
         FontBlaster.blast()
         AppVersionMonitor.sharedMonitor.startup()
-        
-        Date.setDefaultRegion(Region(tz: TimeZoneName.americaChicago, cal: CalendarName.gregorian, loc: LocaleName.englishUnitedStates))
     }
     
     func loadInterface(launchItem: LaunchItem) {
@@ -61,7 +63,7 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
             Defaults[.dataLoaded] = false
             break
         case .notChanged:
-            Defaults[.dataLoaded] = false
+            //Defaults[.dataLoaded] = false
             break
         }
         

@@ -12,6 +12,7 @@ target 'Syndra' do
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
   pod 'FontBlaster'
   pod 'Parse'
+  pod 'Parse/UI'
   pod 'SwiftDate', '~> 4.0'
   pod 'TableFlip'
   pod 'PMSuperButton'
@@ -27,7 +28,7 @@ target 'Syndra' do
     installer.pods_project.targets.each do |t|
 
       # Swift 3 Support
-      if ['Toucan', 'NVActivityIndicatorView', 'SwiftyJSON', 'SuperDelegate', 'TableFlip', 'GCDKit'].include? t.name
+      if ['ParseUI', 'Toucan', 'NVActivityIndicatorView', 'SwiftyJSON', 'SuperDelegate', 'TableFlip', 'GCDKit'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '3'
         end

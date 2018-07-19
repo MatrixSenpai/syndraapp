@@ -9,8 +9,10 @@
 import UIKit
 import Neon
 import SwiftDate
+import Parse
+import GCDKit
 
-class todayGameViewController: UIViewController {
+class todayGameViewController: UIViewController, GameListener {
 
 //    let game: Game
     
@@ -29,17 +31,15 @@ class todayGameViewController: UIViewController {
     let ngtwo: LaterGame
     
     init() {
-        //game = GamesCommunicator.sharedInstance.nextGame().0
-        
         let b = Team(with: "Team Solo Mid", usingAbbrev: "TSM", andIcon: "TSM")
         let r = Team(with: "FlyQuest", usingAbbrev: "FQ", andIcon: "FQ")
         let g = Game(GoD: 1, blue: b, red: r, andTime: DateInRegion())
         
-        todayGame = NextGame(g)
+        todayGame = NextGame()
         
         todayLabel = UILabel()
         todayLabel.textColor = .flatWhite
-        todayLabel.text = "Now Playing"
+        todayLabel.text = "Next Game"
         todayLabel.font = UIFont.systemFont(ofSize: 30)
         
         allGames = UIButton()
@@ -50,7 +50,7 @@ class todayGameViewController: UIViewController {
         allGames.layer.cornerRadius = 15
         
         laterLabel = UILabel()
-        laterLabel.text = "Later Today"
+        laterLabel.text = "Later"
         laterLabel.textColor = .flatWhite
         laterLabel.font = UIFont.systemFont(ofSize: 25)
         
@@ -79,11 +79,20 @@ class todayGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .flatBlack
+        view.backgroundColor = .flatSkyBlueDark
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        GamesCommunicator.sharedInstance.listener = self
+        GamesCommunicator.sharedInstance.nextGame()
+    }
+    
+    func nextGame(is g: PFGame) {
+        todayGame.configure(with: g)
+    }
+    
+    func getGames(games: Split) {
+        // Unused
     }
 
     override func viewWillLayoutSubviews() {
@@ -106,49 +115,40 @@ class todayGameViewController: UIViewController {
 }
 
 class NextGame: UIView {
-    let game: Game
+    var game: PFGame?
     
-    let blueIcon: UIImageView = UIImageView()
+    let blueIcon: PFImageView = PFImageView()
     let blueTeam: UILabel = UILabel()
     
-    let redIcon: UIImageView = UIImageView()
+    let redIcon: PFImageView = PFImageView()
     let redTeam: UILabel = UILabel()
     
     let time: UILabel = UILabel()
     let fullTime: UILabel = UILabel()
     let inTime: UILabel = UILabel()
     
-    init(_ g: Game) {
-        game = g
-        
-        blueIcon.image = g.blueSide.icon()
+    init() {
         blueIcon.layer.cornerRadius = 20
         blueIcon.backgroundColor = .flatSkyBlueDark
         
-        blueTeam.text = g.blueSide.name
         blueTeam.lineBreakMode = .byWordWrapping
         blueTeam.numberOfLines = 0
         blueTeam.textColor = .flatWhite
         
-        redIcon.image = g.redSide.icon()
         redIcon.layer.cornerRadius = 20
         redIcon.backgroundColor = .flatRedDark
         
-        redTeam.text = g.redSide.name
         redTeam.lineBreakMode = .byWordWrapping
         redTeam.numberOfLines = 0
         redTeam.textColor = .flatWhite
         redTeam.textAlignment = .right
         
-        time.text = "Today"
         time.font = UIFont.systemFont(ofSize: 26)
         time.textColor = .flatWhite
         
-        fullTime.text = "July 7th, 5:00 PM"
         fullTime.font = UIFont.systemFont(ofSize: 21)
         fullTime.textColor = .flatWhite
         
-        inTime.text = "2 hours from now"
         inTime.font = UIFont.systemFont(ofSize: 15)
         inTime.textColor = .flatWhite
         
@@ -163,7 +163,47 @@ class NextGame: UIView {
         addSubview(fullTime)
         addSubview(inTime)
     
-        backgroundColor = .flatGreen
+        backgroundColor = .flatSkyBlue
+    }
+    
+    func configure(with g: PFGame) {
+        game = g
+        
+        GCDBlock.async(.background) {
+            do {
+                try g.blueSide.fetchIfNeeded()
+                try g.redSide.fetchIfNeeded()
+                
+                GCDBlock.async(.main, closure: {
+                    self.blueIcon.file = g.blueSide.icon
+                    self.blueIcon.loadInBackground()
+                    
+                    self.redIcon.file = g.redSide.icon
+                    self.redIcon.loadInBackground()
+                    
+                    self.blueTeam.text = g.blueSide.name
+                    self.redTeam.text = g.redSide.name
+                })
+            } catch let e {
+                print("NextGame::configure failed to fetch blue/red side with error: \(e.localizedDescription)")
+            }
+        }
+        
+        let r = g.gameTime
+
+        fullTime.text = r.string(custom: "EEEE, MMMM dd")
+        
+        if(r.isToday) {
+            time.text = "Today"
+            let compare = r.component(.hour, to: Date())!
+            inTime.text = "In \(abs(compare)) hours"
+        } else if(r.isTomorrow) {
+            time.text = "Tomorrow"
+            inTime.text = r.string(custom: "hh:mm a")
+        } else {
+            time.text = "This Weekend"
+            inTime.text = r.string(custom: "hh:mm a")
+        }
     }
     
     @available(*, unavailable)

@@ -27,6 +27,8 @@ PODS:
     - Parse/Core (= 1.17.1)
   - Parse/Core (1.17.1):
     - Bolts/Tasks (~> 1.9)
+  - Parse/UI (1.17.1):
+    - Parse/Core
   - PMSuperButton (2.1.2)
   - RetroProgress (1.0.0)
   - SCLAlertView (0.8)
@@ -48,6 +50,7 @@ DEPENDENCIES:
   - Neon
   - NVActivityIndicatorView
   - Parse
+  - Parse/UI
   - PMSuperButton
   - RetroProgress
   - SCLAlertView
@@ -118,6 +121,6 @@ SPEC CHECKSUMS:
   TableFlip: 2ae22773412b295a7cbc54d95b44085bb28092f6
   Toucan: 61867fb10948c02e9804280a95eb183e98eac97a
 
-PODFILE CHECKSUM: eb6686070146571a14846f7e8b17ac7d75905b36
+PODFILE CHECKSUM: a35b4e68882b995f971350c90d8c61ecfe25cfbe
 
 COCOAPODS: 1.5.3

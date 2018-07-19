@@ -80,7 +80,7 @@ class GamesCommunicator {
                 
                 GCDBlock.async(.main, closure: {
                     self.nextGame()
-                    //self.progress?.didFinish()
+                    self.progress?.didFinish()
                 })
             } catch let e {
                 print("Error in GC::initialSetup (dispatch block) \(e.localizedDescription)")
