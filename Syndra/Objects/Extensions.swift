@@ -74,3 +74,13 @@ public extension UIDevice {
     }()
     
 }
+
+func fetchString(forKey k: String) -> String {
+    var result = Bundle.main.localizedString(forKey: k, value: nil, table: nil)
+    
+    if result == k {
+        result = Bundle.main.localizedString(forKey: k, value: nil, table: "Default")
+    }
+    
+    return result
+}

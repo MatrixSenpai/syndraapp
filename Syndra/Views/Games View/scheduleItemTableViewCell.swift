@@ -84,17 +84,17 @@ class scheduleItemTableViewCell: UITableViewCell {
     }
     
     func configure(game: Game) {
-        teamOne.text = game.blueSide.name
-        teamTwo.text = game.redSide.name
-        
-        teamIcons.teamOne.image = game.blueSide.icon()
-        teamIcons.teamTwo.image = game.redSide.icon()
-        
-        gameHeader.text = "Game \(game.gameOfDay + 1)"
-        
-        var gtime = game.time()
-        if game.gameOfDay != 0 { gtime += " (approx)"}
-        time.text = gtime
+//        teamOne.text = game.blueSide.name
+//        teamTwo.text = game.redSide.name
+//        
+//        teamIcons.teamOne.image = game.blueSide.icon()
+//        teamIcons.teamTwo.image = game.redSide.icon()
+//        
+//        gameHeader.text = "Game \(game.gameOfDay + 1)"
+//        
+//        var gtime = game.time()
+//        if game.gameOfDay != 0 { gtime += " (approx)"}
+//        time.text = gtime
 
         layoutSubviews()
     }

@@ -1,0 +1,9 @@
+/* 
+  Default.strings
+  Syndra
+
+  Created by Mason Phillips on 7/19/18.
+  Copyright © 2018 Mason Phillips. All rights reserved.
+*/
+
+"season_not_match" = "Looks like the local game data isn't up-to-date! Doing this for you in the background, until then, app data may be inaccurate";

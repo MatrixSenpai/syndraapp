@@ -7,31 +7,21 @@
 //
 
 import UIKit
-import SwiftyJSON
-import SwiftDate
 import Parse
 
-struct Game {
-    var gameOfDay: Int
-    var blueSide: Team
-    var redSide : Team
-    var gameTime: DateInRegion
-    
-    init() {
-        gameOfDay = 0
-        blueSide = Team()
-        redSide = Team()
-        gameTime = DateInRegion()
+class Game: PFObject, PFSubclassing {
+    static func parseClassName() -> String {
+        return "Game"
     }
     
-    init(GoD g: Int, blue b: Team, red r: Team, andTime t: DateInRegion) {
-        gameOfDay = g
-        blueSide = b
-        redSide = r
-        gameTime = t
-    }
+    @NSManaged var blueSide: Team
+    @NSManaged var redSide : Team
+    @NSManaged var gameOfDay: Int
+    @NSManaged var day: Day
+    @NSManaged var gameTime: Date
+    @NSManaged var state: Int
     
-    func time() -> String {
-        return gameTime.string(format: DateFormat.custom("MMMM dd, hh:mm a"))
+    func gameState() -> GameState {
+        return GameState(rawValue: state)!
     }
 }

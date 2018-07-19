@@ -8,39 +8,15 @@
 
 import Foundation
 import SwiftDate
+import Parse
 
-struct Day {
-    let day: Int
-    let games: Dictionary<Int, Game>
-    let dayStart: DateInRegion
-    
-    var count: Int {
-        return games.count
+class Day: PFObject, PFSubclassing {
+    static func parseClassName() -> String {
+        return "Day"
     }
     
-    init() {
-        day = 0
-        games = [:]
-        dayStart = DateInRegion()
-    }
-    
-    init(day d: Int, games g: Dictionary<Int, Game>, startsAt s: DateInRegion) {
-        day = d
-        games = g
-        dayStart = s
-    }
-    
-    func firstGame() -> Game {
-        return games[0]!
-    }
-    
-    func time() -> String {
-        return dayStart.string(format: DateFormat.custom("EEEE, MMMM dd"))
-    }
-    
-    subscript(_ i: Int) -> Game {
-        get {
-            return games[i]!
-        }
-    }
+    @NSManaged var day: Int
+    @NSManaged var week: Week
+    @NSManaged var games: PFRelation<Game>
+    @NSManaged var start: Date
 }

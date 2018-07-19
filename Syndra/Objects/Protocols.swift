@@ -10,11 +10,14 @@ import Foundation
 
 // MARK: - GamesCommunicator Protocols
 protocol GameListener {
-    func getGames(games: Split)
-    func nextGame(is: PFGame)
+    func gamesFound(split s: Split)
+    func nextGame(is: Game, week: Int, ofDay: Int)
 }
 
 protocol UpdateListener {
-    func didFinish()
+    func didFinish(update: Bool)
+    func didStart()
+    func didChange(to step: Int)
+    func updateProgress(week: Int)
 }
 

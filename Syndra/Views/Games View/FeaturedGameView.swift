@@ -67,7 +67,7 @@ class blueSideView: UIView {
     }
     
     func reportTeams(team t: Team) {
-        icon.image = t.icon()
+        //icon.image = t.icon()
         team.text = t.abbreviation
         
         layoutSubviews()
@@ -116,7 +116,7 @@ class redSideView: UIView {
     }
     
     func reportTeams(team t: Team) {
-        icon.image = t.icon()
+        //icon.image = t.icon()
         team.text = t.abbreviation
         
         layoutSubviews()

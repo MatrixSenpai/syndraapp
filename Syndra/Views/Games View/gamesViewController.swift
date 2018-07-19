@@ -23,8 +23,9 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
     let right: UIButton = UIButton()
     let ngame: UIButton = UIButton()
     
-    var games: Split!
-    var nextGame: (Game, Int, Int)!
+    var split: Split!
+    
+    private var needsUpdate: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +49,7 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
         ngame.backgroundColor = .flatRedDark
         ngame.setTitle("\u{f017}", for: .normal)
         ngame.titleLabel?.font = FASOLID_UIFONT
-        ngame.addTarget(self, action: #selector(gamesViewController.showNextGame), for: .touchUpInside)
+        //ngame.addTarget(self, action: #selector(gamesViewController.showNextGame), for: .touchUpInside)
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -67,6 +68,10 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
     
     override func viewWillAppear(_ animated: Bool) {
         GamesCommunicator.sharedInstance.listener = self
+        
+        if needsUpdate {
+            GamesCommunicator.sharedInstance.gamesForCurrent()
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -99,25 +104,26 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard games != nil else { return nil }
-        
-        let h = scheduleItemSectionHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.width, height: 30))
-        
-        let weekString = games[week: section]
-        h.configureDates(week: "Week \(section + 1)", dates: weekString)
-        
-        return h
+//        guard games != nil else { return nil }
+//
+//        let h = scheduleItemSectionHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.width, height: 30))
+//
+//        let weekString = games[week: section]
+//        h.configureDates(week: "Week \(section + 1)", dates: weekString)
+//
+        return nil
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard games != nil else { return nil }
-        let weekString = "Week \(section + 1): " + games[week: section]
-        return weekString
+//        guard games != nil else { return nil }
+//        let weekString = "Week \(section + 1): " + games[week: section]
+        return ""
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard games != nil else { return 0 }
-        return games.games(for: section) + 2
+//        guard games != nil else { return 0 }
+//        return games.games(for: section) + 2
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -125,43 +131,40 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard games != nil else { return UITableViewCell() }
-        if indexPath.row == 0 || indexPath.row == 6 {
-            let day: Bool = (indexPath.row == 0)
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath)
-            
-            var dayString = ((day) ? "Day 1 - " : "Day 2 - ")
-            dayString += games[week: indexPath.section, day: day]
-            
-            cell.textLabel?.text = dayString
-            cell.textLabel?.textColor = .flatWhite
-            
-            cell.backgroundColor = ((day) ? .flatBlue : .flatRed)
-            
-            return cell
-        } else {
-            let index = ((indexPath.row <= 5) ? (indexPath.row - 1) : (indexPath.row - 7))
-            let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! scheduleItemTableViewCell
-            
-            cell.configure(game: games[week: indexPath.section, game: index])
-            
-            return cell
-        }
+//        guard games != nil else { return UITableViewCell() }
+//        if indexPath.row == 0 || indexPath.row == 6 {
+//            let day: Bool = (indexPath.row == 0)
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath)
+//
+//            var dayString = ((day) ? "Day 1 - " : "Day 2 - ")
+//            dayString += games[week: indexPath.section, day: day]
+//
+//            cell.textLabel?.text = dayString
+//            cell.textLabel?.textColor = .flatWhite
+//
+//            cell.backgroundColor = ((day) ? .flatBlue : .flatRed)
+//
+//            return cell
+//        } else {
+//            let index = ((indexPath.row <= 5) ? (indexPath.row - 1) : (indexPath.row - 7))
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! scheduleItemTableViewCell
+//
+//            cell.configure(game: games[week: indexPath.section, game: index])
+//
+//            return cell
+//        }
+        return UITableViewCell()
+    }
+    
+    func gamesFound(split s: Split) {
+        
     }
 
-    func getGames(games: Split) {
-        self.games = games
-        
-        tableView.reloadData()
-        
-        nextGame = games.nextGame()
-        showNextGame()
+    func nextGame(is g: Game, week w: Int, ofDay d: Int) {
+        headerView.configure(game: g, week: w, day: d)
     }
     
-    func nextGame(is: PFGame) {
-        
-    }
-    
+    /*
     @objc
     func showNextGame() {
         guard let next = nextGame else { return }
@@ -172,10 +175,10 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
         
         let index = IndexPath(row: r, section: next.1)
         scrollTo(row: index, at: UITableView.ScrollPosition.top, animated: true)
-    }
+    }*/
     
     func scrollTo(row: IndexPath, at: UITableView.ScrollPosition, animated: Bool) {
-        guard games != nil else { return }
-        tableView.scrollToRow(at: row, at: at, animated: animated)
+//        guard games != nil else { return }
+//        tableView.scrollToRow(at: row, at: at, animated: animated)
     }
 }

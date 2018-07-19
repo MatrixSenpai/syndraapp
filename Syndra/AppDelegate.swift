@@ -41,11 +41,11 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
             config.isLocalDatastoreEnabled = true
         }))
         
-        PFSeason.registerSubclass()
-        PFSplit.registerSubclass()
-        PFWeek.registerSubclass()
-        PFDay.registerSubclass()
-        PFGame.registerSubclass()
+        Season.registerSubclass()
+        Split.registerSubclass()
+        Week.registerSubclass()
+        Day.registerSubclass()
+        Game.registerSubclass()
         
         FontBlaster.blast()
         AppVersionMonitor.sharedMonitor.startup()
@@ -63,13 +63,13 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
             Defaults[.dataLoaded] = false
             break
         case .notChanged:
-            //Defaults[.dataLoaded] = false
+            GamesCommunicator.sharedInstance.checkData()
             break
         }
         
         print(AppVersionMonitor.sharedMonitor.state)
         
-        let controller = AppLoadingViewController()
+        let controller = WindowManager.sharedInstance.root
         window.rootViewController = controller
         window.makeKeyAndVisible()
     }
