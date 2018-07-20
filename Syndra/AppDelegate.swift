@@ -47,6 +47,10 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
         Day.registerSubclass()
         Game.registerSubclass()
         
+        let reset = UserDefaults.standard.bool(forKey: "reset")
+        UserDefaults.standard.set(false, forKey: "reset")
+        if(reset) { Defaults[.dataLoaded] = false }
+        
         FontBlaster.blast()
         AppVersionMonitor.sharedMonitor.startup()
     }
@@ -66,8 +70,6 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
             GamesCommunicator.sharedInstance.checkData()
             break
         }
-        
-        print(AppVersionMonitor.sharedMonitor.state)
         
         let controller = WindowManager.sharedInstance.root
         window.rootViewController = controller

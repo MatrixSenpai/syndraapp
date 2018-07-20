@@ -12,6 +12,7 @@ import Foundation
 protocol GameListener {
     func gamesFound(split s: Split)
     func nextGame(is: Game, week: Int, ofDay: Int)
+    func weekMatched(w: Week)
 }
 
 protocol UpdateListener {
@@ -20,4 +21,3 @@ protocol UpdateListener {
     func didChange(to step: Int)
     func updateProgress(week: Int)
 }
-

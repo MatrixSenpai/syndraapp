@@ -22,7 +22,7 @@
                 },
                 "4": {
                     "blueSide": "GGS",
-                    "redSide": "OTG"
+                    "redSide": "OPT"
                 },
                 "start": "2018-06-16T16:00:00-0500"
             },
@@ -45,7 +45,7 @@
                 },
                 "4": {
                     "blueSide": "C9",
-                    "redSide": "OTG"
+                    "redSide": "OPT"
                 },
                 "start": "2018-06-17T14:00:00-0500"
             }
@@ -61,7 +61,7 @@
                     "redSide": "CG"
                 },
                 "2": {
-                    "blueSide": "OTG",
+                    "blueSide": "OPT",
                     "redSide": "FOX"
                 },
                 "3": {
@@ -93,7 +93,7 @@
                 },
                 "4": {
                     "blueSide": "C9",
-                    "redSide": "OTG"
+                    "redSide": "OPT"
                 },
                 "start": "2018-06-24T14:00:00-0500"
             }
@@ -117,7 +117,7 @@
                     "redSide": "GGS"
                 },
                 "4": {
-                    "blueSide": "OTG",
+                    "blueSide": "OPT",
                     "redSide": "CLG"
                 },
                 "start": "2018-06-30T16:00:00-0500"
@@ -141,7 +141,7 @@
                 },
                 "4": {
                     "blueSide": "100",
-                    "redSide": "OTG"
+                    "redSide": "OPT"
                 },
                 "start": "2018-07-01T14:00:00-0500"
             }
@@ -162,7 +162,7 @@
                 },
                 "3": {
                     "blueSide": "TL",
-                    "redSide": "OTG"
+                    "redSide": "OPT"
                 },
                 "4": {
                     "blueSide": "C9",
@@ -188,7 +188,7 @@
                     "redSide": "C9"
                 },
                 "4": {
-                    "blueSide": "OTG",
+                    "blueSide": "OPT",
                     "redSide": "CG"
                 },
                 "start": "2018-07-15T14:00:00-0500"
@@ -206,7 +206,7 @@
                 },
                 "2": {
                     "blueSide": "TSM",
-                    "redSide": "OTG"
+                    "redSide": "OPT"
                 },
                 "3": {
                     "blueSide": "GGS",
@@ -220,7 +220,7 @@
             },
             "1": {
                 "0": {
-                    "blueSide": "OTG",
+                    "blueSide": "OPT",
                     "redSide": "C9"
                 },
                 "1": {
@@ -262,7 +262,7 @@
                 },
                 "4": {
                     "blueSide": "CLG",
-                    "redSide": "OTG"
+                    "redSide": "OPT"
                 },
                 "start": "2018-07-28T16:00:00-0500"
             },
@@ -284,7 +284,7 @@
                     "redSide": "FOX"
                 },
                 "4": {
-                    "blueSide": "OTG",
+                    "blueSide": "OPT",
                     "redSide": "GGS"
                 },
                 "start": "2018-07-29T14:00:00-0500"
@@ -305,7 +305,7 @@
                     "redSide": "FOX"
                 },
                 "3": {
-                    "blueSide": "OTG",
+                    "blueSide": "OPT",
                     "redSide": "FQ"
                 },
                 "4": {
@@ -333,7 +333,7 @@
                 },
                 "4": {
                     "blueSide": "CG",
-                    "redSide": "OTG"
+                    "redSide": "OPT"
                 },
                 "start": "2018-08-05T14:00:00-0500"
             }
@@ -353,7 +353,7 @@
                     "redSide": "GGS"
                 },
                 "3": {
-                    "blueSide": "OTG",
+                    "blueSide": "OPT",
                     "redSide": "TL"
                 },
                 "4": {
@@ -365,7 +365,7 @@
             "1": {
                 "0": {
                     "blueSide": "FOX",
-                    "redSide": "OTG"
+                    "redSide": "OPT"
                 },
                 "1": {
                     "blueSide": "GGS",
@@ -405,7 +405,7 @@
                     "redSide": "FQ"
                 },
                 "4": {
-                    "blueSide": "OTG",
+                    "blueSide": "OPT",
                     "redSide": "TSM"
                 },
                 "start": "2018-08-18T16:00:00-0500"
@@ -416,7 +416,7 @@
                     "redSide": "GGS"
                 },
                 "1": {
-                    "blueSide": "OTG",
+                    "blueSide": "OPT",
                     "redSide": "100"
                 },
                 "2": {

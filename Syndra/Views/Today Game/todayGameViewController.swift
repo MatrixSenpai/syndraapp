@@ -13,8 +13,7 @@ import Parse
 import GCDKit
 
 class todayGameViewController: UIViewController, GameListener {
-
-//    let game: Game
+    var game: Game!
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -80,14 +79,28 @@ class todayGameViewController: UIViewController, GameListener {
     
     override func viewDidAppear(_ animated: Bool) {
         GamesCommunicator.sharedInstance.listener = self
-        GamesCommunicator.sharedInstance.nextGame()
+        GamesCommunicator.sharedInstance.nextGame(current: true)
     }
     
-    func nextGame(is g: Game, week w: Int, ofDay d: Int) {
+    func nextGame(is g: Game, week: Int, ofDay: Int) {
         todayGame.configure(with: g)
-    }
+        
+        GCDBlock.async(.background) {
+            let ng = g.gameAfter(local: true)
+            let nng = ng.gameAfter(local: true)
 
+            GCDBlock.async(.main, closure: {
+                self.ngone.configure(with: ng)
+                self.ngtwo.configure(with: nng)
+            })
+        }
+    }
+    
     func gamesFound(split s: Split) {
+        // Unused
+    }
+    
+    func weekMatched(w: Week) {
         // Unused
     }
 

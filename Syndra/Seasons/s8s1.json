@@ -10,7 +10,7 @@
         },
         "1": {
           "blueSide": "100",
-          "redSide": "OTG"
+          "redSide": "OPT"
         },
         "2": {
           "blueSide": "CG",
@@ -28,7 +28,7 @@
       },
       "1": {
         "0": {
-          "blueSide": "OTG",
+          "blueSide": "OPT",
           "redSide": "TL"
         },
         "1": {
@@ -58,7 +58,7 @@
         },
         "1": {
           "blueSide": "TSM",
-          "redSide": "OTG"
+          "redSide": "OPT"
         },
         "2": {
           "blueSide": "C9",
@@ -84,7 +84,7 @@
           "redSide": "100"
         },
         "2": {
-          "blueSide": "OTG",
+          "blueSide": "OPT",
           "redSide": "FQ"
         },
         "3": {
@@ -106,7 +106,7 @@
         },
         "1": {
           "blueSide": "C9",
-          "redSide": "OTG"
+          "redSide": "OPT"
         },
         "2": {
           "blueSide": "CG",
@@ -125,7 +125,7 @@
       "1": {
         "0": {
           "blueSide": "FOX",
-          "redSide": "OTG"
+          "redSide": "OPT"
         },
         "1": {
           "blueSide": "100",
@@ -157,7 +157,7 @@
           "redSide": "C9"
         },
         "2": {
-          "blueSide": "OTG",
+          "blueSide": "OPT",
           "redSide": "CLG"
         },
         "3": {
@@ -188,7 +188,7 @@
           "redSide": "FOX"
         },
         "4": {
-          "blueSide": "OTG",
+          "blueSide": "OPT",
           "redSide": "CG"
         },
         "start": "2018-02-11T14:00:00-0500"
@@ -213,7 +213,7 @@
           "redSide": "FQ"
         },
         "4": {
-          "blueSide": "OTG",
+          "blueSide": "OPT",
           "redSide": "GGS"
         },
         "start": "2018-02-17T16:00:00-0500"
@@ -237,7 +237,7 @@
         },
         "4": {
           "blueSide": "FQ",
-          "redSide": "OTG"
+          "redSide": "OPT"
         },
         "start": "2018-02-18T14:00:00-0500"
       }
@@ -258,7 +258,7 @@
         },
         "3": {
           "blueSide": "GGS",
-          "redSide": "OTG"
+          "redSide": "OPT"
         },
         "4": {
           "blueSide": "TL",
@@ -268,7 +268,7 @@
       },
       "1": {
         "0": {
-          "blueSide": "OTG",
+          "blueSide": "OPT",
           "redSide": "TSM"
         },
         "1": {
@@ -310,7 +310,7 @@
         },
         "4": {
           "blueSide": "CG",
-          "redSide": "OTG"
+          "redSide": "OPT"
         },
         "start": "2018-03-03T16:00:00-0500"
       },
@@ -320,7 +320,7 @@
           "redSide": "TL"
         },
         "1": {
-          "blueSide": "OTG",
+          "blueSide": "OPT",
           "redSide": "FOX"
         },
         "2": {
@@ -349,7 +349,7 @@
           "redSide": "CLG"
         },
         "2": {
-          "blueSide": "OTG",
+          "blueSide": "OPT",
           "redSide": "C9"
         },
         "3": {
@@ -380,7 +380,7 @@
           "redSide": "TSM"
         },
         "4": {
-          "blueSide": "OTG",
+          "blueSide": "OPT",
           "redSide": "100"
         },
         "start": "2018-03-11T14:00:00-0500"
@@ -406,7 +406,7 @@
         },
         "4": {
           "blueSide": "CLG",
-          "redSide": "OTG"
+          "redSide": "OPT"
         },
         "start": "2018-03-17T16:00:00-0500"
       },
@@ -429,7 +429,7 @@
         },
         "4": {
           "blueSide": "TL",
-          "redSide": "OTG"
+          "redSide": "OPT"
         },
         "5": {
           "blueSide": "100",

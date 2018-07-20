@@ -24,6 +24,8 @@ class GamesCommunicator {
         progress?.didStart()
         GCDBlock.async(.background) {
             do {
+                try PFObject.unpinAllObjects()
+                try PFObject.unpinAllObjects(withName: "currentSplit")
                 GCDBlock.async(.main, closure: {
                     self.progress?.didChange(to: 1)
                 })
@@ -54,52 +56,39 @@ class GamesCommunicator {
                 guard let currentSeason = try q.getFirstObject() as? Season else { print("GC::initialSetup could not cast season to type"); return }
                 
                 let currentSplit: Split = ((split == 1) ? currentSeason.spring : currentSeason.summer)
-                
                 try currentSplit.fetchIfNeeded()
-                
-                let wq = currentSplit.weeks.query()
-                
-                let weeks = try wq.findObjects()
+                try currentSplit.pin(withName: "currentSplit")
 
+                let weeks = currentSplit.weeks
                 print("Got \(weeks.count) weeks")
                 
                 GCDBlock.async(.main, closure: {
                     self.progress?.didChange(to: 4)
                 })
                 
-                var i = 1
+                var i = 0
                 for w in weeks {
+                    i += 1
                     GCDBlock.async(.main, closure: {
                         self.progress?.updateProgress(week: i)
-                        i += 1
                     })
-                    let dq = w.days.query()
+                    try w.fetchIfNeeded()
                     
-                    let days = try dq.findObjects()
-                    
-                    print("Got \(days.count) days for week \(w.week)")
-                    
+                    let days = w.days
                     for d in days {
-                        let gq = d.games.query()
+                        try d.fetchIfNeeded()
                         
-                        let games = try gq.findObjects()
+                        let games = d.games
                         
-                        _ = try games.map { try $0.pin() }
-                        
+                        _ = try games.map { try $0.fetchIfNeeded(); try $0.pin() }
                         try d.pin()
-                        
-                        print("Got \(games.count) games for day \(d.day)")
                     }
-                    
                     try w.pin()
                 }
-                
-                try currentSplit.pin(withName: "currentSplit")
                 
                 Defaults[.dataLoaded] = true
                 
                 GCDBlock.async(.main, closure: {
-                    self.nextGame()
                     self.progress?.didFinish(update: true)
                 })
             } catch let e {
@@ -113,9 +102,15 @@ class GamesCommunicator {
             do {
                 let config = try PFConfig.getConfig()
                 
-                guard let season = config["season"] as? Int, season == 7 else {
+                guard let season = config["season"] as? Int, season == Defaults[.currentSeason] else {
                     throw GamesVerificationError.SeasonNotMatch
                 }
+                
+                guard let split = config["split"] as? Int, split == Defaults[.currentSplit] else {
+                    throw GamesVerificationError.SplitNotMatch
+                }
+                
+                
             } catch let e {
                 switch e {
                 case is GamesVerificationError:
@@ -134,40 +129,9 @@ class GamesCommunicator {
             case .SeasonNotMatch:
                 WindowManager.sharedInstance.alert(title: "Games Need Update", message: fetchString(forKey: "season_not_match"))
                 break
+            case .SplitNotMatch:
+                WindowManager.sharedInstance.alert(title: "Games Need Update", message: fetchString(forKey: "season_not_match"))
             default: break
-            }
-        }
-    }
-    
-    public func nextGame() {
-        GCDBlock.async(.background) {
-            do {
-                let today = DateInRegion()
-                
-                let gq = Game.query()!
-                gq.fromLocalDatastore()
-                gq.whereKey("gameTime", greaterThanOrEqualTo: today.absoluteDate)
-                
-                guard let g = try gq.getFirstObject() as? Game else { fatalError("GC::nextGame failed to cast game back to type") }
-                
-                let dq = Day.query()!
-                dq.fromLocalDatastore()
-                dq.whereKey("objectId", equalTo: g.day)
-                
-                guard let d = try dq.getFirstObject() as? Day else { fatalError("GC::nextGame failed to cast day back to type") }
-                
-                let wq = Week.query()!
-                wq.fromLocalDatastore()
-                wq.whereKey("objectId", equalTo: d.week)
-                
-                guard let w = try dq.getFirstObject() as? Week else { fatalError("GC::nextGame failed to cast week back to type") }
-                
-                GCDBlock.async(.main, closure: {
-                    self.listener?.nextGame(is: g, week: w.week, ofDay: d.day)
-                })
-                
-            } catch let e {
-                print(e.localizedDescription)
             }
         }
     }
@@ -182,52 +146,123 @@ class GamesCommunicator {
             do {
                 let sq = Season.query()!
                 if(current) { sq.fromLocalDatastore() }
-                sq.whereKey("season", equalTo: s)
+                sq.whereKey("year", equalTo: s)
                 
                 guard let season = try sq.getFirstObject() as? Season else { fatalError("GC::gamesFor failed to cast season back to type") }
                 
                 let split: Split = ((p == 1) ? season.spring : season.summer)
                 try split.fetchIfNeeded()
-                
-                let wq = split.weeks.query()
-                if(current) { wq.fromLocalDatastore() }
-                
-                let weeks = try wq.findObjects()
-                for w in weeks {
+
+                try split.weeks.forEach({ (w) in
                     try w.fetchIfNeeded()
                     
-                    let dq = w.days.query()
-                    if(current) { dq.fromLocalDatastore() }
-                    
-                    let days = try dq.findObjects()
-                    for d in days {
+                    try w.days.forEach({ (d) in
                         try d.fetchIfNeeded()
                         
-                        let gq = d.games.query()
-                        if(current) { gq.fromLocalDatastore() }
-                        
-                        let games = try gq.findObjects()
-                        for g in games {
-                            try g.fetchIfNeeded()
-                        }
-                    }
-                }
+                        _ = try d.games.map { try $0.fetchIfNeeded(); }
+                    })
+                })
                 
+                GCDBlock.async(.main, closure: {
+                    self.listener?.gamesFound(split: split)
+                })
             } catch let e {
                 print(e.localizedDescription)
             }
         }
     }
+    
+    public func closestWeek() {
+        GCDBlock.async(.background) {
+            do {
+                let today = DateInRegion()
+                
+                let gq = Game.query()!
+                gq.fromLocalDatastore()
+                gq.whereKey("gameTime", greaterThanOrEqualTo: today.absoluteDate)
+                gq.order(byAscending: "gameTime")
+                
+                let g = try gq.getFirstObject() as! Game
+                let d = g.parent
+                try d.fetchIfNeeded()
+                let w = d.parent
+                try w.fetchIfNeeded()
+                
+                for dd in w.days {
+                    try dd.fetchIfNeeded()
+                    
+                    for gg in dd.games {
+                        try gg.fetchIfNeeded()
+                        try gg.blueSide.fetchIfNeeded()
+                        try gg.redSide.fetchIfNeeded()
+                    }
+                }
+                
+                GCDBlock.async(.main, closure: {
+                    self.listener?.weekMatched(w: w)
+                })
+            } catch let e {
+                WindowManager.sharedInstance.alert(title: "Fetching Weeks", message: "An error occured during fetch, no data could be retrieved")
+                print(e.localizedDescription)
+            }
+        }
+    }
+    
+    public func weekMatching(w: Int, se: Int, s: Int) {
+        GCDBlock.async(.background) {
+            do {
+                let wq = Week.query()!
+                wq.fromLocalDatastore()
+                
+                wq.whereKey("week", equalTo: w)
+                
+                guard let w = try wq.getFirstObject() as? Week else { throw SyndraCast.CastBackWeek }
+                
+                try w.fetchIfNeeded()
+                try w.days.forEach { (d) in
+                    try d.fetchIfNeeded()
+                    try d.games.forEach { (g) in
+                        try g.fetchIfNeeded()
+                        try g.blueSide.fetchIfNeeded()
+                        try g.redSide.fetchIfNeeded()
+                    }
+                }
+                
+                GCDBlock.async(.main, closure: {
+                    self.listener?.weekMatched(w: w)
+                })
+            } catch let e {
+                GCDBlock.async(.main, closure: {
+                    WindowManager.sharedInstance.alert(title: "Fetching Weeks", message: "An error occured during fetch, no data could be retrieved")
+                })
+                
+                print(e.localizedDescription)
+            }
+        }
+    }
 
+    public func nextGame(current l: Bool) {
+        GCDBlock.async(.background) {
+            let g = Game.nextGame(local: l)
+            
+            do {
+                let d = g.parent
+                try d.fetchIfNeeded()
+                
+                let w = d.parent
+                try w.fetchIfNeeded()
+                
+                GCDBlock.async(.main, closure: {
+                    self.listener?.nextGame(is: g, week: w.week, ofDay: d.day)
+                })
+            } catch let e {
+                print(e.localizedDescription)
+            }
+        }
+    }
+    
     private func isDataAvailable() -> Bool {
         return Defaults[.dataLoaded]
     }
 }
 
-enum GamesVerificationError: Error {
-    case SeasonNotMatch
-    case SplitNotMatch
-    case WeekCountNotMatch
-    case DayCountNotMatch
-    case GameCountNotMatch
-}

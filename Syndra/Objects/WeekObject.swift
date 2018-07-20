@@ -14,8 +14,31 @@ class Week: PFObject, PFSubclassing {
         return "Week"
     }
     
+    var count: Int {
+        return days.count
+    }
+    
+    var gameCount: Int {
+        var r = 0
+        do {
+            try days.forEach({ (d) in
+                try d.fetchIfNeeded()
+                r += d.games.count
+            })
+        } catch let e { print(e.localizedDescription) }
+        return r
+    }
+    
     @NSManaged var week: Int
-    @NSManaged var split: Split
-    @NSManaged var days: PFRelation<Day>
+    @NSManaged var parent: Split
+    @NSManaged var days: Array<Day>
     @NSManaged var start: Date
+    
+    func closest() {
+        
+    }
+    
+    subscript(_ day: Int, _ game: Int) -> Game {
+        return days[day].games[game]
+    }
 }

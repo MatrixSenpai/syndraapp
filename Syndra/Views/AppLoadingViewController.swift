@@ -38,6 +38,9 @@ class AppLoadingViewController: UIViewController, UpdateListener {
         loader.pastStepFillColor = .flatBlue
         loader.currentStepFillColor = .flatRed
         
+        //bg = UIImageView(image: UIImage(named: "loading-back"))
+        
+        //view.addSubview(bg)
         view.addSubview(viewTitle)
         view.addSubview(loader)
         
@@ -46,6 +49,7 @@ class AppLoadingViewController: UIViewController, UpdateListener {
     }
     
     override func viewDidLayoutSubviews() {
+        //bg.fillSuperview()
         viewTitle.anchorToEdge(.top, padding: 160, width: view.width, height: viewTitle.intrinsicContentSize.height)
         loader.alignAndFillHeight(align: .underCentered, relativeTo: viewTitle, padding: 40, width: view.width * 0.8, offset: 20)
     }

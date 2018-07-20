@@ -9,6 +9,7 @@
 import UIKit
 import Neon
 import CoreGraphics
+import Parse
 
 class FeaturedGameView: UIView {
     
@@ -46,7 +47,7 @@ class FeaturedGameView: UIView {
 class blueSideView: UIView {
     var path: UIBezierPath!
     
-    let icon: UIImageView = UIImageView()
+    let icon: PFImageView = PFImageView()
     let team: UILabel = UILabel()
     
     override init(frame: CGRect) {
@@ -67,7 +68,8 @@ class blueSideView: UIView {
     }
     
     func reportTeams(team t: Team) {
-        //icon.image = t.icon()
+        icon.file = t.icon
+        icon.loadInBackground()
         team.text = t.abbreviation
         
         layoutSubviews()
@@ -94,7 +96,7 @@ class blueSideView: UIView {
 class redSideView: UIView {
     var path: UIBezierPath!
     
-    let icon: UIImageView = UIImageView()
+    let icon: PFImageView = PFImageView()
     let team: UILabel = UILabel()
     
     override init(frame: CGRect) {
@@ -116,7 +118,8 @@ class redSideView: UIView {
     }
     
     func reportTeams(team t: Team) {
-        //icon.image = t.icon()
+        icon.file = t.icon
+        icon.loadInBackground()
         team.text = t.abbreviation
         
         layoutSubviews()

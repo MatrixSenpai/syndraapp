@@ -16,7 +16,7 @@ class Day: PFObject, PFSubclassing {
     }
     
     @NSManaged var day: Int
-    @NSManaged var week: Week
-    @NSManaged var games: PFRelation<Game>
+    @NSManaged var parent: Week
+    @NSManaged var games: Array<Game>
     @NSManaged var start: Date
 }

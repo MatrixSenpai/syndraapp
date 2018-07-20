@@ -14,9 +14,32 @@ class Season: PFObject, PFSubclassing {
         return "Season"
     }
     
-    @NSManaged var name: String
+    override var description: String {
+        var r = ""
+        
+        r += "Season \(year) (ID: \(self.objectId ?? "<null>"))\n"
+        r += "Spring Split: \(spring.shortDescription)\n"
+        r += "Summer Split: \(summer.shortDescription)\n"
+        
+        return r
+    }
+    
+    var shortDescription: String {
+        return "Season \(year) (ID: \(self.objectId ?? "<null>"))\n"
+    }
+    
     @NSManaged var year: Int
-    @NSManaged var start: Date
     @NSManaged var spring: Split
     @NSManaged var summer: Split
+    
+    static func season(for y: Int) throws -> Season {
+        let sq = Season.query()!
+        sq.whereKey("year", equalTo: y)
+        
+        guard let season = try sq.getFirstObject() as? Season else {
+            throw SyndraCast.CastBackSeason
+        }
+        
+        return season
+    }
 }

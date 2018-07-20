@@ -13,20 +13,25 @@ import NVActivityIndicatorView
 import TableFlip
 import PMSuperButton
 import Neon
+import SwiftyUserDefaults
 
-class gamesViewController: MenuInterfacingViewController, GameListener, TimeListener, UITableViewDelegate, UITableViewDataSource {
+class gamesViewController: MenuInterfacingViewController, GameListener {
     let headerView: FeaturedGameView = FeaturedGameView()
-    var tableView: UITableView = UITableView()
+    var tableView: GamesTableView = GamesTableView()
     let scrollView: TimeBrowser = TimeBrowser()
+    
+    var bg: NVActivityIndicatorView!
     
     let left : UIButton = UIButton()
     let right: UIButton = UIButton()
     let ngame: UIButton = UIButton()
     
     var split: Split!
+    var nextGame: IndexPath?
     
     private var needsUpdate: Bool = true
     
+    // MARK: - View Configuration
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,12 +55,11 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
         ngame.setTitle("\u{f017}", for: .normal)
         ngame.titleLabel?.font = FASOLID_UIFONT
         //ngame.addTarget(self, action: #selector(gamesViewController.showNextGame), for: .touchUpInside)
-
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.register(scheduleItemTableViewCell.self, forCellReuseIdentifier: "teamCell")
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "headerCell")
+        
+        bg = NVActivityIndicatorView(frame: CGRect(x: tableView.center.x, y: tableView.center.y, width: 50, height: 50))
+        bg.type = .lineScalePulseOutRapid
+        bg.color = .flatWhite
+        bg.startAnimating()
         
         view.addSubview(headerView)
         view.addSubview(tableView)
@@ -68,19 +72,16 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
     
     override func viewWillAppear(_ animated: Bool) {
         GamesCommunicator.sharedInstance.listener = self
-        
-        if needsUpdate {
-            GamesCommunicator.sharedInstance.gamesForCurrent()
-        }
+
+        GamesCommunicator.sharedInstance.closestWeek()
+        GamesCommunicator.sharedInstance.nextGame(current: true)
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
         headerView.anchorToEdge(.top, padding: 0, width: view.width, height: ((UIDevice.modelName == "iPhone X") ? 140 : 100))
-        
         scrollView.anchorToEdge(.bottom, padding: 0, width: view.width, height: 90)
-        
         tableView.alignBetweenVertical(align: .underCentered, primaryView: headerView, secondaryView: scrollView, padding: 0, width: view.width)
         
         left.anchorInCorner(.bottomLeft, xPad: 0, yPad: 120, width: 50, height: 50)
@@ -98,70 +99,25 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
         nMask.path = UIBezierPath(roundedRect: right.bounds, byRoundingCorners: [.topLeft, .bottomLeft], cornerRadii: CGSize(width: 10, height: 10)).cgPath
         ngame.layer.mask = nMask
     }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 9
-    }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        guard games != nil else { return nil }
-//
-//        let h = scheduleItemSectionHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.width, height: 30))
-//
-//        let weekString = games[week: section]
-//        h.configureDates(week: "Week \(section + 1)", dates: weekString)
-//
-        return nil
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        guard games != nil else { return nil }
-//        let weekString = "Week \(section + 1): " + games[week: section]
-        return ""
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard games != nil else { return 0 }
-//        return games.games(for: section) + 2
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return ((indexPath.row != 0 && indexPath.row != 6) ? 250 : 25)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard games != nil else { return UITableViewCell() }
-//        if indexPath.row == 0 || indexPath.row == 6 {
-//            let day: Bool = (indexPath.row == 0)
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath)
-//
-//            var dayString = ((day) ? "Day 1 - " : "Day 2 - ")
-//            dayString += games[week: indexPath.section, day: day]
-//
-//            cell.textLabel?.text = dayString
-//            cell.textLabel?.textColor = .flatWhite
-//
-//            cell.backgroundColor = ((day) ? .flatBlue : .flatRed)
-//
-//            return cell
-//        } else {
-//            let index = ((indexPath.row <= 5) ? (indexPath.row - 1) : (indexPath.row - 7))
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! scheduleItemTableViewCell
-//
-//            cell.configure(game: games[week: indexPath.section, game: index])
-//
-//            return cell
-//        }
-        return UITableViewCell()
-    }
-    
+    // MARK: - Selection
     func gamesFound(split s: Split) {
-        
+        self.split = s
+        GamesCommunicator.sharedInstance.nextGame(current: true)
     }
 
     func nextGame(is g: Game, week w: Int, ofDay d: Int) {
         headerView.configure(game: g, week: w, day: d)
+        
+        tableView.reloadData()
+    }
+    
+    func weekMatched(w: Week) {
+        tableView.configure(with: w)
+    }
+    
+    func get(week: Int) {
+        GamesCommunicator.sharedInstance.weekMatching(w: week, se: Defaults[.currentSplit], s: Defaults[.currentSeason])
     }
     
     /*
@@ -176,9 +132,4 @@ class gamesViewController: MenuInterfacingViewController, GameListener, TimeList
         let index = IndexPath(row: r, section: next.1)
         scrollTo(row: index, at: UITableView.ScrollPosition.top, animated: true)
     }*/
-    
-    func scrollTo(row: IndexPath, at: UITableView.ScrollPosition, animated: Bool) {
-//        guard games != nil else { return }
-//        tableView.scrollToRow(at: row, at: at, animated: animated)
-    }
 }

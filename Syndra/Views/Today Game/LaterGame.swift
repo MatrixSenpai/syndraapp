@@ -32,6 +32,7 @@ class LaterGame: UIView {
         redTeam.textColor = .flatWhite
         redTeam.textAlignment = .right
         
+        time.text = "Loading..."
         time.font = UIFont.systemFont(ofSize: 15)
         time.textColor = .flatWhite
         time.textAlignment = .center
@@ -69,8 +70,8 @@ class LaterGame: UIView {
                     self.redIcon.file = g.redSide.icon
                     self.redIcon.loadInBackground()
                     
-                    self.blueTeam.text = g.blueSide.name
-                    self.redTeam.text = g.redSide.name
+                    self.blueTeam.text = g.blueSide.abbreviation
+                    self.redTeam.text = g.redSide.abbreviation
                 })
             } catch let e {
                 print("NextGame::configure failed to fetch blue/red side with error: \(e.localizedDescription)")

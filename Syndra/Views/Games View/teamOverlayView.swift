@@ -8,15 +8,16 @@
 
 import UIKit
 import Neon
+import Parse
 
 class teamOverlayView: UIView {
     
-    var teamOne: UIImageView
-    var teamTwo: UIImageView
+    var teamOne: PFImageView
+    var teamTwo: PFImageView
     
     override init(frame: CGRect) {
-        teamOne = UIImageView()
-        teamTwo = UIImageView()
+        teamOne = PFImageView()
+        teamTwo = PFImageView()
         
         super.init(frame: frame)
         
@@ -24,11 +25,16 @@ class teamOverlayView: UIView {
         addSubview(teamTwo)
     }
     
-    init(one: UIImage?, two: UIImage?) {
-        teamOne = UIImageView(image: one)
-        teamTwo = UIImageView(image: two)
+    init(one: PFFile, two: PFFile) {
+        teamOne = PFImageView()
+        teamOne.file = one
+        teamTwo = PFImageView()
+        teamTwo.file = two
         
         super.init(frame: CGRect())
+        
+        teamOne.loadInBackground()
+        teamTwo.loadInBackground()
         
         addSubview(teamOne)
         addSubview(teamTwo)

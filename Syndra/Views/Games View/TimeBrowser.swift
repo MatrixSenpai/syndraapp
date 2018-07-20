@@ -11,7 +11,7 @@ import PMSuperButton
 import Neon
 
 class TimeBrowser: UIView {
-    var parent: TimeListener?
+    var parent: gamesViewController?
     
     let one  : PMSuperButton = PMSuperButton()
     let two  : PMSuperButton = PMSuperButton()
@@ -64,8 +64,7 @@ class TimeBrowser: UIView {
     
     @objc
     func goTo(sender: PMSuperButton) {
-        let index = IndexPath(row: 0, section: sender.tag)
-        parent?.tableView.scrollToRow(at: index, at: .top, animated: true)
+        parent?.get(week: sender.tag)
     }
     
     @objc
@@ -77,17 +76,8 @@ class TimeBrowser: UIView {
             
             if b.point(inside: translation, with: nil) {
                 let t = b.tag
-                
-                let i = IndexPath(row: 0, section: t)
-                
-                self.parent?.scrollTo(row: i, at: .top, animated: false)
+                parent?.get(week: t)
             }
         }
     }
-}
-
-protocol TimeListener {
-    var tableView: UITableView { get set }
-    
-    func scrollTo(row: IndexPath, at: UITableView.ScrollPosition, animated: Bool)
 }
