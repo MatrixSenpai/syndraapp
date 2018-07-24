@@ -46,7 +46,7 @@ class LaterGame: UIView {
         
         addSubview(time)
         
-        backgroundColor = .flatGreenDark
+        backgroundColor = .flatGrayDark
         layer.cornerRadius = 15
     }
     

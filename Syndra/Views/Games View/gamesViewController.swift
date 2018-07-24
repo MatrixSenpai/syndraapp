@@ -81,8 +81,8 @@ class gamesViewController: MenuInterfacingViewController, GameListener {
         super.viewWillLayoutSubviews()
         
         headerView.anchorToEdge(.top, padding: 0, width: view.width, height: ((UIDevice.modelName == "iPhone X") ? 140 : 100))
-        scrollView.anchorToEdge(.bottom, padding: 0, width: view.width, height: 90)
-        tableView.alignBetweenVertical(align: .underCentered, primaryView: headerView, secondaryView: scrollView, padding: 0, width: view.width)
+        scrollView.alignAndFillWidth(align: .underCentered, relativeTo: headerView, padding: 0, height: 90)
+        tableView.alignAndFill(align: .underCentered, relativeTo: scrollView, padding: 0)
         
         left.anchorInCorner(.bottomLeft, xPad: 0, yPad: 120, width: 50, height: 50)
         let leftMask = CAShapeLayer()
@@ -114,6 +114,7 @@ class gamesViewController: MenuInterfacingViewController, GameListener {
     
     func weekMatched(w: Week) {
         tableView.configure(with: w)
+        scrollView.setColor(for: w.week)
     }
     
     func get(week: Int) {

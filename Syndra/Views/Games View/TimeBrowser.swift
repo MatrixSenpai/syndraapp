@@ -27,6 +27,8 @@ class TimeBrowser: UIView {
         return [one, two, three, four, five, six, seven, eight, nine]
     }
     
+    var label: UILabel = UILabel()
+    
     init() {
         super.init(frame: CGRect())
         
@@ -39,7 +41,7 @@ class TimeBrowser: UIView {
             p.layer.cornerRadius = 10
             p.clipsToBounds = true
             p.backgroundColor = .flatForestGreen
-            p.titleLabel?.textColor = .flatWhite
+            p.titleLabel?.textColor = .flatWhiteDark
             p.addTarget(self, action: #selector(TimeBrowser.goTo(sender:)), for: .touchUpInside)
             
             addSubview(p)
@@ -47,6 +49,12 @@ class TimeBrowser: UIView {
             i += 1
         }
 
+        label.text = "Week"
+        label.textAlignment = .center
+        label.textColor = .flatWhite
+        label.font = UIFont.systemFont(ofSize: 21)
+        addSubview(label)
+        
         let pan = UIPanGestureRecognizer(target: self, action: #selector(TimeBrowser.handleScroll(recognizer:)))
         addGestureRecognizer(pan)
     }
@@ -59,12 +67,25 @@ class TimeBrowser: UIView {
     override func layoutSubviews() {
         backgroundColor = UIColor(gradientStyle: .leftToRight, withFrame: frame, andColors: [.flatSkyBlue, .flatRedDark])
         
-        groupAgainstEdge(group: .horizontal, views: buttons, againstEdge: .top, padding: 5, width: 35, height: 40)
+        label.anchorToEdge(.top, padding: 5, width: width, height: 25)
+        
+        groupAgainstEdge(group: .horizontal, views: buttons, againstEdge: .bottom, padding: 5, width: 35, height: 40)
     }
     
     @objc
     func goTo(sender: PMSuperButton) {
         parent?.get(week: sender.tag)
+        
+        setColor(for: sender.tag)
+    }
+    
+    func setColor(for b: Int) {
+        for b in buttons {
+            (b as! PMSuperButton).titleLabel?.textColor = .flatWhiteDark
+        }
+        
+        let button = viewWithTag(b) as! PMSuperButton
+        button.titleLabel?.textColor = .flatWhite
     }
     
     @objc

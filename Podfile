@@ -13,6 +13,7 @@ target 'Syndra' do
   pod 'FontBlaster'
   pod 'Parse'
   pod 'Parse/UI'
+  pod 'Spring'
   pod 'SwiftDate', '~> 4.0'
   pod 'TableFlip'
   pod 'PMSuperButton'
@@ -35,7 +36,7 @@ target 'Syndra' do
       end
 
       # Swift 4.0 support
-      if ['RetroProgress', 'StepProgressView', 'SCLAlertView', 'PMSuperButton'].include? t.name
+      if ['Spring', 'RetroProgress', 'StepProgressView', 'SCLAlertView', 'PMSuperButton'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '4.0'
         end

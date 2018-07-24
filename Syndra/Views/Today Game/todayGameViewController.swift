@@ -40,7 +40,7 @@ class todayGameViewController: UIViewController, GameListener {
         allGames = UIButton()
         allGames.setTitle("See All Games \u{f356}", for: .normal)
         allGames.setTitleColor(.flatWhite, for: .normal)
-        allGames.backgroundColor = .flatSkyBlue
+        allGames.backgroundColor = .flatGray
         allGames.titleLabel?.font = FASOLID_UIFONT
         allGames.layer.cornerRadius = 15
         
@@ -74,7 +74,7 @@ class todayGameViewController: UIViewController, GameListener {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .flatSkyBlueDark
+        view.backgroundColor = .flatBlack
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -60,19 +60,23 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
         
         PFAnalytics.trackAppOpened(launchOptions: launchItem.launchOptions)
         
-        switch AppVersionMonitor.sharedMonitor.state {
-        case .installed: fallthrough
-        case .upgraded(previousVersion: _): fallthrough
-        case .downgraded(previousVersion: _):
-            Defaults[.dataLoaded] = false
-            break
-        case .notChanged:
-            GamesCommunicator.sharedInstance.checkData()
-            break
-        }
+//        switch AppVersionMonitor.sharedMonitor.state {
+//        case .installed: fallthrough
+//        case .upgraded(previousVersion: _): fallthrough
+//        case .downgraded(previousVersion: _):
+//            Defaults[.dataLoaded] = false
+//            break
+//        case .notChanged:
+//            GamesCommunicator.sharedInstance.checkData()
+//            break
+//        }
         
-        let controller = WindowManager.sharedInstance.root
-        window.rootViewController = controller
+//        let controller = WindowManager.sharedInstance.root
+//        window.rootViewController = controller
+//        window.makeKeyAndVisible()
+        
+        let c = MyTeamsViewController()
+        window.rootViewController = c
         window.makeKeyAndVisible()
     }
     

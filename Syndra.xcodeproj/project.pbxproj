@@ -14,11 +14,13 @@
 		665E546520F1277100B96510 /* UIWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E546420F1277100B96510 /* UIWindowManager.swift */; };
 		665E546720F12B8000B96510 /* todayGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E546620F12B8000B96510 /* todayGameViewController.swift */; };
 		665E546A20F12BA900B96510 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E546920F12BA900B96510 /* Extensions.swift */; };
+		667CC3C22102DE4A00ADEE05 /* MessAround.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667CC3C12102DE4A00ADEE05 /* MessAround.xib */; };
 		66800D6620F7551200919239 /* DayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800D6520F7551200919239 /* DayObject.swift */; };
 		66800D6820F7552B00919239 /* WeekObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800D6720F7552B00919239 /* WeekObject.swift */; };
 		66800D6A20F7554E00919239 /* SplitObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800D6920F7554E00919239 /* SplitObject.swift */; };
 		66800D6C20F75CAE00919239 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800D6B20F75CAE00919239 /* DefaultsKeys.swift */; };
 		66800D7120F762A600919239 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 66800D7020F762A600919239 /* Settings.bundle */; };
+		66805D192103195800D093CD /* MyTeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66805D182103195800D093CD /* MyTeamsViewController.swift */; };
 		6680BD6220F9AE71004D9F4D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6680BD6120F9AE71004D9F4D /* Protocols.swift */; };
 		6680CFD520D61B2300682FE2 /* s8s2.json in Resources */ = {isa = PBXBuildFile; fileRef = 6680CFD420D61B2300682FE2 /* s8s2.json */; };
 		6686D95120D3ECEF0058C7B3 /* FeaturedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */; };
@@ -60,11 +62,13 @@
 		665E546420F1277100B96510 /* UIWindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowManager.swift; sourceTree = "<group>"; };
 		665E546620F12B8000B96510 /* todayGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todayGameViewController.swift; sourceTree = "<group>"; };
 		665E546920F12BA900B96510 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		667CC3C12102DE4A00ADEE05 /* MessAround.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessAround.xib; sourceTree = "<group>"; };
 		66800D6520F7551200919239 /* DayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayObject.swift; sourceTree = "<group>"; };
 		66800D6720F7552B00919239 /* WeekObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekObject.swift; sourceTree = "<group>"; };
 		66800D6920F7554E00919239 /* SplitObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitObject.swift; sourceTree = "<group>"; };
 		66800D6B20F75CAE00919239 /* DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
 		66800D7020F762A600919239 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		66805D182103195800D093CD /* MyTeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamsViewController.swift; sourceTree = "<group>"; };
 		6680BD6120F9AE71004D9F4D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		6680CFD420D61B2300682FE2 /* s8s2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = s8s2.json; sourceTree = "<group>"; };
 		6686D95020D3ECEF0058C7B3 /* FeaturedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedGameView.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				66C9B0B720CB3C6300A2B14C /* Info.plist */,
 				66800D7020F762A600919239 /* Settings.bundle */,
 				66ABA6B2210071C5003FAA11 /* Default.strings */,
+				667CC3C12102DE4A00ADEE05 /* MessAround.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 				665E546820F12B8700B96510 /* Today Game */,
 				66C9B0C320CB41E500A2B14C /* Games View */,
 				66C9B0C420CB41ED00A2B14C /* Menu View */,
+				66805D182103195800D093CD /* MyTeamsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 				66C9B0B620CB3C6300A2B14C /* LaunchScreen.storyboard in Resources */,
 				66800D7120F762A600919239 /* Settings.bundle in Resources */,
 				6680CFD520D61B2300682FE2 /* s8s2.json in Resources */,
+				667CC3C22102DE4A00ADEE05 /* MessAround.xib in Resources */,
 				66D7B42820CCE9A700F37B96 /* FASolid.otf in Resources */,
 				66D7B42620CCE9A700F37B96 /* FABrands.otf in Resources */,
 				66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */,
@@ -379,6 +386,7 @@
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/RetroProgress/RetroProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 				"${BUILT_PRODUCTS_DIR}/StepProgressView/StepProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/SuperDelegate/SuperDelegate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
@@ -402,6 +410,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RetroProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StepProgressView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SuperDelegate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
@@ -463,6 +472,7 @@
 				66C9B0C220CB41D800A2B14C /* gameFilterViewController.swift in Sources */,
 				66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */,
 				66ABA6B521007A6D003FAA11 /* NextGame.swift in Sources */,
+				66805D192103195800D093CD /* MyTeamsViewController.swift in Sources */,
 				66C9B0CB20CB463B00A2B14C /* teamOverlayView.swift in Sources */,
 				66800D6620F7551200919239 /* DayObject.swift in Sources */,
 				6680BD6220F9AE71004D9F4D /* Protocols.swift in Sources */,

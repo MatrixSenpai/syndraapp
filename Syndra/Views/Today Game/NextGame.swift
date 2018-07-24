@@ -59,7 +59,7 @@ class NextGame: UIView {
         addSubview(fullTime)
         addSubview(inTime)
         
-        backgroundColor = .flatSkyBlue
+        backgroundColor = .flatGray
     }
     
     func configure(with g: Game) {
