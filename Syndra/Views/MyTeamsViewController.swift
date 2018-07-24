@@ -10,83 +10,91 @@ import UIKit
 import Spring
 import Neon
 
-class MyTeamsViewController: UIViewController {
+class MyTeamsViewController: UIViewController, UIScrollViewDelegate {
 
     override var prefersStatusBarHidden: Bool { return true }
     
-    let triangleView: SpringView
+    var velocity: CGFloat = 0
     
-    let iconView: SpringImageView
-    let team: SpringLabel
-    let myTeam: SpringLabel
+    let headerView: UIView
+    let bg = UIImageView(image: UIImage(named: "tsm_header"))
+
+    let icon: UIImageView = UIImageView(image: UIImage(named: "TSM"))
     
-    var upcoming: UILabel
-    var tt: UILabel
+    let scrollView: UIScrollView
     
-    var positions: Array<Member> = []
+    let nextGames: MyTeamItemView
+    let stats: MyTeamItemView
+    let roster: MyTeamItemView
     
     init() {
-        triangleView = SpringView()
-        triangleView.backgroundColor = .flatOrange
+        bg.layer.opacity = 0.5
         
-        iconView = SpringImageView(image: UIImage(named: "FOX"))
-        iconView.backgroundColor = .flatWhite
-        iconView.layer.cornerRadius = 20
-        triangleView.addSubview(iconView)
+        headerView = UIView()
+        headerView.addSubview(bg)
+        headerView.addSubview(icon)
         
-        team = SpringLabel()
-        team.text = "My Team"
-        team.textColor = .flatWhite
-        team.font = UIFont.systemFont(ofSize: 25)
-        triangleView.addSubview(team)
+        scrollView = UIScrollView()
+        scrollView.isPagingEnabled = true
+        scrollView.clipsToBounds = false
         
-        myTeam = SpringLabel()
-        myTeam.text = "Echo Fox"
-        myTeam.textAlignment = .center
-        myTeam.textColor = .flatWhite
-        myTeam.font = UIFont.systemFont(ofSize: 35)
-        triangleView.addSubview(myTeam)
+        nextGames = MyTeamItemView()
+        nextGames.label.text = "Upcoming Games"
+        scrollView.addSubview(nextGames)
         
-        triangleView.animation = "slideDown"
-        triangleView.y = -200
-        triangleView.duration = 1.0
-        triangleView.curve = "easeIn"
+        stats = MyTeamItemView()
+        stats.label.text = "Team Statistics"
+        scrollView.addSubview(stats)
         
-        upcoming = UILabel()
-        upcoming.text = "Upcoming Games"
-        upcoming.textColor = .flatWhite
+        roster = MyTeamItemView()
+        roster.label.text = "Team Roster"
+        scrollView.addSubview(roster)
         
         super.init(nibName: nil, bundle: nil)
         
-        for _ in 0..<5 {
-            let r = Member()
-            positions.append(r)
-            view.addSubview(r)
-        }
-        
-        view.backgroundColor = .flatBlack
-        
-        view.addSubview(triangleView)
+        scrollView.delegate = self
+
+        view.addSubview(headerView)
+        view.addSubview(scrollView)
     }
     
     override func viewDidLayoutSubviews() {
-        triangleView.anchorToEdge(.top, padding: 0, width: view.width, height: 200)
+        headerView.anchorAndFillEdge(.top, xPad: 0, yPad: 0, otherSize: 200)
+        bg.fillSuperview()
         
-        iconView.anchorInCorner(.bottomLeft, xPad: 15, yPad: 15, width: 70, height: 70)
-        myTeam.alignAndFillWidth(align: .toTheRightCentered, relativeTo: iconView, padding: 10, height: 70)
+        icon.anchorInCenter(width: 70, height: 70)
         
-        team.alignAndFillWidth(align: .aboveMatchingLeft, relativeTo: iconView, padding: 20, height: 30)
+        let w = view.width * 0.8
+        let h = view.height - 280
         
-        view.groupAgainstEdge(group: .vertical, views: positions, againstEdge: .bottom, padding: 10, width: view.width * 0.8, height: 100)
+        scrollView.contentSize = CGSize(width: ((w + 20) * 3) + 75, height: h)
+        
+        scrollView.anchorAndFillEdge(.bottom, xPad: 0, yPad: 50, otherSize: view.height - 250)
+        nextGames.anchorToEdge(.bottom, padding: 5, width: w, height: h)
+        stats.align(.toTheRightCentered, relativeTo: nextGames, padding: 20, width: w, height: h)
+        roster.align(.toTheRightCentered, relativeTo: stats, padding: 20, width: w, height: h)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-//        triangleView.animate()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
+    func setContentOffset(_ scrollView: UIScrollView) {
+        let stopOver = (scrollView.contentSize.width - 75) / 3
+        var x = round((scrollView.contentOffset.x + (velocity * 150)) / stopOver) * stopOver
+        
+        x = max(0, min(x, scrollView.contentSize.width - scrollView.frame.width))
+        
+        scrollView.setContentOffset(CGPoint(x: x, y: scrollView.contentOffset.y), animated: true)
+    }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        self.velocity = velocity.x
+    }
+
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        setContentOffset(scrollView)
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard !decelerate else { return }
+        setContentOffset(scrollView)
     }
     
     @available(*, unavailable)
@@ -95,37 +103,25 @@ class MyTeamsViewController: UIViewController {
     }
 }
 
-class Member: UIView {
-    let position: UIImageView
-    let name: UILabel
-    let profile: UIImageView
+class MyTeamItemView: RoundedView {
+    let label: UILabel
     
     init() {
-        position = UIImageView(image: UIImage(named: "Mid_icon"))
-        name = UILabel()
-        profile = UIImageView(image: UIImage(named: "TSM"))
-        
-        name.text = "Bjergsen"
+        label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 22)
+        label.textColor = .flatWhite
         
         super.init(frame: CGRect())
         
-        addSubview(position)
-        addSubview(name)
-        addSubview(profile)
+        self.backgroundColor = .flatBlack
+        addSubview(label)
         
-        backgroundColor = .flatRedDark
+        roundAll()
     }
     
     override func layoutSubviews() {
-        position.anchorToEdge(.left, padding: 10, width: 70, height: 70)
+        super.layoutSubviews()
         
-        profile.anchorToEdge(.right, padding: 10, width: 70, height: 70)
-        
-        name.alignBetweenHorizontal(align: .toTheRightCentered, primaryView: position, secondaryView: profile, padding: 15, height: 21)
-    }
-    
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError()
+        label.anchorInCorner(.topLeft, xPad: 15, yPad: 15, width: self.width, height: 24)
     }
 }

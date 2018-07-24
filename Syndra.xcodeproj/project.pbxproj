@@ -50,6 +50,7 @@
 		66D7B42820CCE9A700F37B96 /* FASolid.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42420CCE9A700F37B96 /* FASolid.otf */; };
 		66D7B42920CCE9A700F37B96 /* FARegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42520CCE9A700F37B96 /* FARegular.otf */; };
 		66D7B42B20CCF1B100F37B96 /* MenuInterfacingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7B42A20CCF1B100F37B96 /* MenuInterfacingController.swift */; };
+		66E606152106B58400F9DB5E /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E606142106B58400F9DB5E /* RoundedView.swift */; };
 		75807F5BF0872A5BA1653D6C /* Pods_Syndra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,7 @@
 		66D7B42520CCE9A700F37B96 /* FARegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FARegular.otf; sourceTree = "<group>"; };
 		66D7B42A20CCF1B100F37B96 /* MenuInterfacingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInterfacingController.swift; sourceTree = "<group>"; };
 		66D7B43320CCF63000F37B96 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		66E606142106B58400F9DB5E /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		6BE2F75C8B0A07B02B04CC7A /* Pods-Syndra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syndra.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Syndra/Pods-Syndra.debug.xcconfig"; sourceTree = "<group>"; };
 		AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Syndra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -176,6 +178,7 @@
 		6680BD6420F9B10B004D9F4D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				66E606132106B56F00F9DB5E /* General Views */,
 				6697609220F854B800F7CAA4 /* AppLoadingViewController.swift */,
 				665E546820F12B8700B96510 /* Today Game */,
 				66C9B0C320CB41E500A2B14C /* Games View */,
@@ -268,6 +271,14 @@
 				66B7E57E20E2BDB300678767 /* menuHeaderView.swift */,
 			);
 			path = "Menu View";
+			sourceTree = "<group>";
+		};
+		66E606132106B56F00F9DB5E /* General Views */ = {
+			isa = PBXGroup;
+			children = (
+				66E606142106B58400F9DB5E /* RoundedView.swift */,
+			);
+			path = "General Views";
 			sourceTree = "<group>";
 		};
 		F048EB6B44F1BDE9F6FCB2DF /* Pods */ = {
@@ -485,6 +496,7 @@
 				66ABA6BF2101963F003FAA11 /* GamesTableView.swift in Sources */,
 				665E546A20F12BA900B96510 /* Extensions.swift in Sources */,
 				665BC1BE20CC460400948768 /* TeamObject.swift in Sources */,
+				66E606152106B58400F9DB5E /* RoundedView.swift in Sources */,
 				66ABA6BB2100894D003FAA11 /* Errors.swift in Sources */,
 				66800D6C20F75CAE00919239 /* DefaultsKeys.swift in Sources */,
 				665E546520F1277100B96510 /* UIWindowManager.swift in Sources */,
