@@ -1,6 +1,7 @@
 PODS:
   - AppVersionMonitor (1.3.1)
   - Bolts/Tasks (1.9.0)
+  - BWWalkthrough (2.1.2)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -44,6 +45,7 @@ PODS:
 
 DEPENDENCIES:
   - AppVersionMonitor
+  - BWWalkthrough
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`, branch `wip/swift4`)
   - FontBlaster
   - GCDKit (from `https://github.com/JohnEstropia/GCDKit`, branch `swift3_develop`)
@@ -68,6 +70,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AppVersionMonitor
     - Bolts
+    - BWWalkthrough
     - FontBlaster
     - MiniLayout
     - MMDrawerController
@@ -105,6 +108,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AppVersionMonitor: 4a212237149e64c557f95a14798009516be94939
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  BWWalkthrough: 6b18dc688ff6b7168383fee07fe199ccaad7e9f7
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
   GCDKit: 9a9216a4b4fa00e01ed829208e3811cc347a8f74
@@ -125,6 +129,6 @@ SPEC CHECKSUMS:
   TableFlip: 2ae22773412b295a7cbc54d95b44085bb28092f6
   Toucan: 61867fb10948c02e9804280a95eb183e98eac97a
 
-PODFILE CHECKSUM: 85f1b174432473a53edc396e978c42299077561f
+PODFILE CHECKSUM: 42e84697adfcbbe9e3b451b09e7343df154befb8
 
 COCOAPODS: 1.5.3

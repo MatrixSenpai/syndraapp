@@ -30,6 +30,21 @@
 			<key>DefaultValue</key>
 			<false/>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>My Team</string>
+			<key>Key</key>
+			<string>team</string>
+			<key>DefaultValue</key>
+			<string>Team Solo Mid</string>
+			<key>Values</key>
+			<array>
+				<string>Team Solo Mid</string>
+				<string>Echo Fox</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>

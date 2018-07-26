@@ -23,7 +23,7 @@ class RoundedView: UIView {
     
     private func round() {
         layer.cornerRadius = 5
-        layer.shadowColor = self.shadowColor?.cgColor ?? UIColor.flatGray.cgColor
+        layer.shadowColor = self.shadowColor?.cgColor ?? UIColor.clear.cgColor
         layer.shadowOpacity = 0.5
         layer.shadowRadius = 3
         layer.shadowOffset = .zero

@@ -8,6 +8,10 @@ body: BSD License
 For Bol…
 version: 1.9.0
 
+name: BWWalkthrough, nameSpecified: 
+body: Copyright (c) 2016 Y…
+version: 2.1.2
+
 name: ChameleonFramework, nameSpecified: 
 body: ##The MIT License (M…
 version: 2.1.0

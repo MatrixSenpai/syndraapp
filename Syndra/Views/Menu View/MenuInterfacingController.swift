@@ -35,6 +35,15 @@ class MenuInterfacingViewController: UIViewController {
         if(mm_drawerController.openSide == .right) { mm_drawerController.closeDrawer(animated: true, completion: nil); return }
         mm_drawerController.open(.right, animated: true, completion: nil)
     }
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
 }
 
 class MenuInterfacingTableViewController: UITableViewController {
@@ -58,5 +67,14 @@ class MenuInterfacingTableViewController: UITableViewController {
     @objc internal func openRight() {
         if(mm_drawerController.openSide == .right) { mm_drawerController.closeDrawer(animated: true, completion: nil); return }
         mm_drawerController.open(.right, animated: true, completion: nil)
+    }
+    
+    init() {
+        super.init(style: .grouped)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
     }
 }

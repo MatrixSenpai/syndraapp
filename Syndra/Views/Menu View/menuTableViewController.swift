@@ -13,14 +13,14 @@ import TableFlip
 class menuTableViewController: UITableViewController {
     
     let topLevel: Array<(String, String)> = [
+        ("\u{f091}", "My Team"),
+        ("\u{f017}", "Today's Games"),
         ("\u{f133}", "Season 8 Schedule"),
-        ("\u{f2eb}", "Teams & Standings"),
-        ("\u{f017}", "Other Seasons"),
-        ("\u{f478}", "Player Statistics"),
-        ("\u{f085}", "Settings")
+//        ("\u{f2eb}", "Teams & Standings"),
+//        ("\u{f017}", "Other Seasons"),
+//        ("\u{f478}", "Player Statistics"),
+//        ("\u{f085}", "Settings")
     ]
-
-    //let interface: UIWindowManager = UIWindowManager.sharedInstance
     
     var headerView: menuHeaderView {
         return menuHeaderView(frame: CGRect(x: 0, y: 0, width: view.width, height: 200))
@@ -29,6 +29,8 @@ class menuTableViewController: UITableViewController {
     var seasons: Array<Int> = []
     var currentSeason: Int = 0
     var splits: Array<SplitType> = []
+    
+    var initialSet: Bool = false
     
     var location: Level = .Top
 
@@ -45,10 +47,16 @@ class menuTableViewController: UITableViewController {
         tableView.register(menuTableViewCell.self, forCellReuseIdentifier: "menuCell")
         
         clearsSelectionOnViewWillAppear = false
-        
-        let i = IndexPath(row: 0, section: 0)
-        let c = tableView.cellForRow(at: i)
-        c?.setSelected(true, animated: false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if (!initialSet) {
+            let i = IndexPath(row: 0, section: 0)
+            let c = tableView.cellForRow(at: i)
+            c?.setSelected(true, animated: false)
+            
+            initialSet = true
+        }
     }
 
     // MARK: - Table view data source
@@ -108,20 +116,17 @@ class menuTableViewController: UITableViewController {
         case .Top:
             switch indexPath.row {
             case 0:
-                //interface.switchToView(.games)
-                
-                let c = tableView.cellForRow(at: indexPath)
-                c?.setSelected(true, animated: true)
-                
-                mm_drawerController.closeDrawer(animated: true, completion: nil)
-                
-            case 1:
-                SCLAlertView().showInfo("Hey there!", subTitle: "Looks like this menu option isn't ready yet :(")
+                WindowManager.sharedInstance.move(to: .team)
                 break
-                
+            case 1:
+                WindowManager.sharedInstance.move(to: .today)
+                break
             case 2:
-                location = .Seasons
-                reload(with: nil)
+                WindowManager.sharedInstance.move(to: .games)
+//                SCLAlertView().showInfo("Hey there!", subTitle: "Looks like this menu option isn't ready yet :(")
+//
+//                location = .Seasons
+//                reload(with: nil)
                 break
                 
             case 3:
@@ -136,15 +141,16 @@ class menuTableViewController: UITableViewController {
             }
             break
         case .Seasons:
+            if indexPath.row == 0 {
+                location = .Top
+                reload(with: nil)
+                return
+            }
+
             SCLAlertView().showError("Oops!", subTitle: "This should never happen. Report it to the developer and tell him he's shit")
             break
 //
-//            if indexPath.row == 0 {
-//                location = .Top
-//                reload(with: nil)
-//                return
-//            }
-//            
+//
 //            let cell = tableView.cellForRow(at: indexPath) as! menuTableViewCell
 //            let t = cell.descLabel.text
 //            let s = String(t!.split(separator: " ").last!)
@@ -172,6 +178,8 @@ class menuTableViewController: UITableViewController {
             SCLAlertView().showInfo("Hey there!", subTitle: "Looks like this menu option isn't ready yet :(")
             break
         }
+        
+        mm_drawerController.closeDrawer(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

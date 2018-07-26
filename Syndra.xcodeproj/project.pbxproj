@@ -14,6 +14,7 @@
 		665E546520F1277100B96510 /* UIWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E546420F1277100B96510 /* UIWindowManager.swift */; };
 		665E546720F12B8000B96510 /* todayGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E546620F12B8000B96510 /* todayGameViewController.swift */; };
 		665E546A20F12BA900B96510 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E546920F12BA900B96510 /* Extensions.swift */; };
+		66686D3621095C38002CD0CC /* SplitGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66686D3521095C38002CD0CC /* SplitGamesViewController.swift */; };
 		667CC3C22102DE4A00ADEE05 /* MessAround.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667CC3C12102DE4A00ADEE05 /* MessAround.xib */; };
 		66800D6620F7551200919239 /* DayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800D6520F7551200919239 /* DayObject.swift */; };
 		66800D6820F7552B00919239 /* WeekObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800D6720F7552B00919239 /* WeekObject.swift */; };
@@ -63,6 +64,7 @@
 		665E546420F1277100B96510 /* UIWindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowManager.swift; sourceTree = "<group>"; };
 		665E546620F12B8000B96510 /* todayGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todayGameViewController.swift; sourceTree = "<group>"; };
 		665E546920F12BA900B96510 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		66686D3521095C38002CD0CC /* SplitGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitGamesViewController.swift; sourceTree = "<group>"; };
 		667CC3C12102DE4A00ADEE05 /* MessAround.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessAround.xib; sourceTree = "<group>"; };
 		66800D6520F7551200919239 /* DayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayObject.swift; sourceTree = "<group>"; };
 		66800D6720F7552B00919239 /* WeekObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekObject.swift; sourceTree = "<group>"; };
@@ -175,15 +177,23 @@
 			path = "Today Game";
 			sourceTree = "<group>";
 		};
+		66686D3721097A18002CD0CC /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		6680BD6420F9B10B004D9F4D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				66E606132106B56F00F9DB5E /* General Views */,
 				6697609220F854B800F7CAA4 /* AppLoadingViewController.swift */,
+				66805D182103195800D093CD /* MyTeamsViewController.swift */,
 				665E546820F12B8700B96510 /* Today Game */,
 				66C9B0C320CB41E500A2B14C /* Games View */,
+				66686D3721097A18002CD0CC /* Onboarding */,
 				66C9B0C420CB41ED00A2B14C /* Menu View */,
-				66805D182103195800D093CD /* MyTeamsViewController.swift */,
+				66E606132106B56F00F9DB5E /* General Views */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,6 +268,7 @@
 			children = (
 				66ABA6BC210195FC003FAA11 /* Current Games */,
 				66C9B0C120CB41D800A2B14C /* gameFilterViewController.swift */,
+				66686D3521095C38002CD0CC /* SplitGamesViewController.swift */,
 			);
 			path = "Games View";
 			sourceTree = "<group>";
@@ -385,6 +396,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Syndra/Pods-Syndra-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AppVersionMonitor/AppVersionMonitor.framework",
+				"${BUILT_PRODUCTS_DIR}/BWWalkthrough/BWWalkthrough.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
@@ -409,6 +421,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppVersionMonitor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BWWalkthrough.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
@@ -491,6 +504,7 @@
 				66800D6A20F7554E00919239 /* SplitObject.swift in Sources */,
 				66B7E57F20E2BDB300678767 /* menuHeaderView.swift in Sources */,
 				66435F7120DA2C67008C6689 /* scheduleItemSectionHeaderView.swift in Sources */,
+				66686D3621095C38002CD0CC /* SplitGamesViewController.swift in Sources */,
 				665BC1C020CC470900948768 /* GameObject.swift in Sources */,
 				66800D6820F7552B00919239 /* WeekObject.swift in Sources */,
 				66ABA6BF2101963F003FAA11 /* GamesTableView.swift in Sources */,
@@ -640,7 +654,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6BE2F75C8B0A07B02B04CC7A /* Pods-Syndra.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
 				CODE_SIGN_ENTITLEMENTS = Syndra/Syndra.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
@@ -664,7 +678,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 536F803088623AC84BB47E41 /* Pods-Syndra.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
 				CODE_SIGN_ENTITLEMENTS = Syndra/Syndra.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;

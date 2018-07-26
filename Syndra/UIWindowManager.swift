@@ -15,49 +15,54 @@ class WindowManager {
     static let sharedInstance: WindowManager = WindowManager()
     
     private let comms: GamesCommunicator = GamesCommunicator.sharedInstance
-    private var loc  : ViewLocation = .loading
+    private var loc  : ViewLocation = .team
     
-    let root: UINavigationController
+    let menu: MMDrawerController
     
-    private var menu: MMDrawerController {
-        let r = gameFilterViewController()
-        let s = menuTableViewController()
-       
-        let m = MMDrawerController(center: games, leftDrawerViewController: s, rightDrawerViewController: r)!
-        m.openDrawerGestureModeMask = .custom
-        m.closeDrawerGestureModeMask = .all
-        m.maximumLeftDrawerWidth = 220
-
-        return m
-    }
+    let menuTable: menuTableViewController
     
-    let today: todayGameViewController = todayGameViewController()
-    let games: gamesViewController     = gamesViewController()
+    let today: todayGameViewController
+    let games: SplitGamesViewController
+    let team : MyTeamsViewController
     
     init() {
-        let a = AppLoadingViewController()
-        root = UINavigationController(rootViewController: a)
-        root.isNavigationBarHidden = true
+        today = todayGameViewController()
+        games = SplitGamesViewController()
+        team = MyTeamsViewController()
+        
+        menuTable = menuTableViewController()
+        
+        let right = gameFilterViewController()
+        
+        menu = MMDrawerController(center: team, leftDrawerViewController: menuTable, rightDrawerViewController: right)
+        menu.openDrawerGestureModeMask = .all
+        menu.closeDrawerGestureModeMask = .all
+        menu.maximumLeftDrawerWidth = 220
     }
+    
     
     func move(to v: ViewLocation) {
         switch v {
+        case .team:
+            menu.setCenterView(team, withCloseAnimation: true, completion: nil)
+            loc = .team
         case .loading:
-            root.popToRootViewController(animated: true)
+//            root.pushViewController(, animated: <#T##Bool#>)
             loc = .loading
         case .today:
-            root.pushViewController(today, animated: true)
+            menu.setCenterView(today, withCloseAnimation: true, completion: nil)
+            today.viewDidAppear(true)
             loc = .today
             break
         case .games:
-            root.pushViewController(menu, animated: true)
+            menu.setCenterView(games, withCloseAnimation: true, completion: nil)
             loc = .games
             break
         }
     }
     
     func alert(title t: String, message m: String) {
-        guard root.isViewLoaded && self.loc != .loading else {
+        guard menu.isViewLoaded && self.loc != .loading else {
             // Wait till that shit is visible
             GCDBlock.async(.background) {
                 sleep(1)
@@ -73,5 +78,5 @@ class WindowManager {
 }
 
 enum ViewLocation {
-    case loading, today, games
+    case loading, today, games, team
 }
