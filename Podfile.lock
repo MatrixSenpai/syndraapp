@@ -65,11 +65,15 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - Crashlytics (3.10.5):
+    - Fabric (~> 1.7.9)
   - EAIntroView (2.12.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
+  - Fabric (1.7.9)
   - FontBlaster (4.0.3)
   - GCDKit (2.0.0)
+  - McPicker (1.0.0)
   - MiniLayout (1.2.1)
   - MMDrawerController (0.6.0):
     - MMDrawerController/Core (= 0.6.0)
@@ -100,7 +104,6 @@ PODS:
   - Spring (1.0.5)
   - StepProgressView (1.4.1):
     - MiniLayout
-  - SuperDelegate (0.9.0)
   - SwiftDate (4.5.1)
   - SwiftyJSON (4.1.0)
   - SwiftyUserDefaults (3.0.1)
@@ -111,9 +114,12 @@ DEPENDENCIES:
   - AppVersionMonitor
   - arek
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`, branch `wip/swift4`)
+  - Crashlytics
   - EAIntroView
+  - Fabric
   - FontBlaster
   - GCDKit (from `https://github.com/JohnEstropia/GCDKit`, branch `swift3_develop`)
+  - McPicker
   - MMDrawerController
   - Neon
   - NVActivityIndicatorView
@@ -124,7 +130,6 @@ DEPENDENCIES:
   - SCLAlertView
   - Spring
   - StepProgressView
-  - SuperDelegate
   - SwiftDate (~> 4.0)
   - SwiftyJSON
   - SwiftyUserDefaults
@@ -136,9 +141,12 @@ SPEC REPOS:
     - AppVersionMonitor
     - arek
     - Bolts
+    - Crashlytics
     - EAIntroView
     - EARestrictedScrollView
+    - Fabric
     - FontBlaster
+    - McPicker
     - MiniLayout
     - MMDrawerController
     - Neon
@@ -150,7 +158,6 @@ SPEC REPOS:
     - SCLAlertView
     - Spring
     - StepProgressView
-    - SuperDelegate
     - SwiftDate
     - SwiftyJSON
     - SwiftyUserDefaults
@@ -178,10 +185,13 @@ SPEC CHECKSUMS:
   arek: dba69eb3197ee4ea4e063fa36836cec92c2540bd
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
   EAIntroView: 249559079ddfdbe80e5bcb755c04c3b964b2ac27
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
+  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
   FontBlaster: f18031f5dde2ce689f5330e7005edfe3c0815957
   GCDKit: 9a9216a4b4fa00e01ed829208e3811cc347a8f74
+  McPicker: 130183cd3d22fc6933ea9e63c5a0d0d1becc0122
   MiniLayout: 9ee6ff0d73c1c2af09251e062e9b45d012e446fb
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
@@ -193,13 +203,12 @@ SPEC CHECKSUMS:
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   Spring: 17901566c8ecf3a1327902b940406c64512f9bb1
   StepProgressView: 9cc82fc7987b1812b08ad5aa606b5646a47cc7d7
-  SuperDelegate: b70c7afddf8525217d0e074b850b8ea3cc6f8abd
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   TableFlip: 2ae22773412b295a7cbc54d95b44085bb28092f6
   Toucan: 61867fb10948c02e9804280a95eb183e98eac97a
 
-PODFILE CHECKSUM: 4792f7487be6174e7d6b4413d1d0a40e30146275
+PODFILE CHECKSUM: c6fcd79b18c93d1a937df33cb9412c0d72dc9085
 
 COCOAPODS: 1.5.3

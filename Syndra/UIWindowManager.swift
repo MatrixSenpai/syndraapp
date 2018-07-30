@@ -15,7 +15,7 @@ class WindowManager {
     static let sharedInstance: WindowManager = WindowManager()
     
     private let comms: GamesCommunicator = GamesCommunicator.sharedInstance
-    private var loc  : ViewLocation = .team
+    private var loc  : ViewLocation = .intro
     
     var root: UIViewController!
     
@@ -48,6 +48,10 @@ class WindowManager {
     func move(to v: ViewLocation) {
         if loc == .intro && v != .intro {
             root = menu
+            (UIApplication.shared.delegate as! AppDelegate).updateRoot()
+        } else if v == .intro && loc != .intro {
+            root = onboard
+            (UIApplication.shared.delegate as! AppDelegate).updateRoot()
         }
         switch v {
         case .intro:

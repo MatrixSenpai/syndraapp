@@ -9,9 +9,10 @@ target 'Syndra' do
     pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
 
   # System
-    pod 'SuperDelegate'
     pod 'SwiftyJSON'
     pod 'Parse'
+    pod 'Fabric'
+    pod 'Crashlytics'
     pod 'Parse/UI'
     pod 'SwiftDate', '~> 4.0'
     pod 'AppVersionMonitor'
@@ -20,6 +21,7 @@ target 'Syndra' do
 
   # UI/Layout
     pod 'Neon'
+    pod 'McPicker'
     pod 'NVActivityIndicatorView'
     pod 'MMDrawerController'
     pod 'FontBlaster'
@@ -45,7 +47,7 @@ target 'Syndra' do
       end
 
       # Swift 4.0 support
-      if ['arek', 'PMAlertController', 'Spring', 'RetroProgress', 'StepProgressView', 'SCLAlertView', 'PMSuperButton'].include? t.name
+      if ['McPicker', 'arek', 'PMAlertController', 'Spring', 'RetroProgress', 'StepProgressView', 'SCLAlertView', 'PMSuperButton'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '4.0'
         end

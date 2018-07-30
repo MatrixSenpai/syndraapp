@@ -7,22 +7,55 @@
 //
 
 import UIKit
-import arek
 
 class OnboardMaster: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
+    let pageControl: UIPageControl
+    
+    let left: UIButton
+    let right: UIButton
+    
     var pages: Array<OnboardChild> {
-        let npage = OnboardChild(showButton: true)
-        npage.titleLabel.text = "Allow Notifications"
-        npage.descriptionLabel.text = fetchString(forKey: "allow_notif_string")
-        npage.actionButton.addTarget(self, action: #selector(OnboardMaster.presentNotification), for: .touchUpInside)
-        npage.actionButton.setTitle("Allow Notifications", for: .normal)
+        let w = WelcomeOnboard()
+        w.index = 0
+        let a = AboutOnboard()
+        a.index = 1
+        let t = TeamOnboard()
+        t.index = 2
+        let n = NotifOnboard()
+        n.index = 3
+        let f = FinalOnboard()
+        f.index = 4
         
-        return [npage]
+        return [w, a, t, n, f]
     }
 
     init() {
+        pageControl = UIPageControl()
+        pageControl.tintColor = .flatGray
+        pageControl.currentPageIndicatorTintColor = .flatWhite
+        pageControl.currentPage = 0
+        
+        left = UIButton()
+        left.titleLabel?.font = FASOLID_UIFONT
+        left.setTitleColor(.flatWhite, for: .normal)
+        left.setTitle("\u{f33a}", for: .normal)
+        
+        right = UIButton()
+        right.titleLabel?.font = FASOLID_UIFONT
+        right.setTitleColor(.flatWhite, for: .normal)
+        right.setTitle("\u{f33b}", for: .normal)
+        
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        
+        pageControl.numberOfPages = pages.count
+        view.addSubview(pageControl)
+        
+        left.addTarget(self, action: #selector(OnboardMaster.handleLeft), for: .touchUpInside)
+        view.addSubview(left)
+
+        right.addTarget(self, action: #selector(OnboardMaster.handleRight), for: .touchUpInside)
+        view.addSubview(right)
         
         delegate = self
         dataSource = self
@@ -35,38 +68,79 @@ class OnboardMaster: UIPageViewController, UIPageViewControllerDelegate, UIPageV
         
         if let first = pages.first {
             setViewControllers([first], direction: .forward, animated: true, completion: nil)
+            left.isHidden = true
         }
     }
-    
+    override func viewDidLayoutSubviews() {
+        pageControl.anchorToEdge(.bottom, padding: 30, width: view.width, height: 50)
+        
+        left.anchorInCorner(.bottomLeft, xPad: 0, yPad: 80, width: 50, height: 50)
+        right.anchorInCorner(.bottomRight, xPad: 0, yPad: 80, width: 50, height: 50)
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        guard let vc = pendingViewControllers.first as? OnboardChild else { fatalError() }
+        guard let index = vc.index else { return }
+        
+        pageControl.currentPage = index
+        
+        left.isHidden = false
+        right.isHidden = false
+        
+        if(index == 0) { left.isHidden = true }
+        if(index == (pages.count - 1)) { right.isHidden = true }
+    }
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let vc = viewController as? OnboardChild else { fatalError() }
-        guard let index: Int = pages.firstIndex(of: vc) else { return nil }
+        let index = vc.index!
         let previous = index - 1
         guard previous >= 0 else { return nil }
         
         return pages[previous]
     }
-    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let vc = viewController as? OnboardChild else { fatalError() }
-        guard let index: Int = pages.firstIndex(of: vc) else { return nil }
+        let index = vc.index!
         let next = index + 1
-        guard next <= pages.count else { WindowManager.sharedInstance.move(to: .games); return nil }
-
+        guard next < pages.count else { return nil }
+        
         return pages[next]
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return 1
+        return pages.count
     }
     
     @objc
-    func presentNotification() {
-        let permission = ArekNotifications()
+    func handleLeft() {
+        let i = pageControl.currentPage
+        moveToPage(i - 1)
+    }
+    @objc
+    func handleRight() {
+        let i = pageControl.currentPage
+        moveToPage(i + 1)
+    }
+    
+    func moveToPage(_ index: Int) {
+        let vc = pages[index]
+        let cindex = pageControl.currentPage
         
-        permission.manage { (status) in
-            print(status.rawValue)
-        }
+        let direction: NavigationDirection = ((cindex < index) ? .forward : .reverse)
+        
+        setViewControllers([vc], direction: direction, animated: true, completion: nil)
+        
+        left.isHidden = false
+        right.isHidden = false
+        
+        if(index == 0) { left.isHidden = true }
+        if(index == (pages.count - 1)) { right.isHidden = true }
+
+        pageControl.currentPage = index
+    }
+    
+    func handleDone() {
+        WindowManager.sharedInstance.move(to: .team)
     }
     
     @available(*, unavailable)
@@ -76,52 +150,19 @@ class OnboardMaster: UIPageViewController, UIPageViewControllerDelegate, UIPageV
 }
 
 class OnboardChild: UIViewController {
-    let titleLabel: UILabel
-    let descriptionLabel: UILabel
     
-    let actionButton: UIButton
-    let buttonIsVisible: Bool
+    var index: Int!
     
-    init(showButton: Bool) {
-        titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 20)
-        titleLabel.textColor = .flatWhite
-        titleLabel.textAlignment = .center
-        
-        descriptionLabel = UILabel()
-        descriptionLabel.textAlignment = .center
-        descriptionLabel.textColor = .flatWhite
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.lineBreakMode = .byWordWrapping
-        
-        actionButton = UIButton()
-        actionButton.backgroundColor = .flatSkyBlue
-        actionButton.layer.cornerRadius = 10
-        buttonIsVisible = showButton
-        
+    init() {
         super.init(nibName: nil, bundle: nil)
-        
-        view.backgroundColor = .flatBlack
-        
-        view.addSubview(titleLabel)
-        view.addSubview(descriptionLabel)
-        if(showButton) { view.addSubview(actionButton) }
     }
     
     override func viewDidLayoutSubviews() {
-        if(buttonIsVisible) {
-            actionButton.anchorAndFillEdge(.bottom, xPad: 50, yPad: 100, otherSize: 40)
-            
-            descriptionLabel.alignAndFillWidth(align: .aboveCentered, relativeTo: actionButton, padding: 50, height: 100)
-        } else {
-            descriptionLabel.anchorAndFillEdge(.bottom, xPad: 20, yPad: 100, otherSize: 100)
-        }
-        
-        titleLabel.alignAndFillWidth(align: .aboveCentered, relativeTo: descriptionLabel, padding: 30, height: 22)
+        super.viewDidLayoutSubviews()
     }
     
     @available(*, unavailable)
-    required init?(coder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
 }

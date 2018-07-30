@@ -7,5 +7,7 @@
 */
 
 "season_not_match" = "Looks like the local game data isn't up-to-date! Doing this for you in the background, until then, app data may be inaccurate";
-"allow_notif_string" = "Allow sending notifications to stay up-to-date on games and know when they start!";
 
+"onboard_welcome" = "Continue scrolling to learn about Syqen!";
+"onboard_about" = "Syqen shows you stats and information about professional League of Legends games, as well as statistics for your favorite teams during the current split";
+"onboard_notif" = "Allow sending notifications to stay up-to-date on games and know when they start!";

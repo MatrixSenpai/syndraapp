@@ -9,10 +9,11 @@
 import UIKit
 import FontBlaster
 import Parse
-import SuperDelegate
-import SwiftDate
 import AppVersionMonitor
 import SwiftyUserDefaults
+import Fabric
+import Crashlytics
+import UserNotifications
 
 // Global Font Awesome declarations
 let FALIGHT_UIFONT  : UIFont = UIFont(name: "FontAwesome5ProLight", size: 20)!
@@ -27,101 +28,53 @@ let FABRANDS_ATTR    = [NSAttributedString.Key.font: FABRANDS_UIFONT]
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
+    let window: UIWindow
     
-    var shortcutItems: Array<UIMutableApplicationShortcutItem> {
-        let todayItem: UIMutableApplicationShortcutItem = UIMutableApplicationShortcutItem(type: "syndraapp-today", localizedTitle: "Today", localizedSubtitle: "See today's games", icon: UIApplicationShortcutIcon(type: .play), userInfo: nil)
-        return [todayItem]
+    var currentShortcut: UIApplicationShortcutItem?
+    
+    override init() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        super.init()
+        UNUserNotificationCenter.current().delegate = self
     }
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        #if DEBUG
-        Parse.setLogLevel(.debug)
-        print("Debug level set")
-        #endif
-        Parse.initialize(with: ParseClientConfiguration(block: { (config) in
-            config.applicationId = "io.matrixstudios.syndraapp"
-            config.clientKey = "io.matrixstudios.syndraapp-CLIENTKEY0xFF"
-            config.server = "http://matrixstudios.io:1337/parse"
-            config.isLocalDatastoreEnabled = true
-        }))
+        beginApplicationSetup(launchOptions: launchOptions)
+        handleWindow()
         
-        Season.registerSubclass()
-        Split.registerSubclass()
-        Week.registerSubclass()
-        Day.registerSubclass()
-        Game.registerSubclass()
+        guard let sI = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem else {
+            return true
+        }
         
-        return true
+        self.currentShortcut = sI
+        return false
     }
     
-    func applicationWillResignActive(_ application: UIApplication) {
+//    func applicationDidEnterBackground(_ application: UIApplication) {
+//        let center = UNUserNotificationCenter.current()
+//
+//        let sName = UNNotificationSoundName("Syndra-laugh.caf")
+//        let sound = UNNotificationSound(named: sName)
+//
+//        let content = UNMutableNotificationContent()
+//        content.title = "Cool shit"
+//        content.body = "A notification about me"
+//        content.sound = sound
+//
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+//        let request = UNNotificationRequest(identifier: "syndraapp-localnotif", content: content, trigger: trigger)
+//    }
         
-    }
-    
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        
-    }
-    
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        
-    }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        
-    }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        
-    }
-    
     func beginApplicationSetup(launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
-        
-    }
-    
-}
-/*
-class AppDelegate: SuperDelegate, ApplicationLaunched {
-    let window: UIWindow = UIWindow()
-    
-    var shortcutItems: Array<UIMutableApplicationShortcutItem> {
-        let todayItem: UIMutableApplicationShortcutItem = UIMutableApplicationShortcutItem(type: "syndraapp-today", localizedTitle: "Today", localizedSubtitle: "See today's games", icon: UIApplicationShortcutIcon(type: .play), userInfo: nil)
-        return [todayItem]
-    }
-    
-    func setupApplication() {
-        #if DEBUG
-            Parse.setLogLevel(.debug)
-            print("Debug level set")
-        #endif
-        Parse.initialize(with: ParseClientConfiguration(block: { (config) in
-            config.applicationId = "io.matrixstudios.syndraapp"
-            config.clientKey = "io.matrixstudios.syndraapp-CLIENTKEY0xFF"
-            config.server = "http://matrixstudios.io:1337/parse"
-            config.isLocalDatastoreEnabled = true
-        }))
-        
-        Season.registerSubclass()
-        Split.registerSubclass()
-        Week.registerSubclass()
-        Day.registerSubclass()
-        Game.registerSubclass()
-        
-        let reset = UserDefaults.standard.bool(forKey: "reset")
-        UserDefaults.standard.set(false, forKey: "reset")
-        if(reset) { Defaults[.dataLoaded] = false }
+        beginParseSetup(launchOptions)
+        resetCacheIfNeeded()
         
         FontBlaster.blast()
         AppVersionMonitor.sharedMonitor.startup()
         
-        UIApplication.shared.shortcutItems = shortcutItems
+        UIApplication.shared.shortcutItems = SyndraShortcutItems.allItems
     }
-    
-    func loadInterface(launchItem: LaunchItem) {
-        setup(mainWindow: window)
-        
-        PFAnalytics.trackAppOpened(launchOptions: launchItem.launchOptions)
-        
+    func handleWindow() {
         switch AppVersionMonitor.sharedMonitor.state {
         case .installed: fallthrough
         case .upgraded(previousVersion: _): fallthrough
@@ -138,53 +91,65 @@ class AppDelegate: SuperDelegate, ApplicationLaunched {
         let controller = WindowManager.sharedInstance.root
         window.rootViewController = controller
         window.makeKeyAndVisible()
-        
-    }
-}
-
-extension AppDelegate: ShortcutCapable {
-    func canHandle(shortcutItem: UIApplicationShortcutItem) -> Bool {
-        if shortcutItem.type == "syndraapp-today" { return true }
-        
-        return false
     }
     
-    func handle(shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping () -> Void) {
+    func beginParseSetup(_ l: [UIApplication.LaunchOptionsKey: Any]? = nil) {
+        #if DEBUG
+            Parse.setLogLevel(.debug)
+            print("Debug level set")
+        #endif
+        Parse.initialize(with: ParseClientConfiguration(block: { (config) in
+            config.applicationId = "io.matrixstudios.syndraapp"
+            config.clientKey = "io.matrixstudios.syndraapp-CLIENTKEY0xFF"
+            config.server = "http://matrixstudios.io:1337/parse"
+            config.isLocalDatastoreEnabled = true
+        }))
+        
+        Season.registerSubclass()
+        Split.registerSubclass()
+        Week.registerSubclass()
+        Day.registerSubclass()
+        Game.registerSubclass()
+
+        Fabric.with([Crashlytics.self])
+        PFAnalytics.trackAppOpened(launchOptions: l)
+    }
+    func resetCacheIfNeeded() {
+        let reset = UserDefaults.standard.bool(forKey: "reset")
+        UserDefaults.standard.set(false, forKey: "reset")
+        if(reset) { Defaults[.dataLoaded] = false }
+    }
+    
+    func updateRoot() {
+        window.rootViewController = WindowManager.sharedInstance.root
+        window.makeKeyAndVisible()
+    }
+    
+    // # MARK: - App Shortcuts Handling
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        print("Shortcut was selected")
+        completionHandler(handleShortcut(shortcutItem))
+    }
+    
+    func handleShortcut(_ s: UIApplicationShortcutItem) -> Bool {
+        switch SyndraShortcutItems.Titles.getValue(from: s) {
+        case .today:
+            break
+        default: return false
+        }
+        
+        return true
+    }
+    
+    // # MARK: - Notification Handling
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler()
     }
-    
-    
 }
-
-extension AppDelegate: RemoteNotificationCapable {
-    func didRegisterForRemoteNotifications(withDeviceToken deviceToken: Data) {
-        
-    }
-    
-    func didFailToRegisterForRemoteNotifications(withError error: Error) {
-        
-    }
-    
-    func didReceive(remoteNotification: RemoteNotification, origin: UserNotificationOrigin, fetchCompletionHandler completionHandler: @escaping ((UIBackgroundFetchResult) -> Void)) {
-        
-    }
-    
-    
-}
-
-extension AppDelegate: LocalNotificationCapable {
-    func didReceive(localNotification: UILocalNotification, origin: UserNotificationOrigin) {
-        
-    }
-    
-    func requestedUserNotificationSettings() -> UIUserNotificationSettings {
-        return UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
-    }
-    
-    func didReceive(userNotificationPermissions: UserNotificationPermissionsGranted) {
-        
-    }
-    
-    
-}
-*/
