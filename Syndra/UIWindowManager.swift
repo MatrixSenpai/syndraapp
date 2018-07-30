@@ -17,18 +17,22 @@ class WindowManager {
     private let comms: GamesCommunicator = GamesCommunicator.sharedInstance
     private var loc  : ViewLocation = .team
     
+    var root: UIViewController!
+    
     let menu: MMDrawerController
     
     let menuTable: menuTableViewController
     
-    let today: todayGameViewController
-    let games: SplitGamesViewController
-    let team : MyTeamsViewController
+    let today  : todayGameViewController
+    let games  : SplitGamesViewController
+    let team   : MyTeamsViewController
+    let onboard: OnboardMaster
     
     init() {
         today = todayGameViewController()
         games = SplitGamesViewController()
         team = MyTeamsViewController()
+        onboard = OnboardMaster()
         
         menuTable = menuTableViewController()
         
@@ -42,7 +46,14 @@ class WindowManager {
     
     
     func move(to v: ViewLocation) {
+        if loc == .intro && v != .intro {
+            root = menu
+        }
         switch v {
+        case .intro:
+            root = onboard
+            loc = .intro
+            break
         case .team:
             menu.setCenterView(team, withCloseAnimation: true, completion: nil)
             loc = .team
@@ -78,5 +89,5 @@ class WindowManager {
 }
 
 enum ViewLocation {
-    case loading, today, games, team
+    case loading, today, games, team, intro
 }

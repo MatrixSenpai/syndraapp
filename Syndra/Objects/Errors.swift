@@ -18,10 +18,14 @@ enum GamesVerificationError: Error {
 }
 
 enum SyndraCast: Error {
+    // Objects
     case CastBackSeason
     case CastBackSplit
     case CastBackWeek
     case CastBackDay
     case CastBackGame
     case CastBackTeam
+    
+    // Misc
+    case CastBackViewController
 }

@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Syndra
+
+  Created by Mason Phillips on 7/30/18.
+  Copyright © 2018 Mason Phillips. All rights reserved.
+*/
+
+// Arek strings
+// # Notifications
+"ArekNotifications_initial_title" = "Ding, Ding!";
+"ArekNotifications_initial_message" = "Please allow notifications. This allows you to be notified when your favorite team is about to start playing!";
+
+"ArekNotifications_reenable_title" = "Ding, Ding!";
+"ArekNotifications_reenable_message" = "Looks like you disabled notifications! That's ok, want to change your mind?";
+
+"ArekNotifications_image" = "AppIcon";
+"ArekNotifications_allow_button_title" = "Yes Please!";
+"ArekNotifications_deny_button_title" = "No favorite team";

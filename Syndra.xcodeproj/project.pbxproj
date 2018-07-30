@@ -38,6 +38,9 @@
 		66ABA6BB2100894D003FAA11 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ABA6BA2100894D003FAA11 /* Errors.swift */; };
 		66ABA6BF2101963F003FAA11 /* GamesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ABA6BE2101963F003FAA11 /* GamesTableView.swift */; };
 		66B7E57F20E2BDB300678767 /* menuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7E57E20E2BDB300678767 /* menuHeaderView.swift */; };
+		66BA6537210EC441008A90BF /* Syndra-laugh.caf in Resources */ = {isa = PBXBuildFile; fileRef = 66BA6536210EC441008A90BF /* Syndra-laugh.caf */; };
+		66BA6539210EC4C8008A90BF /* OnboardMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BA6538210EC4C8008A90BF /* OnboardMaster.swift */; };
+		66BA653B210EDCB2008A90BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66BA653A210EDCB2008A90BF /* Localizable.strings */; };
 		66C013B920E102640095B1EE /* TimeBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C013B820E102640095B1EE /* TimeBrowser.swift */; };
 		66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */; };
 		66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C9B0B220CB3C6300A2B14C /* Assets.xcassets */; };
@@ -89,6 +92,9 @@
 		66ABA6BA2100894D003FAA11 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		66ABA6BE2101963F003FAA11 /* GamesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesTableView.swift; sourceTree = "<group>"; };
 		66B7E57E20E2BDB300678767 /* menuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuHeaderView.swift; sourceTree = "<group>"; };
+		66BA6536210EC441008A90BF /* Syndra-laugh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syndra-laugh.caf"; sourceTree = "<group>"; };
+		66BA6538210EC4C8008A90BF /* OnboardMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardMaster.swift; sourceTree = "<group>"; };
+		66BA653A210EDCB2008A90BF /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		66C013B820E102640095B1EE /* TimeBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBrowser.swift; sourceTree = "<group>"; };
 		66C9B0A820CB3C6200A2B14C /* Syndra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syndra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +142,7 @@
 		665BC1B920CC410C00948768 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				66BA6536210EC441008A90BF /* Syndra-laugh.caf */,
 				66D7B42220CCE9A700F37B96 /* FABrands.otf */,
 				66D7B42320CCE9A700F37B96 /* FALight.otf */,
 				66D7B42520CCE9A700F37B96 /* FARegular.otf */,
@@ -146,6 +153,7 @@
 				66800D7020F762A600919239 /* Settings.bundle */,
 				66ABA6B2210071C5003FAA11 /* Default.strings */,
 				667CC3C12102DE4A00ADEE05 /* MessAround.xib */,
+				66BA653A210EDCB2008A90BF /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -180,6 +188,7 @@
 		66686D3721097A18002CD0CC /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				66BA6538210EC4C8008A90BF /* OnboardMaster.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -373,6 +382,7 @@
 				66D7B42720CCE9A700F37B96 /* FALight.otf in Resources */,
 				66C9B0B620CB3C6300A2B14C /* LaunchScreen.storyboard in Resources */,
 				66800D7120F762A600919239 /* Settings.bundle in Resources */,
+				66BA653B210EDCB2008A90BF /* Localizable.strings in Resources */,
 				6680CFD520D61B2300682FE2 /* s8s2.json in Resources */,
 				667CC3C22102DE4A00ADEE05 /* MessAround.xib in Resources */,
 				66D7B42820CCE9A700F37B96 /* FASolid.otf in Resources */,
@@ -381,6 +391,7 @@
 				66ABA6B3210071C5003FAA11 /* Default.strings in Resources */,
 				66894FB220E0FE8100AE5013 /* s8s1.json in Resources */,
 				66D7B42920CCE9A700F37B96 /* FARegular.otf in Resources */,
+				66BA6537210EC441008A90BF /* Syndra-laugh.caf in Resources */,
 				66894FAD20E0C33F00AE5013 /* available.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,15 +407,17 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Syndra/Pods-Syndra-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AppVersionMonitor/AppVersionMonitor.framework",
-				"${BUILT_PRODUCTS_DIR}/BWWalkthrough/BWWalkthrough.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/EAIntroView/EAIntroView.framework",
+				"${BUILT_PRODUCTS_DIR}/EARestrictedScrollView/EARestrictedScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
 				"${BUILT_PRODUCTS_DIR}/GCDKit/GCDKit.framework",
 				"${BUILT_PRODUCTS_DIR}/MMDrawerController/MMDrawerController.framework",
 				"${BUILT_PRODUCTS_DIR}/MiniLayout/MiniLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Neon/Neon.framework",
+				"${BUILT_PRODUCTS_DIR}/PMAlertController/PMAlertController.framework",
 				"${BUILT_PRODUCTS_DIR}/PMSuperButton/PMSuperButton.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/RetroProgress/RetroProgress.framework",
@@ -417,19 +430,22 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 				"${BUILT_PRODUCTS_DIR}/TableFlip/TableFlip.framework",
 				"${BUILT_PRODUCTS_DIR}/Toucan/Toucan.framework",
+				"${BUILT_PRODUCTS_DIR}/arek/arek.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppVersionMonitor.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BWWalkthrough.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EAIntroView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EARestrictedScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMDrawerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MiniLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Neon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMAlertController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMSuperButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RetroProgress.framework",
@@ -442,6 +458,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TableFlip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toucan.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/arek.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -493,6 +510,7 @@
 				6697609320F854B800F7CAA4 /* AppLoadingViewController.swift in Sources */,
 				6686D95120D3ECEF0058C7B3 /* FeaturedGameView.swift in Sources */,
 				66ABA6B721007A98003FAA11 /* LaterGame.swift in Sources */,
+				66BA6539210EC4C8008A90BF /* OnboardMaster.swift in Sources */,
 				66C9B0C220CB41D800A2B14C /* gameFilterViewController.swift in Sources */,
 				66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */,
 				66ABA6B521007A6D003FAA11 /* NextGame.swift in Sources */,

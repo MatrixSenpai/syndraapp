@@ -16,6 +16,7 @@ target 'Syndra' do
     pod 'SwiftDate', '~> 4.0'
     pod 'AppVersionMonitor'
     pod 'SwiftyUserDefaults'
+    pod 'arek'
 
   # UI/Layout
     pod 'Neon'
@@ -31,20 +32,20 @@ target 'Syndra' do
     pod 'RetroProgress'
 
   # Misc
-    pod 'BWWalkthrough'
+    pod 'EAIntroView'
 
   post_install do |installer|
     installer.pods_project.targets.each do |t|
 
       # Swift 3 Support
-      if ['ParseUI', 'BWWalkthrough', 'Toucan', 'NVActivityIndicatorView', 'SwiftyJSON', 'SuperDelegate', 'TableFlip', 'GCDKit'].include? t.name
+      if ['ParseUI', 'Toucan', 'NVActivityIndicatorView', 'SwiftyJSON', 'SuperDelegate', 'TableFlip', 'GCDKit'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '3'
         end
       end
 
       # Swift 4.0 support
-      if ['Spring', 'RetroProgress', 'StepProgressView', 'SCLAlertView', 'PMSuperButton'].include? t.name
+      if ['arek', 'PMAlertController', 'Spring', 'RetroProgress', 'StepProgressView', 'SCLAlertView', 'PMSuperButton'].include? t.name
         t.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '4.0'
         end

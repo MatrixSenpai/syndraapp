@@ -14,6 +14,14 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/arek</string>
+			<key>Title</key>
+			<string>arek (2.0.1)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/Bolts</string>
 			<key>Title</key>
 			<string>Bolts (1.9.0)</string>
@@ -22,17 +30,25 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/BWWalkthrough</string>
+			<string>com.mono0926.LicensePlist/ChameleonFramework</string>
 			<key>Title</key>
-			<string>BWWalkthrough (2.1.2)</string>
+			<string>ChameleonFramework (2.1.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/ChameleonFramework</string>
+			<string>com.mono0926.LicensePlist/EAIntroView</string>
 			<key>Title</key>
-			<string>ChameleonFramework (2.1.0)</string>
+			<string>EAIntroView (2.12.0)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/EARestrictedScrollView</string>
+			<key>Title</key>
+			<string>EARestrictedScrollView (1.1.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -89,6 +105,14 @@
 			<string>com.mono0926.LicensePlist/Parse</string>
 			<key>Title</key>
 			<string>Parse (1.17.1)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/PMAlertController</string>
+			<key>Title</key>
+			<string>PMAlertController (3.4.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
