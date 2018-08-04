@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		66435F7120DA2C67008C6689 /* scheduleItemSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66435F7020DA2C67008C6689 /* scheduleItemSectionHeaderView.swift */; };
+		6658907B2115B7AE00C09FDE /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6658907A2115B7AE00C09FDE /* AppIntentVocabulary.plist */; };
 		665BC1BB20CC420C00948768 /* gamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BA20CC420C00948768 /* gamesViewController.swift */; };
 		665BC1BE20CC460400948768 /* TeamObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BD20CC460400948768 /* TeamObject.swift */; };
 		665BC1C020CC470900948768 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BC1BF20CC470900948768 /* GameObject.swift */; };
@@ -15,6 +16,9 @@
 		665E546720F12B8000B96510 /* todayGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E546620F12B8000B96510 /* todayGameViewController.swift */; };
 		665E546A20F12BA900B96510 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E546920F12BA900B96510 /* Extensions.swift */; };
 		66686D3621095C38002CD0CC /* SplitGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66686D3521095C38002CD0CC /* SplitGamesViewController.swift */; };
+		66796D9A2115D35800579D63 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66796D992115D35800579D63 /* Enums.swift */; };
+		66796D9D2115D88C00579D63 /* RosterItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66796D9C2115D88C00579D63 /* RosterItemView.swift */; };
+		66796D9F2115D8B100579D63 /* TeamTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66796D9E2115D8B100579D63 /* TeamTimeView.swift */; };
 		667CC3C22102DE4A00ADEE05 /* MessAround.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667CC3C12102DE4A00ADEE05 /* MessAround.xib */; };
 		66800D6620F7551200919239 /* DayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800D6520F7551200919239 /* DayObject.swift */; };
 		66800D6820F7552B00919239 /* WeekObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800D6720F7552B00919239 /* WeekObject.swift */; };
@@ -28,7 +32,7 @@
 		668791FF210F05CD00A1BECB /* ShortcutItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668791FE210F05CD00A1BECB /* ShortcutItems.swift */; };
 		66879201210F0E6A00A1BECB /* WelcomeOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66879200210F0E6A00A1BECB /* WelcomeOnboard.swift */; };
 		66879203210F0EC200A1BECB /* NotifOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66879202210F0EC200A1BECB /* NotifOnboard.swift */; };
-		66879205210F0F3B00A1BECB /* SyndraLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66879204210F0F3B00A1BECB /* SyndraLabel.swift */; };
+		66879205210F0F3B00A1BECB /* SyndraUIKitObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66879204210F0F3B00A1BECB /* SyndraUIKitObjects.swift */; };
 		66879207210F1C1D00A1BECB /* AboutOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66879206210F1C1D00A1BECB /* AboutOnboard.swift */; };
 		66879209210F1C5700A1BECB /* TeamOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66879208210F1C5700A1BECB /* TeamOnboard.swift */; };
 		6687920B210F1EB700A1BECB /* FinalOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6687920A210F1EB700A1BECB /* FinalOnboard.swift */; };
@@ -62,12 +66,52 @@
 		66D7B42920CCE9A700F37B96 /* FARegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66D7B42520CCE9A700F37B96 /* FARegular.otf */; };
 		66D7B42B20CCF1B100F37B96 /* MenuInterfacingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7B42A20CCF1B100F37B96 /* MenuInterfacingController.swift */; };
 		66E606152106B58400F9DB5E /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E606142106B58400F9DB5E /* RoundedView.swift */; };
+		66E6706C2115B60600B8DABB /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6706B2115B60600B8DABB /* IntentHandler.swift */; };
+		66E670742115B60600B8DABB /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E670732115B60600B8DABB /* IntentsUI.framework */; };
+		66E670772115B60600B8DABB /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E670762115B60600B8DABB /* IntentViewController.swift */; };
+		66E6707A2115B60600B8DABB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E670782115B60600B8DABB /* MainInterface.storyboard */; };
+		66E6707E2115B60600B8DABB /* SyqenIntentsUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 66E670722115B60600B8DABB /* SyqenIntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		66E670812115B60600B8DABB /* SyqenIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 66E670692115B60500B8DABB /* SyqenIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		66ECF2B9211034D000041428 /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECF2B8211034D000041428 /* GameDetailViewController.swift */; };
 		75807F5BF0872A5BA1653D6C /* Pods_Syndra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		66E6707C2115B60600B8DABB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66C9B0A020CB3C6200A2B14C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66E670712115B60600B8DABB;
+			remoteInfo = SyqenIntentsUI;
+		};
+		66E6707F2115B60600B8DABB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66C9B0A020CB3C6200A2B14C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66E670682115B60500B8DABB;
+			remoteInfo = SyqenIntents;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		66E670882115B60600B8DABB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				66E6707E2115B60600B8DABB /* SyqenIntentsUI.appex in Embed App Extensions */,
+				66E670812115B60600B8DABB /* SyqenIntents.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		536F803088623AC84BB47E41 /* Pods-Syndra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syndra.release.xcconfig"; path = "Pods/Target Support Files/Pods-Syndra/Pods-Syndra.release.xcconfig"; sourceTree = "<group>"; };
 		66435F7020DA2C67008C6689 /* scheduleItemSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleItemSectionHeaderView.swift; sourceTree = "<group>"; };
+		6658907A2115B7AE00C09FDE /* AppIntentVocabulary.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		665BC1BA20CC420C00948768 /* gamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gamesViewController.swift; sourceTree = "<group>"; };
 		665BC1BD20CC460400948768 /* TeamObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamObject.swift; sourceTree = "<group>"; };
 		665BC1BF20CC470900948768 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
@@ -75,6 +119,9 @@
 		665E546620F12B8000B96510 /* todayGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todayGameViewController.swift; sourceTree = "<group>"; };
 		665E546920F12BA900B96510 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		66686D3521095C38002CD0CC /* SplitGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitGamesViewController.swift; sourceTree = "<group>"; };
+		66796D992115D35800579D63 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		66796D9C2115D88C00579D63 /* RosterItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterItemView.swift; sourceTree = "<group>"; };
+		66796D9E2115D8B100579D63 /* TeamTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTimeView.swift; sourceTree = "<group>"; };
 		667CC3C12102DE4A00ADEE05 /* MessAround.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessAround.xib; sourceTree = "<group>"; };
 		66800D6520F7551200919239 /* DayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayObject.swift; sourceTree = "<group>"; };
 		66800D6720F7552B00919239 /* WeekObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekObject.swift; sourceTree = "<group>"; };
@@ -88,7 +135,7 @@
 		668791FE210F05CD00A1BECB /* ShortcutItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutItems.swift; sourceTree = "<group>"; };
 		66879200210F0E6A00A1BECB /* WelcomeOnboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeOnboard.swift; sourceTree = "<group>"; };
 		66879202210F0EC200A1BECB /* NotifOnboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifOnboard.swift; sourceTree = "<group>"; };
-		66879204210F0F3B00A1BECB /* SyndraLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyndraLabel.swift; sourceTree = "<group>"; };
+		66879204210F0F3B00A1BECB /* SyndraUIKitObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyndraUIKitObjects.swift; sourceTree = "<group>"; };
 		66879206210F1C1D00A1BECB /* AboutOnboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutOnboard.swift; sourceTree = "<group>"; };
 		66879208210F1C5700A1BECB /* TeamOnboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamOnboard.swift; sourceTree = "<group>"; };
 		6687920A210F1EB700A1BECB /* FinalOnboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalOnboard.swift; sourceTree = "<group>"; };
@@ -126,6 +173,15 @@
 		66D7B42A20CCF1B100F37B96 /* MenuInterfacingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInterfacingController.swift; sourceTree = "<group>"; };
 		66D7B43320CCF63000F37B96 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		66E606142106B58400F9DB5E /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		66E670692115B60500B8DABB /* SyqenIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SyqenIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E6706B2115B60600B8DABB /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		66E6706D2115B60600B8DABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66E670722115B60600B8DABB /* SyqenIntentsUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SyqenIntentsUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E670732115B60600B8DABB /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		66E670762115B60600B8DABB /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
+		66E670792115B60600B8DABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		66E6707B2115B60600B8DABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66ECF2B8211034D000041428 /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		6BE2F75C8B0A07B02B04CC7A /* Pods-Syndra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syndra.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Syndra/Pods-Syndra.debug.xcconfig"; sourceTree = "<group>"; };
 		AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Syndra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -140,6 +196,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66E670662115B60500B8DABB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E6706F2115B60600B8DABB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E670742115B60600B8DABB /* IntentsUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -149,6 +220,7 @@
 				6699EDBC20D337FB001DED0E /* libsqlite3.tbd */,
 				66D7B43320CCF63000F37B96 /* CoreData.framework */,
 				AA0E18FB2C0FD3699150BFDB /* Pods_Syndra.framework */,
+				66E670732115B60600B8DABB /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -168,6 +240,7 @@
 				66ABA6B2210071C5003FAA11 /* Default.strings */,
 				667CC3C12102DE4A00ADEE05 /* MessAround.xib */,
 				66BA653A210EDCB2008A90BF /* Localizable.strings */,
+				6658907A2115B7AE00C09FDE /* AppIntentVocabulary.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -186,7 +259,8 @@
 				665E546920F12BA900B96510 /* Extensions.swift */,
 				6680BD6120F9AE71004D9F4D /* Protocols.swift */,
 				668791FE210F05CD00A1BECB /* ShortcutItems.swift */,
-				66879204210F0F3B00A1BECB /* SyndraLabel.swift */,
+				66879204210F0F3B00A1BECB /* SyndraUIKitObjects.swift */,
+				66796D992115D35800579D63 /* Enums.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -212,6 +286,16 @@
 				6687920A210F1EB700A1BECB /* FinalOnboard.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		66796D9B2115D87000579D63 /* Game Detail */ = {
+			isa = PBXGroup;
+			children = (
+				66ECF2B8211034D000041428 /* GameDetailViewController.swift */,
+				66796D9E2115D8B100579D63 /* TeamTimeView.swift */,
+				66796D9C2115D88C00579D63 /* RosterItemView.swift */,
+			);
+			path = "Game Detail";
 			sourceTree = "<group>";
 		};
 		6680BD6420F9B10B004D9F4D /* Views */ = {
@@ -264,6 +348,8 @@
 			isa = PBXGroup;
 			children = (
 				66C9B0AA20CB3C6200A2B14C /* Syndra */,
+				66E6706A2115B60600B8DABB /* SyqenIntents */,
+				66E670752115B60600B8DABB /* SyqenIntentsUI */,
 				66C9B0A920CB3C6200A2B14C /* Products */,
 				F048EB6B44F1BDE9F6FCB2DF /* Pods */,
 				3DB8F8FBCAA102876119075D /* Frameworks */,
@@ -274,6 +360,8 @@
 			isa = PBXGroup;
 			children = (
 				66C9B0A820CB3C6200A2B14C /* Syndra.app */,
+				66E670692115B60500B8DABB /* SyqenIntents.appex */,
+				66E670722115B60600B8DABB /* SyqenIntentsUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -296,6 +384,7 @@
 		66C9B0C320CB41E500A2B14C /* Games View */ = {
 			isa = PBXGroup;
 			children = (
+				66796D9B2115D87000579D63 /* Game Detail */,
 				66ABA6BC210195FC003FAA11 /* Current Games */,
 				66C9B0C120CB41D800A2B14C /* gameFilterViewController.swift */,
 				66686D3521095C38002CD0CC /* SplitGamesViewController.swift */,
@@ -322,6 +411,25 @@
 			path = "General Views";
 			sourceTree = "<group>";
 		};
+		66E6706A2115B60600B8DABB /* SyqenIntents */ = {
+			isa = PBXGroup;
+			children = (
+				66E6706B2115B60600B8DABB /* IntentHandler.swift */,
+				66E6706D2115B60600B8DABB /* Info.plist */,
+			);
+			path = SyqenIntents;
+			sourceTree = "<group>";
+		};
+		66E670752115B60600B8DABB /* SyqenIntentsUI */ = {
+			isa = PBXGroup;
+			children = (
+				66E670762115B60600B8DABB /* IntentViewController.swift */,
+				66E670782115B60600B8DABB /* MainInterface.storyboard */,
+				66E6707B2115B60600B8DABB /* Info.plist */,
+			);
+			path = SyqenIntentsUI;
+			sourceTree = "<group>";
+		};
 		F048EB6B44F1BDE9F6FCB2DF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,15 +453,52 @@
 				66C9B0A620CB3C6200A2B14C /* Resources */,
 				0C9F2FE2BAB2867CCCE330EA /* [CP] Embed Pods Frameworks */,
 				668791FD210EF01B00A1BECB /* Fabric Check */,
+				66E670882115B60600B8DABB /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				66E6707D2115B60600B8DABB /* PBXTargetDependency */,
+				66E670802115B60600B8DABB /* PBXTargetDependency */,
 			);
 			name = Syndra;
 			productName = Syndra;
 			productReference = 66C9B0A820CB3C6200A2B14C /* Syndra.app */;
 			productType = "com.apple.product-type.application";
+		};
+		66E670682115B60500B8DABB /* SyqenIntents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66E670872115B60600B8DABB /* Build configuration list for PBXNativeTarget "SyqenIntents" */;
+			buildPhases = (
+				66E670652115B60500B8DABB /* Sources */,
+				66E670662115B60500B8DABB /* Frameworks */,
+				66E670672115B60500B8DABB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SyqenIntents;
+			productName = SyqenIntents;
+			productReference = 66E670692115B60500B8DABB /* SyqenIntents.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		66E670712115B60600B8DABB /* SyqenIntentsUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66E670862115B60600B8DABB /* Build configuration list for PBXNativeTarget "SyqenIntentsUI" */;
+			buildPhases = (
+				66E6706E2115B60600B8DABB /* Sources */,
+				66E6706F2115B60600B8DABB /* Frameworks */,
+				66E670702115B60600B8DABB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SyqenIntentsUI;
+			productName = SyqenIntentsUI;
+			productReference = 66E670722115B60600B8DABB /* SyqenIntentsUI.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -374,7 +519,19 @@
 							com.apple.Push = {
 								enabled = 1;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+							com.apple.Siri = {
+								enabled = 1;
+							};
 						};
+					};
+					66E670682115B60500B8DABB = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					66E670712115B60600B8DABB = {
+						CreatedOnToolsVersion = 10.0;
 					};
 				};
 			};
@@ -392,6 +549,8 @@
 			projectRoot = "";
 			targets = (
 				66C9B0A720CB3C6200A2B14C /* Syndra */,
+				66E670682115B60500B8DABB /* SyqenIntents */,
+				66E670712115B60600B8DABB /* SyqenIntentsUI */,
 			);
 		};
 /* End PBXProject section */
@@ -412,9 +571,25 @@
 				66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */,
 				66ABA6B3210071C5003FAA11 /* Default.strings in Resources */,
 				66894FB220E0FE8100AE5013 /* s8s1.json in Resources */,
+				6658907B2115B7AE00C09FDE /* AppIntentVocabulary.plist in Resources */,
 				66D7B42920CCE9A700F37B96 /* FARegular.otf in Resources */,
 				66BA6537210EC441008A90BF /* Syndra-laugh.caf in Resources */,
 				66894FAD20E0C33F00AE5013 /* available.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E670672115B60500B8DABB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E670702115B60600B8DABB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E6707A2115B60600B8DABB /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,10 +719,11 @@
 				66ABA6B921007ACD003FAA11 /* SeasonObject.swift in Sources */,
 				66C9B0C820CB436400A2B14C /* scheduleItemTableViewCell.swift in Sources */,
 				6697609320F854B800F7CAA4 /* AppLoadingViewController.swift in Sources */,
+				66796D9A2115D35800579D63 /* Enums.swift in Sources */,
 				6686D95120D3ECEF0058C7B3 /* FeaturedGameView.swift in Sources */,
 				66ABA6B721007A98003FAA11 /* LaterGame.swift in Sources */,
 				66BA6539210EC4C8008A90BF /* OnboardMaster.swift in Sources */,
-				66879205210F0F3B00A1BECB /* SyndraLabel.swift in Sources */,
+				66879205210F0F3B00A1BECB /* SyndraUIKitObjects.swift in Sources */,
 				66C9B0C220CB41D800A2B14C /* gameFilterViewController.swift in Sources */,
 				66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */,
 				66ABA6B521007A6D003FAA11 /* NextGame.swift in Sources */,
@@ -559,11 +735,13 @@
 				66879203210F0EC200A1BECB /* NotifOnboard.swift in Sources */,
 				66C9B0C020CB41CB00A2B14C /* menuTableViewController.swift in Sources */,
 				66800D6A20F7554E00919239 /* SplitObject.swift in Sources */,
+				66796D9D2115D88C00579D63 /* RosterItemView.swift in Sources */,
 				66B7E57F20E2BDB300678767 /* menuHeaderView.swift in Sources */,
 				66435F7120DA2C67008C6689 /* scheduleItemSectionHeaderView.swift in Sources */,
 				66686D3621095C38002CD0CC /* SplitGamesViewController.swift in Sources */,
 				665BC1C020CC470900948768 /* GameObject.swift in Sources */,
 				668791FF210F05CD00A1BECB /* ShortcutItems.swift in Sources */,
+				66796D9F2115D8B100579D63 /* TeamTimeView.swift in Sources */,
 				66800D6820F7552B00919239 /* WeekObject.swift in Sources */,
 				66ABA6BF2101963F003FAA11 /* GamesTableView.swift in Sources */,
 				665E546A20F12BA900B96510 /* Extensions.swift in Sources */,
@@ -572,6 +750,7 @@
 				66879201210F0E6A00A1BECB /* WelcomeOnboard.swift in Sources */,
 				66ABA6BB2100894D003FAA11 /* Errors.swift in Sources */,
 				66800D6C20F75CAE00919239 /* DefaultsKeys.swift in Sources */,
+				66ECF2B9211034D000041428 /* GameDetailViewController.swift in Sources */,
 				665E546520F1277100B96510 /* UIWindowManager.swift in Sources */,
 				6699EDBB20D32D91001DED0E /* GamesCommunicator.swift in Sources */,
 				66879209210F1C5700A1BECB /* TeamOnboard.swift in Sources */,
@@ -583,7 +762,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66E670652115B60500B8DABB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E6706C2115B60600B8DABB /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E6706E2115B60600B8DABB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E670772115B60600B8DABB /* IntentViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		66E6707D2115B60600B8DABB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66E670712115B60600B8DABB /* SyqenIntentsUI */;
+			targetProxy = 66E6707C2115B60600B8DABB /* PBXContainerItemProxy */;
+		};
+		66E670802115B60600B8DABB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66E670682115B60500B8DABB /* SyqenIntents */;
+			targetProxy = 66E6707F2115B60600B8DABB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		66C9B0B420CB3C6300A2B14C /* LaunchScreen.storyboard */ = {
@@ -592,6 +800,14 @@
 				66C9B0B520CB3C6300A2B14C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		66E670782115B60600B8DABB /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66E670792115B60600B8DABB /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -715,10 +931,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6BE2F75C8B0A07B02B04CC7A /* Pods-Syndra.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
 				CODE_SIGN_ENTITLEMENTS = Syndra/Syndra.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6S4L29QT59;
 				INFOPLIST_FILE = Syndra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
@@ -739,10 +957,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 536F803088623AC84BB47E41 /* Pods-Syndra.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon";
 				CODE_SIGN_ENTITLEMENTS = Syndra/Syndra.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6S4L29QT59;
 				INFOPLIST_FILE = Syndra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
@@ -756,6 +976,86 @@
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		66E670822115B60600B8DABB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6S4L29QT59;
+				INFOPLIST_FILE = SyqenIntents/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.matrixstudios.Syndra.SyqenIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		66E670832115B60600B8DABB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6S4L29QT59;
+				INFOPLIST_FILE = SyqenIntents/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.matrixstudios.Syndra.SyqenIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		66E670842115B60600B8DABB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6S4L29QT59;
+				INFOPLIST_FILE = SyqenIntentsUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.matrixstudios.Syndra.SyqenIntentsUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		66E670852115B60600B8DABB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6S4L29QT59;
+				INFOPLIST_FILE = SyqenIntentsUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.matrixstudios.Syndra.SyqenIntentsUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -776,6 +1076,24 @@
 			buildConfigurations = (
 				66C9B0BB20CB3C6300A2B14C /* Debug */,
 				66C9B0BC20CB3C6300A2B14C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66E670862115B60600B8DABB /* Build configuration list for PBXNativeTarget "SyqenIntentsUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E670842115B60600B8DABB /* Debug */,
+				66E670852115B60600B8DABB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66E670872115B60600B8DABB /* Build configuration list for PBXNativeTarget "SyqenIntents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E670822115B60600B8DABB /* Debug */,
+				66E670832115B60600B8DABB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

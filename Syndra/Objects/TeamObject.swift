@@ -19,9 +19,3 @@ class Team: PFObject, PFSubclassing {
         return "Team"
     }
 }
-
-enum GameState: Int {
-    case notPlayed = 0
-    case blueSideWin = 1
-    case redSideWin = 2
-}

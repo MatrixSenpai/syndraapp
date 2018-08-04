@@ -88,7 +88,7 @@ class WindowManager {
             return
         }
         
-        SCLAlertView().showInfo(t, subTitle: m)
+        //SCLAlertView().showInfo(t, subTitle: m)
     }
 }
 

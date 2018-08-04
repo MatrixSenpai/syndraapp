@@ -19,7 +19,7 @@ class NotifOnboard: OnboardChild {
     
     override init() {
         head = SyndraLabel(.center, size: 25)
-        head.text = "Allow Notifications"
+        head.text = "Permission Time!"
         
         body = SyndraLabel(.center)
         body.multiline()

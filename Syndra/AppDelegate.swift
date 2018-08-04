@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let window: UIWindow
     
     var currentShortcut: UIApplicationShortcutItem?
+    var preferredLocation: ViewLocation?
     
     override init() {
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -39,9 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        beginApplicationSetup(launchOptions: launchOptions)
+        beginApplicationSetup(application, launchOptions: launchOptions)
         handleWindow()
-        
+                
         guard let sI = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem else {
             return true
         }
@@ -65,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let request = UNNotificationRequest(identifier: "syndraapp-localnotif", content: content, trigger: trigger)
 //    }
         
-    func beginApplicationSetup(launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
+    func beginApplicationSetup(_ app: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
         beginParseSetup(launchOptions)
         resetCacheIfNeeded()
         
@@ -73,18 +74,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppVersionMonitor.sharedMonitor.startup()
         
         UIApplication.shared.shortcutItems = SyndraShortcutItems.allItems
+        
+        let k = UIApplication.LaunchOptionsKey.shortcutItem
+        guard let shortcut = launchOptions?[k] as? UIApplicationShortcutItem else { return }
+        self.application(app, performActionFor: shortcut) { (success) in
+            print(success)
+        }
     }
     func handleWindow() {
         switch AppVersionMonitor.sharedMonitor.state {
-        case .installed: fallthrough
+        case .installed:
+            WindowManager.sharedInstance.move(to: .intro)
+            Defaults[.dataLoaded] = false
         case .upgraded(previousVersion: _): fallthrough
         case .downgraded(previousVersion: _):
+            WindowManager.sharedInstance.move(to: .loading)
             Defaults[.dataLoaded] = false
-            WindowManager.sharedInstance.move(to: .intro)
             break
         case .notChanged:
+            if let p = preferredLocation { WindowManager.sharedInstance.move(to: p) }
+            else { WindowManager.sharedInstance.move(to: .games) }
             GamesCommunicator.sharedInstance.checkData()
-            WindowManager.sharedInstance.move(to: .intro)
             break
         }
         
@@ -124,7 +134,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = WindowManager.sharedInstance.root
         window.makeKeyAndVisible()
     }
-    
+}
+
+extension AppDelegate {
     // # MARK: - App Shortcuts Handling
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         print("Shortcut was selected")
@@ -134,22 +146,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func handleShortcut(_ s: UIApplicationShortcutItem) -> Bool {
         switch SyndraShortcutItems.Titles.getValue(from: s) {
         case .today:
+            preferredLocation = .today
             break
-        default: return false
         }
         
+        handleWindow()
         return true
     }
-    
-    // # MARK: - Notification Handling
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    // # MARK: - Notification Handling
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .badge, .sound])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler()
+    }
+}
+
+extension AppDelegate {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        print(url)
+        return true
     }
 }

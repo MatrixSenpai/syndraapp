@@ -19,7 +19,7 @@ class WelcomeOnboard: OnboardChild {
         head.text = "Welcome to Syqen"
         
         name = SyndraLabel(.center, size: 14)
-        name.text = "(sigh-quen)"
+        name.text = "(sigh-ken)"
         
         body = SyndraLabel(.center)
         body.multiline()

@@ -79,7 +79,7 @@ class todayGameViewController: UIViewController, GameListener {
     
     override func viewDidAppear(_ animated: Bool) {
         GamesCommunicator.sharedInstance.listener = self
-        GamesCommunicator.sharedInstance.nextGame(current: true)
+        //GamesCommunicator.sharedInstance.nextGame(current: true)
     }
     
     func nextGame(is g: Game, week: Int, ofDay: Int) {

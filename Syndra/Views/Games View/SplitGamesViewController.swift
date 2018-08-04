@@ -27,11 +27,8 @@ class SplitGamesViewController: MenuInterfacingViewController {
     
     let gamesView: UIScrollView
     
-    let gameDayOne: RoundedView
-    let gameDayTwo: RoundedView
-    
-    let dayOneLabel: UILabel
-    let dayTwoLabel: UILabel
+    let gameDayOne: DayView
+    let gameDayTwo: DayView
     
     let bottomView: UIView
     let bottomLabel: UILabel
@@ -62,7 +59,7 @@ class SplitGamesViewController: MenuInterfacingViewController {
         topView.addSubview(rightButton)
         
         weekBrowser = UIView()
-        weekBrowser.backgroundColor = .flatBlueDark
+        weekBrowser.backgroundColor = .flatBlack
         
         prevWeek = UILabel()
         prevWeek.text = "Week 4"
@@ -92,29 +89,18 @@ class SplitGamesViewController: MenuInterfacingViewController {
         gamesView.isPagingEnabled = true
         gamesView.clipsToBounds = true
         
-        gameDayOne = RoundedView()
-        gameDayOne.backgroundColor = .flatBlue
+        gameDayOne = DayView()
         gamesView.addSubview(gameDayOne)
         
-        dayOneLabel = UILabel()
-        dayOneLabel.text = "Day 1"
-        dayOneLabel.textColor = .flatWhite
-        gameDayOne.addSubview(dayOneLabel)
-        
-        gameDayTwo = RoundedView()
-        gameDayTwo.backgroundColor = .flatBlue
+        gameDayTwo = DayView()
         gamesView.addSubview(gameDayTwo)
         
-        dayTwoLabel = UILabel()
-        dayTwoLabel.text = "Day 2"
-        dayTwoLabel.textColor = .flatWhite
-        gameDayTwo.addSubview(dayTwoLabel)
-        
         bottomView = UIView()
-        bottomView.backgroundColor = .flatRedDark
+        bottomView.backgroundColor = .flatBlack
         
         bottomLabel = UILabel()
         bottomLabel.text = "Notify Me When Today Starts"
+        bottomLabel.textColor = .flatWhite
         bottomView.addSubview(bottomLabel)
         
         bottomSwitch = UISwitch()
@@ -124,7 +110,10 @@ class SplitGamesViewController: MenuInterfacingViewController {
         
         menuButton.addTarget(self, action: #selector(MenuInterfacingViewController.openLeft), for: .touchUpInside)
         
-        view.backgroundColor = .flatBlack
+        view.backgroundColor = .flatBlackDark
+        
+        gameDayOne.parent = self
+        gameDayTwo.parent = self
         
         view.addSubview(topView)
         view.addSubview(weekBrowser)
@@ -167,9 +156,6 @@ class SplitGamesViewController: MenuInterfacingViewController {
         gameDayOne.roundAll()
         gameDayTwo.align(.toTheRightCentered, relativeTo: gameDayOne, padding: 20, width: view.width * 0.8, height: gamesView.height - 50)
         gameDayTwo.roundAll()
-        
-        dayOneLabel.anchorAndFillEdge(.top, xPad: 15, yPad: 15, otherSize: 22)
-        dayTwoLabel.anchorAndFillEdge(.top, xPad: 15, yPad: 15, otherSize: 22)
     }
 
     override func viewDidLoad() {
@@ -178,8 +164,179 @@ class SplitGamesViewController: MenuInterfacingViewController {
         // Do any additional setup after loading the view.
     }
     
+    func gameWasSelected() {
+        let feedback = UIImpactFeedbackGenerator(style: .light)
+        feedback.impactOccurred()
+
+        let c = GameDetailViewController()
+        c.parentVC = self
+        self.present(c, animated: true, completion: nil)
+    }
+    
+    func returnToView() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 class DayView: RoundedView {
+    let label: UILabel
     
+    var parent: SplitGamesViewController?
+    
+    var games: Array<gameView> = []
+    
+    init() {
+        label = UILabel()
+        label.text = "Day 1"
+        label.textColor = .flatWhite
+        
+        for _ in 0..<5 {
+            let g = gameView()
+            games.append(g)
+        }
+        
+        super.init(frame: CGRect())
+        
+        for g in games {
+            addSubview(g)
+        }
+        
+        self.addSubview(label)
+        
+        backgroundColor = .flatBlack
+    }
+    
+    func handleSelection() {
+        parent?.gameWasSelected()
+    }
+    
+    override func layoutSubviews() {
+        label.anchorAndFillEdge(.top, xPad: 15, yPad: 15, otherSize: 22)
+
+        groupAgainstEdge(group: .vertical, views: games, againstEdge: .bottom, padding: 0, width: width, height: (height - 45) / 5)
+    }
+}
+
+class gameView: UIView {
+    let blue: SyndraLabel
+    let bicon: UIImageView
+    let time: SyndraLabel
+    let red: SyndraLabel
+    let ricon: UIImageView
+    
+    let activate: UITapGestureRecognizer
+    
+    init() {
+        blue = SyndraLabel()
+        blue.backgroundColor = UIColor.flatSkyBlue.withAlphaComponent(0.5)
+        blue.text = "TSM"
+        blue.leftInset = 5.0
+        
+        bicon = UIImageView(image: UIImage(named: "TSM"))
+        
+        time = SyndraLabel(.center)
+        time.text = "1600"
+        time.backgroundColor = .clear
+        time.layer.borderColor = UIColor.flatWhite.cgColor
+        time.layer.borderWidth = 1
+        
+        red = SyndraLabel(.right)
+        red.backgroundColor = UIColor.flatRed.withAlphaComponent(0.5)
+        red.text = "FOX"
+        red.rightInset = 5.0
+        
+        ricon = UIImageView(image: UIImage(named: "FOX"))
+        
+        activate = UITapGestureRecognizer()
+        activate.numberOfTapsRequired = 1
+        activate.numberOfTouchesRequired = 1
+        
+        super.init(frame: CGRect())
+        
+        activate.addTarget(self, action: #selector(gameView.handleTap(sender:)))
+        addGestureRecognizer(activate)
+        
+        addSubview(blue)
+        addSubview(bicon)
+        addSubview(time)
+        addSubview(ricon)
+        addSubview(red)
+    }
+    
+    override func layoutSubviews() {
+        time.anchorInCenter(width: 50, height: height)
+        bicon.align(.toTheLeftCentered, relativeTo: time, padding: 5, width: 40, height: 40)
+        ricon.align(.toTheRightCentered, relativeTo: time, padding: 5, width: 40, height: 40)
+        
+        blue.alignAndFillWidth(align: .toTheLeftCentered, relativeTo: time, padding: 0, height: height)
+        red.alignAndFillWidth(align: .toTheRightCentered, relativeTo: time, padding: 0, height: height)
+        
+        
+        blue.layer.addBorder(edge: .top, color: .flatWhite, thickness: 1)
+        blue.layer.addBorder(edge: .bottom, color: .flatWhite, thickness: 1)
+
+        red.layer.addBorder(edge: .top, color: .flatWhite, thickness: 1)
+        red.layer.addBorder(edge: .bottom, color: .flatWhite, thickness: 1)
+    }
+    
+    @objc
+    func handleTap(sender: UITapGestureRecognizer) {
+        (superview as! DayView).handleSelection()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+}
+
+@available(iOS 9.0, *)
+class ForceGestureRecognizer: UIGestureRecognizer {
+    
+    var forceValue: CGFloat = 0
+    var maxValue: CGFloat!
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+        super.touchesBegan(touches, with: event)
+        handleForceWithTouches(touches: touches)
+        state = .began
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
+        super.touchesMoved(touches, with: event)
+        handleForceWithTouches(touches: touches)
+        state = .changed
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
+        super.touchesEnded(touches, with: event)
+        handleForceWithTouches(touches: touches)
+        state = .ended
+    }
+    
+    func handleForceWithTouches(touches: Set<UITouch>) {
+        
+        //only do something is one touch is received
+        if touches.count != 1 {
+            state = .failed
+            return
+        }
+        
+        //check if touch is valid, otherwise set state to failed and return
+        guard let touch = touches.first else {
+            state = .failed
+            return
+        }
+        
+        //if everything is ok, set our variables.
+        forceValue = touch.force
+        maxValue = touch.maximumPossibleForce
+    }
+    
+    //This is called when our state is set to .ended.
+    public override func reset() {
+        super.reset()
+        print("reset")
+        forceValue = 0.0
+    }
 }
