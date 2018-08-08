@@ -148,6 +148,9 @@ extension AppDelegate {
         case .today:
             preferredLocation = .today
             break
+        case .games:
+            preferredLocation = .games
+            break
         }
         
         handleWindow()

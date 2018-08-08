@@ -52,6 +52,10 @@
 		66BA6537210EC441008A90BF /* Syndra-laugh.caf in Resources */ = {isa = PBXBuildFile; fileRef = 66BA6536210EC441008A90BF /* Syndra-laugh.caf */; };
 		66BA6539210EC4C8008A90BF /* OnboardMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BA6538210EC4C8008A90BF /* OnboardMaster.swift */; };
 		66BA653B210EDCB2008A90BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66BA653A210EDCB2008A90BF /* Localizable.strings */; };
+		66C001C5211A2FF500889C4D /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C001C4211A2FF500889C4D /* DayView.swift */; };
+		66C001C7211A301900889C4D /* WeeksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C001C6211A301900889C4D /* WeeksView.swift */; };
+		66C001C9211A303000889C4D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C001C8211A303000889C4D /* GameView.swift */; };
+		66C001CB211A307200889C4D /* ForceTouchGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C001CA211A307200889C4D /* ForceTouchGesture.swift */; };
 		66C013B920E102640095B1EE /* TimeBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C013B820E102640095B1EE /* TimeBrowser.swift */; };
 		66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */; };
 		66C9B0B320CB3C6300A2B14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C9B0B220CB3C6300A2B14C /* Assets.xcassets */; };
@@ -156,6 +160,10 @@
 		66BA6536210EC441008A90BF /* Syndra-laugh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Syndra-laugh.caf"; sourceTree = "<group>"; };
 		66BA6538210EC4C8008A90BF /* OnboardMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardMaster.swift; sourceTree = "<group>"; };
 		66BA653A210EDCB2008A90BF /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		66C001C4211A2FF500889C4D /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		66C001C6211A301900889C4D /* WeeksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksView.swift; sourceTree = "<group>"; };
+		66C001C8211A303000889C4D /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		66C001CA211A307200889C4D /* ForceTouchGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceTouchGesture.swift; sourceTree = "<group>"; };
 		66C013B820E102640095B1EE /* TimeBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBrowser.swift; sourceTree = "<group>"; };
 		66C9B0A820CB3C6200A2B14C /* Syndra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syndra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C9B0AB20CB3C6200A2B14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -261,6 +269,7 @@
 				668791FE210F05CD00A1BECB /* ShortcutItems.swift */,
 				66879204210F0F3B00A1BECB /* SyndraUIKitObjects.swift */,
 				66796D992115D35800579D63 /* Enums.swift */,
+				66C001CA211A307200889C4D /* ForceTouchGesture.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -344,6 +353,16 @@
 			name = Subviews;
 			sourceTree = "<group>";
 		};
+		66C001C3211A2FDF00889C4D /* Split Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				66C001C4211A2FF500889C4D /* DayView.swift */,
+				66C001C6211A301900889C4D /* WeeksView.swift */,
+				66C001C8211A303000889C4D /* GameView.swift */,
+			);
+			path = "Split Subviews";
+			sourceTree = "<group>";
+		};
 		66C9B09F20CB3C6200A2B14C = {
 			isa = PBXGroup;
 			children = (
@@ -384,10 +403,11 @@
 		66C9B0C320CB41E500A2B14C /* Games View */ = {
 			isa = PBXGroup;
 			children = (
+				66686D3521095C38002CD0CC /* SplitGamesViewController.swift */,
+				66C001C3211A2FDF00889C4D /* Split Subviews */,
 				66796D9B2115D87000579D63 /* Game Detail */,
 				66ABA6BC210195FC003FAA11 /* Current Games */,
 				66C9B0C120CB41D800A2B14C /* gameFilterViewController.swift */,
-				66686D3521095C38002CD0CC /* SplitGamesViewController.swift */,
 			);
 			path = "Games View";
 			sourceTree = "<group>";
@@ -727,12 +747,14 @@
 				66C9B0C220CB41D800A2B14C /* gameFilterViewController.swift in Sources */,
 				66C9B0AC20CB3C6200A2B14C /* AppDelegate.swift in Sources */,
 				66ABA6B521007A6D003FAA11 /* NextGame.swift in Sources */,
+				66C001C9211A303000889C4D /* GameView.swift in Sources */,
 				66805D192103195800D093CD /* MyTeamsViewController.swift in Sources */,
 				66C9B0CB20CB463B00A2B14C /* teamOverlayView.swift in Sources */,
 				66800D6620F7551200919239 /* DayObject.swift in Sources */,
 				6680BD6220F9AE71004D9F4D /* Protocols.swift in Sources */,
 				66879207210F1C1D00A1BECB /* AboutOnboard.swift in Sources */,
 				66879203210F0EC200A1BECB /* NotifOnboard.swift in Sources */,
+				66C001CB211A307200889C4D /* ForceTouchGesture.swift in Sources */,
 				66C9B0C020CB41CB00A2B14C /* menuTableViewController.swift in Sources */,
 				66800D6A20F7554E00919239 /* SplitObject.swift in Sources */,
 				66796D9D2115D88C00579D63 /* RosterItemView.swift in Sources */,
@@ -743,9 +765,11 @@
 				668791FF210F05CD00A1BECB /* ShortcutItems.swift in Sources */,
 				66796D9F2115D8B100579D63 /* TeamTimeView.swift in Sources */,
 				66800D6820F7552B00919239 /* WeekObject.swift in Sources */,
+				66C001C7211A301900889C4D /* WeeksView.swift in Sources */,
 				66ABA6BF2101963F003FAA11 /* GamesTableView.swift in Sources */,
 				665E546A20F12BA900B96510 /* Extensions.swift in Sources */,
 				665BC1BE20CC460400948768 /* TeamObject.swift in Sources */,
+				66C001C5211A2FF500889C4D /* DayView.swift in Sources */,
 				66E606152106B58400F9DB5E /* RoundedView.swift in Sources */,
 				66879201210F0E6A00A1BECB /* WelcomeOnboard.swift in Sources */,
 				66ABA6BB2100894D003FAA11 /* Errors.swift in Sources */,
